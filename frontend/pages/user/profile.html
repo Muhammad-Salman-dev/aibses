@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile - ISES</title>
+
+    <link rel="stylesheet" href="../../css/dashboard.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="brand">
+            <i class="fa-solid fa-leaf"></i> ISES
+            <i class="fa-solid fa-times mobile-close-btn" id="closeSidebarBtn"></i>
+        </div>
+        <a href="dashboard.html" class="menu-item"><i class="fa-solid fa-house"></i> Dashboard</a>
+        <a href="new-request.html" class="menu-item"><i class="fa-solid fa-plus-circle"></i> New Request</a>
+        <a href="history.html" class="menu-item"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+
+        <div class="menu-dropdown">
+            <a href="#" class="menu-item" id="projectHubBtn">
+                <div class="menu-item-content"><i class="fa-solid fa-list-check"></i> <span>Project Hub</span></div>
+                <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+            </a>
+            <div class="submenu" id="vendorSubmenu">
+                <a href="quotes.html" class="submenu-item"><i class="fa-solid fa-file-invoice-dollar"></i> View Quotes</a>
+                <a href="quote-status.html" class="submenu-item"><i class="fa-solid fa-hourglass-half"></i> Quote Status</a>
+                <a href="payments.html" class="submenu-item"><i class="fa-solid fa-credit-card"></i> Payments</a>
+                <a href="installation.html" class="submenu-item"><i class="fa-solid fa-helmet-safety"></i> Installation</a>
+                <a href="rate-vendor.html" class="submenu-item"><i class="fa-solid fa-star"></i> Rate & Profile</a>
+            </div>
+        </div>
+
+        <a href="../market/analysis.html" class="menu-item"><i class="fa-solid fa-chart-line"></i> Market Analysis</a>
+
+        <a href="#" class="menu-item active"><i class="fa-solid fa-user-gear"></i> Profile Settings</a>
+
+        <a href="#" id="logoutBtn" class="menu-item" style="margin-top: auto;"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+    </nav>
+
+    <main class="main-content">
+
+        <div class="header">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button class="menu-toggle" id="menuToggleBtn"><i class="fa-solid fa-bars"></i></button>
+                <div>
+                    <h1>Account Settings</h1>
+                    <p style="color: #7f8c8d;">Manage your personal information and security.</p>
+                </div>
+            </div>
+            <div class="user-profile">
+                <span id="headerUserName">Ali Khan</span>
+                <div class="user-img" id="headerProfileImg"></div>
+            </div>
+        </div>
+
+        <div class="profile-container">
+            <form id="profileForm">
+
+                <div class="avatar-section">
+                    <div class="avatar-wrapper">
+                        <img src="https://www.w3schools.com/howto/img_avatar.png" id="profilePreview" alt="Profile">
+                    </div>
+                    <input type="file" id="imageUpload" accept="image/*">
+                    <label for="imageUpload" class="upload-icon">
+                        <i class="fa-solid fa-camera"></i>
+                    </label>
+                    <p class="upload-hint">Allowed: JPG, PNG. Max 2MB.</p>
+                </div>
+
+                <div class="section-header">Personal Information</div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" class="form-input" value="Ali Khan" id="fullNameInput">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="text" class="form-input" value="+92 300 1234567">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Email Address</label>
+                        <input type="email" class="form-input input-readonly" value="user@ises.com" readonly title="You cannot change email">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Residential Address</label>
+                        <input type="text" class="form-input" value="House 12, Street 4, DHA Phase 6, Lahore">
+                    </div>
+                </div>
+
+                <div class="section-header">Security</div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Current Password</label>
+                        <input type="password" class="form-input" placeholder="********">
+                    </div>
+                    <div class="form-group">
+                        <label>New Password</label>
+                        <input type="password" class="form-input" placeholder="Leave empty to keep same">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-cancel" id="cancelProfileBtn">Cancel</button>
+                    <button type="submit" class="btn btn-submit" id="saveProfileBtn">Save Changes</button>
+                </div>
+
+            </form>
+        </div>
+
+    </main>
+
+    <script src="../../js/userDashboard.js"></script>
+
+</body>
+</html>

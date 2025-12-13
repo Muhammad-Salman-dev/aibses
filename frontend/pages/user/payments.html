@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments - ISES</title>
+
+    <link rel="stylesheet" href="../../css/dashboard.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .payment-progress-container {
+            background: white; padding: 25px; border-radius: 12px; box-shadow: var(--card-shadow); margin-bottom: 30px;
+        }
+        .progress-track {
+            display: flex; justify-content: space-between; position: relative; margin-top: 20px;
+        }
+        /* Line behind circles */
+        .progress-track::before {
+            content: ''; position: absolute; top: 15px; left: 0; width: 100%; height: 4px; background: #eee; z-index: 0;
+        }
+        .step-item {
+            position: relative; z-index: 1; text-align: center; width: 33%;
+        }
+        .step-circle {
+            width: 35px; height: 35px; background: #eee; border-radius: 50%; margin: 0 auto 10px;
+            display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;
+            transition: 0.3s; border: 3px solid white;
+        }
+        .step-item.completed .step-circle { background: var(--primary-color); }
+        .step-item.active .step-circle { background: #f1c40f; }
+
+        .step-label { font-size: 13px; color: #7f8c8d; font-weight: 600; }
+        .step-item.completed .step-label { color: var(--primary-color); }
+
+        .pay-btn-container { margin-top: 20px; text-align: right; }
+    </style>
+</head>
+<body>
+
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="brand">
+            <i class="fa-solid fa-leaf"></i> ISES
+            <i class="fa-solid fa-times mobile-close-btn" onclick="toggleSidebar()"></i>
+        </div>
+
+        <a href="dashboard.html" class="menu-item">
+            <i class="fa-solid fa-house"></i> Dashboard
+        </a>
+        <a href="new-request.html" class="menu-item">
+            <i class="fa-solid fa-plus-circle"></i> New Request
+        </a>
+        <a href="history.html" class="menu-item">
+            <i class="fa-solid fa-clock-rotate-left"></i> History
+        </a>
+
+        <div class="menu-dropdown">
+            <a href="#" class="menu-item active" onclick="toggleVendorMenu(event)">
+                <div class="menu-item-content"><i class="fa-solid fa-list-check"></i> <span>Project Hub</span></div>
+                <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+            </a>
+
+            <div class="submenu open" id="vendorSubmenu">
+                <a href="quotes.html" class="submenu-item">
+                    <i class="fa-solid fa-file-invoice-dollar"></i> View Quotes
+                </a>
+                <a href="quote-status.html" class="submenu-item">
+                    <i class="fa-solid fa-hourglass-half"></i> Quote Status
+                </a>
+                <a href="#" class="submenu-item" style="color: white; background: rgba(255,255,255,0.1);">
+                    <i class="fa-solid fa-credit-card"></i> Payments
+                </a>
+                <a href="installation.html" class="submenu-item">
+                    <i class="fa-solid fa-helmet-safety"></i> Installation
+                </a>
+                <a href="rate-vendor.html" class="submenu-item">
+                    <i class="fa-solid fa-star"></i> Rate & Profile
+                </a>
+            </div>
+        </div>
+
+        <a href="../market/analysis.html" class="menu-item">
+            <i class="fa-solid fa-chart-line"></i> Market Analysis
+        </a>
+
+        <a href="#" onclick="logout()" class="menu-item" style="margin-top: auto;">
+            <i class="fa-solid fa-sign-out-alt"></i> Logout
+        </a>
+    </nav>
+
+    <main class="main-content">
+
+        <div class="header">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button class="menu-toggle" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div>
+                    <h1>Payments & Billing</h1>
+                    <p style="color: #7f8c8d;">Manage payments for Project: <strong>Home Setup - DHA</strong></p>
+                </div>
+            </div>
+            <div class="user-profile">
+                <span>Ali Khan</span>
+                <div class="user-img"></div>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="card">
+                <div class="card-info">
+                    <h3>Rs 1,250,000</h3>
+                    <p>Total Project Cost</p>
+                </div>
+                <i class="fa-solid fa-wallet card-icon"></i>
+            </div>
+            <div class="card">
+                <div class="card-info">
+                    <h3 style="color: var(--primary-color);">Rs 375,000</h3>
+                    <p>Amount Paid (30%)</p>
+                </div>
+                <i class="fa-solid fa-check-double card-icon" style="color: var(--primary-color);"></i>
+            </div>
+            <div class="card">
+                <div class="card-info">
+                    <h3 style="color: #e74c3c;">Rs 875,000</h3>
+                    <p>Pending Amount</p>
+                </div>
+                <i class="fa-solid fa-clock card-icon" style="color: #e74c3c;"></i>
+            </div>
+        </div>
+
+        <div class="payment-progress-container">
+            <h3 style="color: var(--dark-bg); margin-bottom: 10px;">Current Payment Milestone</h3>
+            <div class="progress-track">
+
+                <div class="step-item completed">
+                    <div class="step-circle"><i class="fa-solid fa-check"></i></div>
+                    <div class="step-label">Initial Advance (30%)<br><small>Paid on Dec 12</small></div>
+                </div>
+
+                <div class="step-item active">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Equipment Delivery (50%)<br><small style="color: #e74c3c;">Due: Dec 20, 2025</small></div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">Installation Complete (20%)<br><small>Pending</small></div>
+                </div>
+            </div>
+
+            <div class="pay-btn-container">
+                <button class="btn btn-primary" onclick="openPaymentModal()">
+    <i class="fa-solid fa-credit-card"></i> Pay Next Installment
+</button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <div class="table-header">Transaction History</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Transaction ID</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Method</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Receipt</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#TXN-9821</td>
+                        <td>Dec 12, 2025</td>
+                        <td>Advance Payment (30%)</td>
+                        <td>Bank Transfer</td>
+                        <td>Rs 375,000</td>
+                        <td><span class="status completed">Verified</span></td>
+                        <td><button class="action-btn" onclick="downloadReceipt('TXN-9821', 'Rs 375,000', 'Advance Payment')">
+        <i class="fa-solid fa-file-pdf"></i> Download Receipt
+    </button></td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>Equipment Delivery (50%)</td>
+                        <td>-</td>
+                        <td>Rs 625,000</td>
+                        <td><span class="status processing">Unpaid</span></td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+<div id="paymentModal" class="modal">
+        <div class="modal-content payment-box">
+            <div class="modal-header">
+                <h3>Select Payment Method</h3>
+                <span class="close" onclick="closeModal('paymentModal')">&times;</span>
+            </div>
+
+            <div class="payment-methods">
+                <div class="method-card selected" onclick="selectMethod(this, 'card')">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <span>Credit / Debit Card</span>
+                </div>
+                <div class="method-card" onclick="selectMethod(this, 'bank')">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <span>Bank Transfer</span>
+                </div>
+                <div class="method-card" onclick="selectMethod(this, 'wallet')">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <span>EasyPaisa / JazzCash</span>
+                </div>
+            </div>
+
+            <div id="cardForm" class="payment-form">
+                <label>Card Number</label>
+                <input type="text" placeholder="0000 0000 0000 0000">
+                <div style="display: flex; gap: 10px;">
+                    <div><label>Expiry</label><input type="text" placeholder="MM/YY"></div>
+                    <div><label>CVC</label><input type="text" placeholder="123"></div>
+                </div>
+            </div>
+
+            <div id="bankForm" class="payment-form" style="display: none;">
+                <div class="bank-details">
+                    <p><strong>Bank Name:</strong> Meezan Bank</p>
+                    <p><strong>Account Title:</strong> ISES Solar Escrow</p>
+                    <p><strong>IBAN:</strong> PK36 MEZN 0000 1234 5678 9012</p>
+                </div>
+                <label style="margin-top: 10px;">Upload Payment Receipt</label>
+                <input type="file">
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" style="width: 100%;" onclick="processPayment()">Confirm Payment</button>
+            </div>
+        </div>
+    </div>
+    </main>
+
+    <script src="../../js/userDashboard.js"></script>
+
+</body>
+</html>

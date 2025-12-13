@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Quotes - ISES</title>
+
+    <link rel="stylesheet" href="../../css/dashboard.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+<nav class="sidebar" id="sidebar">
+    <div class="brand">
+        <i class="fa-solid fa-leaf"></i> ISES
+        <i class="fa-solid fa-times mobile-close-btn" onclick="toggleSidebar()"></i>
+    </div>
+
+    <a href="dashboard.html" class="menu-item">
+        <i class="fa-solid fa-house"></i> Dashboard
+    </a>
+
+    <a href="new-request.html" class="menu-item">
+        <i class="fa-solid fa-plus-circle"></i> New Request
+    </a>
+
+    <a href="history.html" class="menu-item">
+        <i class="fa-solid fa-clock-rotate-left"></i> History
+    </a>
+
+    <div class="menu-dropdown">
+        <a href="#" class="menu-item active" onclick="toggleVendorMenu(event)">
+            <div class="menu-item-content"><i class="fa-solid fa-list-check"></i> <span>Project Hub</span></div>
+            <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+        </a>
+
+        <div class="submenu open" id="vendorSubmenu">
+            <a href="#" class="submenu-item" style="color: white; background: rgba(255,255,255,0.1);">
+                <i class="fa-solid fa-file-invoice-dollar"></i> View Quotes
+            </a>
+            <a href="quote-status.html" class="submenu-item"><i class="fa-solid fa-hourglass-half"></i> Quote Status</a>
+            <a href="payments.html" class="submenu-item"><i class="fa-solid fa-credit-card"></i> Payments</a>
+            <a href="installation.html" class="submenu-item"><i class="fa-solid fa-helmet-safety"></i> Installation</a>
+            <a href="rate-vendor.html" class="submenu-item"><i class="fa-solid fa-star"></i> Rate & Profile</a>
+        </div>
+    </div>
+
+    <a href="../market/analysis.html" class="menu-item">
+        <i class="fa-solid fa-chart-line"></i> Market Analysis
+    </a>
+
+    <a href="#" onclick="logout()" class="menu-item" style="margin-top: auto;">
+        <i class="fa-solid fa-sign-out-alt"></i> Logout
+    </a>
+</nav>
+    <main class="main-content">
+
+        <div class="header-section">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button class="menu-toggle" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div>
+                    <h1>Received Quotations</h1>
+                    <p style="color: #7f8c8d;">Review and compare bids from top rated vendors.</p>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div>
+                    <label class="project-select-label">Select Project:</label>
+                    <select class="project-select">
+                        <option>Home Setup - DHA Phase 6 (3 Quotes)</option>
+                        <option>Factory Site B - Industrial (Pending)</option>
+                    </select>
+                </div>
+                <div class="user-profile" style="margin-bottom: 5px;">
+                    <div class="user-img"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quotes-grid">
+
+            <div class="quote-card">
+                <span class="badge-recommend"><i class="fa-solid fa-thumbs-up"></i> Best Value</span>
+                <div class="card-header">
+                    <img src="https://www.w3schools.com/howto/img_avatar.png" class="vendor-img" alt="Vendor">
+                    <div class="vendor-info">
+                        <h3>PowerTech Solutions</h3>
+                        <div class="rating"><i class="fa-solid fa-star"></i> 4.9 (120 Reviews)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <span class="price-tag">Rs 1,250,000</span>
+                    <ul class="spec-list">
+                        <li><span><i class="fa-solid fa-solar-panel"></i> Panels</span> <strong>Longi Hi-MO 6</strong></li>
+                        <li><span><i class="fa-solid fa-server"></i> Inverter</span> <strong>Huawei Sun2000</strong></li>
+                        <li><span><i class="fa-solid fa-clock"></i> Installation</span> <strong>4 Days</strong></li>
+                        <li><span><i class="fa-solid fa-shield-halved"></i> Warranty</span> <strong>25 Years / 5 Years</strong></li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+    <button class="btn btn-secondary" onclick="openModal('chatModal')">
+        <i class="fa-solid fa-message"></i> Chat
+    </button>
+
+    <button class="btn btn-primary" onclick="openModal('confirmModal')">
+        <i class="fa-solid fa-check"></i> Accept Bid
+    </button>
+</div>
+            </div>
+
+            <div class="quote-card">
+                <div class="card-header">
+                    <img src="https://www.w3schools.com/w3images/avatar2.png" class="vendor-img" alt="Vendor">
+                    <div class="vendor-info">
+                        <h3>Green Future Energy</h3>
+                        <div class="rating"><i class="fa-solid fa-star"></i> 4.5 (85 Reviews)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <span class="price-tag">Rs 1,180,000</span>
+                    <ul class="spec-list">
+                        <li><span><i class="fa-solid fa-solar-panel"></i> Panels</span> <strong>Jinko Tiger Neo</strong></li>
+                        <li><span><i class="fa-solid fa-server"></i> Inverter</span> <strong>Growatt 10kW</strong></li>
+                        <li><span><i class="fa-solid fa-clock"></i> Installation</span> <strong>6 Days</strong></li>
+                        <li><span><i class="fa-solid fa-shield-halved"></i> Warranty</span> <strong>20 Years / 5 Years</strong></li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+    <button class="btn btn-secondary" onclick="openModal('chatModal')">
+        <i class="fa-solid fa-message"></i> Chat
+    </button>
+
+    <button class="btn btn-primary" onclick="openModal('confirmModal')">
+        <i class="fa-solid fa-check"></i> Accept Bid
+    </button>
+</div>
+            </div>
+
+            <div class="quote-card">
+                <div class="card-header">
+                    <img src="https://www.w3schools.com/w3images/avatar6.png" class="vendor-img" alt="Vendor">
+                    <div class="vendor-info">
+                        <h3>Solar Pros Lahore</h3>
+                        <div class="rating"><i class="fa-solid fa-star"></i> 4.7 (50 Reviews)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <span class="price-tag">Rs 1,350,000</span>
+                    <ul class="spec-list">
+                        <li><span><i class="fa-solid fa-solar-panel"></i> Panels</span> <strong>Canadian Solar</strong></li>
+                        <li><span><i class="fa-solid fa-server"></i> Inverter</span> <strong>Huawei Sun2000</strong></li>
+                        <li><span><i class="fa-solid fa-clock"></i> Installation</span> <strong>3 Days</strong></li>
+                        <li><span><i class="fa-solid fa-shield-halved"></i> Warranty</span> <strong>25 Years / 7 Years</strong></li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+    <button class="btn btn-secondary" onclick="openModal('chatModal')">
+        <i class="fa-solid fa-message"></i> Chat
+    </button>
+
+    <button class="btn btn-primary" onclick="openModal('confirmModal')">
+        <i class="fa-solid fa-check"></i> Accept Bid
+    </button>
+</div>
+            </div>
+
+        </div>
+
+        <div class="comparison-section">
+            <div class="section-title"><i class="fa-solid fa-scale-balanced"></i> Detailed Comparison</div>
+
+            <div class="table-container">
+                <table class="compare-table">
+                    <tbody>
+                        <tr>
+                            <th>Feature</th>
+                            <td class="highlight">PowerTech Solutions</td>
+                            <td>Green Future Energy</td>
+                            <td>Solar Pros Lahore</td>
+                        </tr>
+                        <tr>
+                            <th>Total Cost</th>
+                            <td class="highlight">Rs 1,250,000</td>
+                            <td style="color:green;">Rs 1,180,000 (Lowest)</td>
+                            <td>Rs 1,350,000</td>
+                        </tr>
+                        <tr>
+                            <th>Panel Brand</th>
+                            <td>Longi (Tier 1)</td>
+                            <td>Jinko</td>
+                            <td>Canadian Solar</td>
+                        </tr>
+                        <tr>
+                            <th>Structure Quality</th>
+                            <td>Galvanized Iron (L2)</td>
+                            <td>Painted Iron</td>
+                            <td>Aluminum (Premium)</td>
+                        </tr>
+                        <tr>
+                            <th>After Sales Service</th>
+                            <td><i class="fa-solid fa-check-circle" style="color:green"></i> 1 Year Free</td>
+                            <td><i class="fa-solid fa-check-circle" style="color:green"></i> 6 Months</td>
+                            <td><i class="fa-solid fa-check-circle" style="color:green"></i> 1 Year Free</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+<div id="chatModal" class="modal">
+        <div class="modal-content chat-box">
+            <div class="chat-header">
+                <h3>Chat with Vendor</h3>
+                <span class="close" onclick="closeModal('chatModal')">&times;</span>
+            </div>
+            <div class="chat-body">
+                <div class="msg received">
+                    <p>Hello! We can install this within 3 days.</p>
+                    <span class="time">10:00 AM</span>
+                </div>
+                <div class="msg sent">
+                    <p>Can you give a discount on the Inverter?</p>
+                    <span class="time">10:05 AM</span>
+                </div>
+                <div class="msg received">
+                    <p>We can offer a 2% discount on the total bill.</p>
+                    <span class="time">10:10 AM</span>
+                </div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" placeholder="Type a message...">
+                <button class="btn-send"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmModal" class="modal">
+        <div class="modal-content confirm-box">
+            <i class="fa-solid fa-circle-check" style="color: var(--primary-color); font-size: 50px; margin-bottom: 15px;"></i>
+            <h3>Confirm Acceptance?</h3>
+            <p>You are about to accept the bid from <strong>PowerTech Solutions</strong> for <strong>Rs 1,250,000</strong>.</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="closeModal('confirmModal')">Cancel</button>
+                <button class="btn btn-primary" onclick="window.location.href='payments.html'">Yes, Proceed to Pay</button>
+            </div>
+        </div>
+    </div>
+    </main>
+
+    <script src="../../js/userDashboard.js"></script>
+
+</body>
+</html>

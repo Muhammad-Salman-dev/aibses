@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Marketplace - ISES</title>
+
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="brand">
+            <i class="fa-solid fa-leaf"></i> ISES
+            <i class="fa-solid fa-times mobile-close-btn" onclick="toggleSidebar()"></i>
+        </div>
+
+        <a href="../user/dashboard.html" class="menu-item"><i class="fa-solid fa-house"></i> Dashboard</a>
+        <a href="../user/new-request.html" class="menu-item"><i class="fa-solid fa-plus-circle"></i> New Request</a>
+        <a href="../user/history.html" class="menu-item"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+
+        <div class="menu-dropdown">
+            <a href="#" class="menu-item" onclick="toggleVendorMenu(event)">
+                <div class="menu-item-content"><i class="fa-solid fa-list-check"></i> <span>Project Hub</span></div>
+                <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+            </a>
+            <div class="submenu" id="vendorSubmenu">
+                <a href="../user/quotes.html" class="submenu-item"><i class="fa-solid fa-file-invoice-dollar"></i> View Quotes</a>
+                <a href="../user/quote-status.html" class="submenu-item"><i class="fa-solid fa-hourglass-half"></i> Quote Status</a>
+                <a href="../user/payments.html" class="submenu-item"><i class="fa-solid fa-credit-card"></i> Payments</a>
+                <a href="../user/installation.html" class="submenu-item"><i class="fa-solid fa-helmet-safety"></i> Installation</a>
+                <a href="../user/rate-vendor.html" class="submenu-item"><i class="fa-solid fa-star"></i> Rate & Profile</a>
+            </div>
+        </div>
+
+        <a href="analysis.html" class="menu-item"><i class="fa-solid fa-chart-line"></i> Market Analysis</a>
+        <a href="#" class="menu-item active"><i class="fa-solid fa-shop"></i> Marketplace</a>
+        <a href="#" onclick="logout()" class="menu-item" style="margin-top: auto;"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+    </nav>
+
+    <main class="main-content">
+
+        <div class="header">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button class="menu-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+                <div>
+                    <h1>Solar Marketplace</h1>
+                    <p style="color: #7f8c8d;">Check latest prices of panels, inverters & batteries.</p>
+                </div>
+            </div>
+            <div class="user-profile">
+                <span>Ali Khan</span>
+                <div class="user-img"></div>
+            </div>
+        </div>
+
+        <div class="filter-bar">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Search product..." onkeyup="filterProducts()">
+            </div>
+
+            <select class="filter-select" id="cityFilter" onchange="filterProducts()">
+                <option value="all">All Cities</option>
+                <option value="lahore">Lahore</option>
+                <option value="karachi">Karachi</option>
+                <option value="islamabad">Islamabad</option>
+            </select>
+
+            <select class="filter-select" id="categoryFilter" onchange="filterProducts()">
+                <option value="all">All Products</option>
+                <option value="panel">Solar Panels</option>
+                <option value="inverter">Inverters</option>
+                <option value="battery">Batteries</option>
+            </select>
+
+            <select class="filter-select" id="brandFilter" onchange="filterProducts()">
+                <option value="all">All Brands</option>
+                <option value="longi">Longi</option>
+                <option value="jinko">Jinko</option>
+                <option value="canadian">Canadian</option>
+                <option value="huawei">Huawei</option>
+                <option value="narada">Narada</option>
+            </select>
+        </div>
+
+        <div class="products-grid" id="productContainer">
+
+            <div class="product-card" data-city="lahore" data-category="panel" data-brand="longi" onclick="openProductModal('Longi Hi-MO 6', 'Rs 42,000', 'Lahore')">
+                <span class="badge-stock">In Stock</span>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_u2l-hK_V_E7_G_k_I_l_K_M&usqp=CAU" alt="Solar Panel">
+                <div class="p-details">
+                    <div class="p-cat">Solar Panel</div>
+                    <h3>Longi Hi-MO 6 580W</h3>
+                    <div class="p-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Lahore</span>
+                        <span><i class="fa-solid fa-clock"></i> 2 hrs ago</span>
+                    </div>
+                    <div class="p-price">Rs 42,000 <small>/ piece</small></div>
+                </div>
+            </div>
+
+            <div class="product-card" data-city="karachi" data-category="panel" data-brand="jinko" onclick="openProductModal('Jinko Tiger Neo', 'Rs 40,500', 'Karachi')">
+                <span class="badge-stock">In Stock</span>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_k_I_l_K_M&usqp=CAU" alt="Solar Panel">
+                <div class="p-details">
+                    <div class="p-cat">Solar Panel</div>
+                    <h3>Jinko Tiger Neo N-Type</h3>
+                    <div class="p-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Karachi</span>
+                        <span><i class="fa-solid fa-clock"></i> 1 day ago</span>
+                    </div>
+                    <div class="p-price">Rs 40,500 <small>/ piece</small></div>
+                </div>
+            </div>
+
+            <div class="product-card" data-city="islamabad" data-category="inverter" data-brand="huawei" onclick="openProductModal('Huawei Sun2000', 'Rs 350,000', 'Islamabad')">
+                <span class="badge-stock" style="background:#e74c3c;">Low Stock</span>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_u2l-hK_V_E7_G_k_I_l_K_M&usqp=CAU" alt="Inverter">
+                <div class="p-details">
+                    <div class="p-cat">Inverter</div>
+                    <h3>Huawei Sun2000 10kW</h3>
+                    <div class="p-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Islamabad</span>
+                        <span><i class="fa-solid fa-clock"></i> 5 hrs ago</span>
+                    </div>
+                    <div class="p-price">Rs 350,000 <small>/ unit</small></div>
+                </div>
+            </div>
+
+            <div class="product-card" data-city="lahore" data-category="battery" data-brand="narada" onclick="openProductModal('Narada Lithium', 'Rs 280,000', 'Lahore')">
+                <span class="badge-stock">In Stock</span>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_k_I_l_K_M&usqp=CAU" alt="Battery">
+                <div class="p-details">
+                    <div class="p-cat">Battery</div>
+                    <h3>Narada Lithium 48V</h3>
+                    <div class="p-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Lahore</span>
+                        <span><i class="fa-solid fa-clock"></i> Just now</span>
+                    </div>
+                    <div class="p-price">Rs 280,000 <small>/ unit</small></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="noResults" style="display:none; text-align:center; padding:40px; color:#7f8c8d;">
+            <i class="fa-solid fa-box-open" style="font-size:40px; margin-bottom:10px;"></i>
+            <p>No products found matching your filters.</p>
+        </div>
+
+    </main>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content product-box">
+            <div class="modal-header">
+                <h3>Product Details</h3>
+                <span class="close" onclick="closeModal('productModal')">&times;</span>
+            </div>
+            <div style="text-align:center;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_u2l-hK_V_E7_G_k_I_l_K_M&usqp=CAU" style="width:100%; height:150px; object-fit:contain; margin-bottom:15px;">
+                <h2 id="modalTitle">Product Name</h2>
+                <h1 id="modalPrice" style="color:var(--secondary-color); margin:10px 0;">Price</h1>
+                <p id="modalCity" style="color:#7f8c8d; margin-bottom:20px;"><i class="fa-solid fa-location-dot"></i> City</p>
+                <button class="btn btn-primary" style="width:100%;"><i class="fa-solid fa-phone"></i> Contact Seller</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/userDashboard.js"></script>
+    <script src="../../js/marketplace.js"></script> </body>
+</html>

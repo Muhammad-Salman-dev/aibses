@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Status - ISES</title>
+
+    <link rel="stylesheet" href="../../css/dashboard.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="brand">
+            <i class="fa-solid fa-leaf"></i> ISES
+            <i class="fa-solid fa-times mobile-close-btn" onclick="toggleSidebar()"></i>
+        </div>
+
+        <a href="dashboard.html" class="menu-item">
+            <i class="fa-solid fa-house"></i> Dashboard
+        </a>
+        <a href="new-request.html" class="menu-item">
+            <i class="fa-solid fa-plus-circle"></i> New Request
+        </a>
+        <a href="history.html" class="menu-item">
+            <i class="fa-solid fa-clock-rotate-left"></i> History
+        </a>
+
+        <div class="menu-dropdown">
+            <a href="#" class="menu-item active" onclick="toggleVendorMenu(event)">
+                <div class="menu-item-content"><i class="fa-solid fa-list-check"></i> <span>Project Hub</span></div>
+                <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+            </a>
+
+            <div class="submenu open" id="vendorSubmenu">
+                <a href="quotes.html" class="submenu-item">
+                    <i class="fa-solid fa-file-invoice-dollar"></i> View Quotes
+                </a>
+                <a href="#" class="submenu-item" style="color: white; background: rgba(255,255,255,0.1);">
+                    <i class="fa-solid fa-hourglass-half"></i> Quote Status
+                </a>
+                <a href="payments.html" class="submenu-item">
+                    <i class="fa-solid fa-credit-card"></i> Payments
+                </a>
+                <a href="installation.html" class="submenu-item">
+                    <i class="fa-solid fa-helmet-safety"></i> Installation
+                </a>
+                <a href="rate-vendor.html" class="submenu-item">
+                    <i class="fa-solid fa-star"></i> Rate & Profile
+                </a>
+            </div>
+        </div>
+
+        <a href="../market/analysis.html" class="menu-item">
+            <i class="fa-solid fa-chart-line"></i> Market Analysis
+        </a>
+
+        <a href="#" onclick="logout()" class="menu-item" style="margin-top: auto;">
+            <i class="fa-solid fa-sign-out-alt"></i> Logout
+        </a>
+    </nav>
+
+    <main class="main-content">
+
+        <div class="header">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button class="menu-toggle" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div>
+                    <h1>Quote Status</h1>
+                    <p style="color: #7f8c8d;">Track the progress of your received quotations.</p>
+                </div>
+            </div>
+            <div class="user-profile">
+                <span>Ali Khan</span>
+                <div class="user-img"></div>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="card" style="border-left: 5px solid #f1c40f;">
+                <div class="card-info">
+                    <h3>02</h3>
+                    <p>Pending Quotes</p>
+                </div>
+                <i class="fa-solid fa-hourglass-start card-icon" style="color: #f1c40f;"></i>
+            </div>
+            <div class="card" style="border-left: 5px solid #2ecc71;">
+                <div class="card-info">
+                    <h3>01</h3>
+                    <p>Accepted</p>
+                </div>
+                <i class="fa-solid fa-check-circle card-icon" style="color: #2ecc71;"></i>
+            </div>
+            <div class="card" style="border-left: 5px solid #e74c3c;">
+                <div class="card-info">
+                    <h3>01</h3>
+                    <p>Rejected</p>
+                </div>
+                <i class="fa-solid fa-ban card-icon" style="color: #e74c3c;"></i>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <div class="table-header">All Quotations</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vendor Name</th>
+                        <th>Project</th>
+                        <th>Amount</th>
+                        <th>Date Received</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>PowerTech Solutions</strong></td>
+                        <td>Home Setup - DHA</td>
+                        <td>Rs 1,250,000</td>
+                        <td>Dec 10, 2025</td>
+                        <td><span class="status completed">Accepted</span></td>
+                        <td><a href="payments.html" class="action-btn">Proceed to Pay</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Green Future Energy</strong></td>
+                        <td>Home Setup - DHA</td>
+                        <td>Rs 1,180,000</td>
+                        <td>Dec 09, 2025</td>
+                        <td><span class="status processing">Pending Review</span></td>
+                        <td><a href="quotes.html" class="action-btn">View Details</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Solar Pros Lahore</strong></td>
+                        <td>Home Setup - DHA</td>
+                        <td>Rs 1,350,000</td>
+                        <td>Dec 08, 2025</td>
+                        <td><span class="status rejected" style="background:#f8d7da; color:#721c24;">Rejected</span></td>
+                        <td><a href="#" class="action-btn" style="opacity:0.5; cursor:not-allowed;">Archived</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>SunCity Solar</strong></td>
+                        <td>Farmhouse Project</td>
+                        <td>Rs 2,500,000</td>
+                        <td>Dec 05, 2025</td>
+                        <td><span class="status processing">Pending Review</span></td>
+                        <td><a href="quotes.html" class="action-btn">View Details</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <script src="../../js/userDashboard.js"></script>
+
+</body>
+</html>

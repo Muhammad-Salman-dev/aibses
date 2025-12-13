@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - ISES</title>
+
+    <link rel="stylesheet" href="../../css/dashboard.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <nav class="sidebar" id="sidebar">
+    <div class="brand">
+        <i class="fa-solid fa-leaf"></i> ISES
+        <i class="fa-solid fa-times mobile-close-btn" onclick="toggleSidebar()"></i>
+    </div>
+
+    <a href="#" class="menu-item active">
+        <i class="fa-solid fa-house"></i> Dashboard
+    </a>
+
+    <a href="new-request.html" class="menu-item">
+        <i class="fa-solid fa-plus-circle"></i> New Request
+    </a>
+
+    <a href="history.html" class="menu-item">
+        <i class="fa-solid fa-clock-rotate-left"></i> History
+    </a>
+
+    <div class="menu-dropdown">
+        <a href="#" class="menu-item" onclick="toggleVendorMenu(event)">
+            <div class="menu-item-content"><i class="fa-solid fa-list-check"></i> <span>Project Hub</span></div>
+            <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+        </a>
+        <div class="submenu" id="vendorSubmenu">
+            <a href="quotes.html" class="submenu-item"><i class="fa-solid fa-file-invoice-dollar"></i> View Quotes</a>
+            <a href="quote-status.html" class="submenu-item"><i class="fa-solid fa-hourglass-half"></i> Quote Status</a>
+            <a href="payments.html" class="submenu-item"><i class="fa-solid fa-credit-card"></i> Payments</a>
+            <a href="installation.html" class="submenu-item"><i class="fa-solid fa-helmet-safety"></i> Installation</a>
+            <a href="rate-vendor.html" class="submenu-item"><i class="fa-solid fa-star"></i> Rate & Profile</a>
+        </div>
+    </div>
+
+    <a href="../market/analysis.html" class="menu-item">
+        <i class="fa-solid fa-chart-line"></i> Market Analysis
+    </a>
+<a href="profile.html" class="menu-item"><i class="fa-solid fa-user-gear"></i> Profile Settings</a>
+    <a href="#" onclick="logout()" class="menu-item" style="margin-top: auto;">
+        <i class="fa-solid fa-sign-out-alt"></i> Logout
+    </a>
+</nav>
+
+    <main class="main-content">
+        <header class="header">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button class="menu-toggle" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div>
+                    <h1>Welcome back, User!</h1>
+                    <p style="color: #7f8c8d;">Here is your solar installation overview.</p>
+                </div>
+            </div>
+
+            <div class="user-profile">
+               <a href="profile.html" class="user-profile" style="text-decoration: none; color: inherit;">
+    <span id="headerUserName">Ali Khan</span>
+    <div class="user-img" id="headerProfileImg"></div>
+</a>
+            </div>
+        </header>
+
+        <div class="stats-grid">
+            <div class="card">
+                <div class="card-info">
+                    <h3>05</h3>
+                    <p>Total Projects</p>
+                </div>
+                <i class="fa-solid fa-folder card-icon"></i>
+            </div>
+            <div class="card">
+                <div class="card-info">
+                    <h3>02</h3>
+                    <p>Quotes Received</p>
+                </div>
+                <i class="fa-solid fa-envelope-open-text card-icon"></i>
+            </div>
+            <div class="card">
+                <div class="card-info">
+                    <h3>12.5 kW</h3>
+                    <p>Potential Generation</p>
+                </div>
+                <i class="fa-solid fa-bolt card-icon"></i>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <div>
+                <h2>Start New Solar Analysis</h2>
+                <p>Upload roof pictures and get AI-based 3D models & cost estimation.</p>
+            </div>
+            <a href="new-request.html" class="cta-btn"><i class="fa-solid fa-plus"></i> Create New Form</a>
+        </div>
+
+        <div class="table-container">
+            <div class="table-header">Recent Submissions</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Project Name</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>AI Output</th>
+                        <th>Vendor Quote</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Home Setup - DHA Phase 6</td>
+                        <td>Dec 05, 2025</td>
+                        <td><span class="status completed">Completed</span></td>
+                        <td><i class="fa-solid fa-check"></i> 3D Ready</td>
+                        <td>Received (2)</td>
+                        <td><button class="action-btn" onclick="downloadReceipt('RPT-2025-001', 'Home Setup Report', 'Full Solar Analysis')">
+                <i class="fa-solid fa-file-pdf"></i> Download PDF
+            </button></td>
+                    </tr>
+                    <tr>
+                        <td>Warehouse Roof - Site B</td>
+                        <td>Dec 07, 2025</td>
+                        <td><span class="status processing">AI Processing...</span></td>
+                        <td>Pending</td>
+                        <td>-</td>
+                        <td><a href="quote-status.html" class="action-btn" style="text-decoration: none; display: inline-block;">
+                View Details</td>
+                    </tr>
+                    <tr>
+                        <td>Farmhouse Project</td>
+                        <td>Dec 01, 2025</td>
+                        <td><span class="status quote">Waiting for Quote</span></td>
+                        <td><i class="fa-solid fa-check"></i> 3D Ready</td>
+                        <td>Pending</td>
+                        <td><button class="action-btn" onclick="openModal('chatModal')">
+                Contact Vendor
+            </button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="chatModal" class="modal">
+    <div class="modal-content chat-box">
+        <div class="chat-header">
+            <h3>Chat with Vendor</h3>
+            <span class="close" onclick="closeModal('chatModal')">&times;</span>
+        </div>
+        <div class="chat-body">
+            <div class="msg received">
+                <p>Hello! How can I help you with your Farmhouse project?</p>
+                <span class="time">Now</span>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" placeholder="Type a message...">
+            <button class="btn-send"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+</div>
+    </main>
+
+    <script src="../../js/userDashboard.js"></script>
+</body>
+</html>

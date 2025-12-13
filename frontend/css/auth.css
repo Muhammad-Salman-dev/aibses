@@ -1,0 +1,177 @@
+/* --- ISES Authentication Theme --- */
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap');
+
+:root {
+    --primary-color: #2ecc71; /* Solar Green */
+    --primary-dark: #27ae60;
+    --dark-bg: #2c3e50;
+    --light-bg: #f4f7f6;
+    --text-color: #333;
+    --card-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* --- UTILITY CLASS (Zaroori hai JS logic ke liye) --- */
+.hidden {
+    display: none !important;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+body {
+    background: linear-gradient(135deg, #2c3e50, #2ecc71);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Auth Card Container (Compact Height Fix) */
+.auth-container {
+    background: white;
+    width: 100%;
+    max-width: 400px;
+    padding: 30px; /* Reduced from 40px */
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Logo & Headers */
+.brand-logo {
+    font-size: 24px; /* Slightly smaller */
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.brand-subtitle {
+    font-size: 12px;
+    color: #7f8c8d;
+    margin-bottom: 20px; /* Reduced margin */
+    letter-spacing: 1px;
+}
+
+h2 { color: var(--dark-bg); margin-bottom: 5px; font-size: 22px; }
+.auth-desc { color: #95a5a6; font-size: 13px; margin-bottom: 20px; }
+
+/* Form Styles (Compact) */
+.form-group {
+    text-align: left;
+    margin-bottom: 12px; /* Reduced from 20px to save space */
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.form-input, .form-select {
+    width: 100%;
+    padding: 10px; /* Reduced padding */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+    background: #fdfdfd;
+}
+
+.form-input:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+}
+
+/* Buttons */
+.btn-auth {
+    width: 100%;
+    padding: 10px; /* Compact Button */
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btn-auth:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* --- SOCIAL LOGIN STYLES (New) --- */
+.divider {
+    margin: 15px 0; /* Compact Margin */
+    text-align: center;
+    position: relative;
+}
+
+.divider span {
+    background: white;
+    padding: 0 10px;
+    color: #95a5a6;
+    font-size: 11px;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0; width: 100%; height: 1px;
+    background: #eee; z-index: 0;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.btn-social {
+    flex: 1;
+    padding: 8px; /* Compact height */
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-social:hover {
+    background: #f8f9fa;
+    border-color: #ccc;
+}
+
+.btn-social.google i { color: #DB4437; }
+.btn-social.apple i { color: #000; }
+
+/* Footer Links */
+.footer-links { margin-top: 15px; font-size: 13px; color: #7f8c8d; }
+.footer-links a { color: var(--primary-color); text-decoration: none; font-weight: bold; }
+.footer-links a:hover { text-decoration: underline; }
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Solar Request - ISES</title>
+
+    <link rel="stylesheet" href="../../css/dashboard.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <nav class="sidebar" id="sidebar">
+    <div class="brand">
+        <i class="fa-solid fa-leaf"></i> ISES
+        <i class="fa-solid fa-times mobile-close-btn" onclick="toggleSidebar()"></i>
+    </div>
+
+    <a href="dashboard.html" class="menu-item">
+        <i class="fa-solid fa-house"></i> Dashboard
+    </a>
+
+    <a href="#" class="menu-item active">
+        <i class="fa-solid fa-plus-circle"></i> New Request
+    </a>
+
+    <a href="history.html" class="menu-item">
+        <i class="fa-solid fa-clock-rotate-left"></i> History
+    </a>
+
+    <div class="menu-dropdown">
+        <a href="#" class="menu-item" onclick="toggleVendorMenu(event)">
+            <div class="menu-item-content"><i class="fa-solid fa-list-check"></i> <span>Project Hub</span></div>
+            <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+        </a>
+        <div class="submenu" id="vendorSubmenu">
+            <a href="quotes.html" class="submenu-item"><i class="fa-solid fa-file-invoice-dollar"></i> View Quotes</a>
+            <a href="quote-status.html" class="submenu-item"><i class="fa-solid fa-hourglass-half"></i> Quote Status</a>
+            <a href="payments.html" class="submenu-item"><i class="fa-solid fa-credit-card"></i> Payments</a>
+            <a href="installation.html" class="submenu-item"><i class="fa-solid fa-helmet-safety"></i> Installation</a>
+            <a href="rate-vendor.html" class="submenu-item"><i class="fa-solid fa-star"></i> Rate & Profile</a>
+        </div>
+    </div>
+
+    <a href="../market/analysis.html" class="menu-item">
+        <i class="fa-solid fa-chart-line"></i> Market Analysis
+    </a>
+
+    <a href="#" onclick="logout()" class="menu-item" style="margin-top: auto;">
+        <i class="fa-solid fa-sign-out-alt"></i> Logout
+    </a>
+</nav>
+    <main class="main-content">
+
+        <div class="header">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button class="menu-toggle" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div>
+                    <h1>Start New Solar Analysis</h1>
+                    <p style="color: #7f8c8d;">Provide details for AI-based 3D modeling.</p>
+                </div>
+            </div>
+
+            <div class="user-profile">
+                <span>Ali Khan</span>
+                <div class="user-img"></div>
+            </div>
+        </div>
+
+        <form class="form-container">
+
+            <div class="form-section">
+                <div class="section-title">
+                    <i class="fa-solid fa-location-dot section-icon"></i> Property Details
+                </div>
+                <div class="input-grid">
+                    <div class="form-group">
+                        <label>Location / Address</label>
+                        <input type="text" class="form-input" placeholder="e.g. House 12, DHA Phase 6, Lahore">
+                    </div>
+                    <div class="form-group">
+                        <label>House Facing Direction</label>
+                        <select class="form-select">
+                            <option value="">Select Direction</option>
+                            <option value="north">North</option>
+                            <option value="south">South (Recommended)</option>
+                            <option value="east">East</option>
+                            <option value="west">West</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Floors</label>
+                        <select class="form-select">
+                            <option>Single Story</option>
+                            <option>Double Story</option>
+                            <option>Triple Story</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Roof Type</label>
+                        <select class="form-select">
+                            <option>Flat Concrete (Lanter)</option>
+                            <option>Slanted / Tiles</option>
+                            <option>Metal Sheet</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="section-title">
+                    <i class="fa-solid fa-bolt section-icon"></i> Energy Consumption
+                </div>
+                <div class="input-grid">
+                    <div class="form-group">
+                        <label>Average Monthly Units (kWh)</label>
+                        <input type="number" class="form-input" placeholder="e.g. 450">
+                    </div>
+                    <div class="form-group">
+                        <label>Upload Electricity Bill</label>
+                        <div class="upload-box">
+                            <input type="file" accept="image/*,.pdf">
+                            <i class="fa-solid fa-file-invoice"></i>
+                            <p><strong>Click to Upload Bill</strong><br>or drag and drop here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="section-title">
+                    <i class="fa-solid fa-camera section-icon"></i> Site Visuals for AI
+                </div>
+                <div class="input-grid">
+                    <div class="form-group">
+                        <label>Roof Pictures (360 view preferred)</label>
+                        <div class="upload-box">
+                            <input type="file" multiple accept="image/*">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <p><strong>Upload Roof Images</strong><br>Top down view is best</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Surrounding Pictures (Shadow Analysis)</label>
+                        <div class="upload-box">
+                            <input type="file" multiple accept="image/*">
+                            <i class="fa-solid fa-tree"></i>
+                            <p><strong>Upload Surrounding Images</strong><br>Trees, tall buildings nearby</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn btn-cancel" onclick="window.location.href='dashboard.html'">Cancel</button>
+                <button type="submit" class="btn btn-submit">
+                    <i class="fa-solid fa-rocket"></i> Submit for AI Analysis
+                </button>
+            </div>
+
+        </form>
+    </main>
+
+    <script src="../../js/userDashboard.js"></script>
+
+</body>
+</html>

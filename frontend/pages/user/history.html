@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project History - ISES</title>
+
+    <link rel="stylesheet" href="../../css/dashboard.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <nav class="sidebar" id="sidebar">
+    <div class="brand">
+        <i class="fa-solid fa-leaf"></i> ISES
+        <i class="fa-solid fa-times mobile-close-btn" onclick="toggleSidebar()"></i>
+    </div>
+
+    <a href="dashboard.html" class="menu-item">
+        <i class="fa-solid fa-house"></i> Dashboard
+    </a>
+
+    <a href="new-request.html" class="menu-item">
+        <i class="fa-solid fa-plus-circle"></i> New Request
+    </a>
+
+    <a href="#" class="menu-item active">
+        <i class="fa-solid fa-clock-rotate-left"></i> History
+    </a>
+
+    <div class="menu-dropdown">
+        <a href="#" class="menu-item" onclick="toggleVendorMenu(event)">
+            <div class="menu-item-content"><i class="fa-solid fa-list-check"></i> <span>Project Hub</span></div>
+            <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+        </a>
+        <div class="submenu" id="vendorSubmenu">
+            <a href="quotes.html" class="submenu-item"><i class="fa-solid fa-file-invoice-dollar"></i> View Quotes</a>
+            <a href="quote-status.html" class="submenu-item"><i class="fa-solid fa-hourglass-half"></i> Quote Status</a>
+            <a href="payments.html" class="submenu-item"><i class="fa-solid fa-credit-card"></i> Payments</a>
+            <a href="installation.html" class="submenu-item"><i class="fa-solid fa-helmet-safety"></i> Installation</a>
+            <a href="rate-vendor.html" class="submenu-item"><i class="fa-solid fa-star"></i> Rate & Profile</a>
+        </div>
+    </div>
+
+    <a href="../market/analysis.html" class="menu-item">
+        <i class="fa-solid fa-chart-line"></i> Market Analysis
+    </a>
+    <a href="profile.html" class="menu-item"><i class="fa-solid fa-user-gear"></i> Profile Settings</a>
+
+    <a href="#" onclick="logout()" class="menu-item" style="margin-top: auto;">
+        <i class="fa-solid fa-sign-out-alt"></i> Logout
+    </a>
+</nav>
+    <main class="main-content">
+
+        <div class="header">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button class="menu-toggle" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div>
+                    <h1>Submission History</h1>
+                    <p style="color: #7f8c8d;">Track your solar analysis requests, reports, and vendor quotes.</p>
+                </div>
+            </div>
+
+            <div class="user-profile">
+                <span>Ali Khan</span>
+                <div class="user-img"></div>
+            </div>
+        </div>
+
+        <div class="filter-bar">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search by Project Name or Location...">
+            </div>
+            <select class="filter-select">
+                <option>All Statuses</option>
+                <option>Completed</option>
+                <option>Processing</option>
+                <option>Waiting Quote</option>
+            </select>
+            <select class="filter-select">
+                <option>Sort by Date (Newest)</option>
+                <option>Sort by Date (Oldest)</option>
+            </select>
+        </div>
+
+        <div class="history-card">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 50px;">#</th>
+                        <th>Project Details</th>
+                        <th>Submission Date</th>
+                        <th>AI Result</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>01</td>
+                        <td class="project-info">
+                            <strong>Home Setup - DHA Phase 6</strong>
+                            <small><i class="fa-solid fa-location-dot"></i> Lahore, Pakistan</small>
+                        </td>
+                        <td>Dec 05, 2025</td>
+                        <td>
+                            <span style="color: var(--secondary-color); font-weight: bold;">
+                                <i class="fa-solid fa-bolt"></i> 12.5 kW System
+                            </span>
+                        </td>
+                        <td><span class="status-badge status-completed">Report Ready</span></td>
+                        <td>
+                            <div class="action-group">
+                                <a href="#" class="btn-icon" title="Download Report"><i class="fa-solid fa-file-pdf"></i></a>
+                                <a href="solar-model.html" class="btn-icon" title="View 3D Model"><i class="fa-solid fa-cube"></i></a>
+                                <a href="#" class="btn-icon" title="View Details"><i class="fa-solid fa-eye"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>02</td>
+                        <td class="project-info">
+                            <strong>Farmhouse Project</strong>
+                            <small><i class="fa-solid fa-location-dot"></i> Bedian Road, Lahore</small>
+                        </td>
+                        <td>Dec 03, 2025</td>
+                        <td>
+                            <span style="color: var(--secondary-color); font-weight: bold;">
+                                <i class="fa-solid fa-bolt"></i> 25.0 kW System
+                            </span>
+                        </td>
+                        <td><span class="status-badge status-quote">Waiting for Quote</span></td>
+                        <td>
+                            <div class="action-group">
+                                <a href="solar-model.html" class="btn-icon" title="View 3D Model"><i class="fa-solid fa-cube"></i></a>
+                                <a href="quotes.html" class="btn-icon btn-text" style="color:var(--primary-color); border-color:var(--primary-color);">
+                                    Contact Vendor
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>03</td>
+                        <td class="project-info">
+                            <strong>Warehouse Roof - Site B</strong>
+                            <small><i class="fa-solid fa-location-dot"></i> Industrial Area</small>
+                        </td>
+                        <td>Dec 07, 2025</td>
+                        <td>
+                            <span style="color: #95a5a6;">Calculating...</span>
+                        </td>
+                        <td><span class="status-badge status-processing">AI Processing</span></td>
+                        <td>
+                            <div class="action-group">
+                                <span style="font-size:12px; color:#aaa; font-style:italic; padding-top:8px;">Please wait...</span>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>04</td>
+                        <td class="project-info">
+                            <strong>My House Solar</strong>
+                            <small><i class="fa-solid fa-location-dot"></i> Wapda Town</small>
+                        </td>
+                        <td>Nov 28, 2025</td>
+                        <td>
+                            <span style="color: var(--secondary-color); font-weight: bold;">
+                                <i class="fa-solid fa-bolt"></i> 8.0 kW System
+                            </span>
+                        </td>
+                        <td><span class="status-badge status-completed">Quotes Received (3)</span></td>
+                        <td>
+                            <div class="action-group">
+                                <a href="quotes.html" class="btn-icon" title="View Quotes"><i class="fa-solid fa-file-invoice-dollar"></i></a>
+                                <a href="solar-model.html" class="btn-icon" title="View 3D Model"><i class="fa-solid fa-cube"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="../../js/userDashboard.js"></script>
+
+</body>
+</html>

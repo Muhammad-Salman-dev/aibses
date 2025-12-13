@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ISES</title>
+
+    <link rel="stylesheet" href="../../css/auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="auth-container">
+        <div class="brand-logo">
+            <i class="fa-solid fa-leaf"></i> ISES
+        </div>
+        <p class="brand-subtitle">Intelligent Sustainable Energy Solution</p>
+
+        <h2>Welcome Back</h2>
+        <p class="auth-desc">Please login to access your dashboard</p>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label><i class="fa-solid fa-user-tag"></i> Select Role</label>
+                <select id="userRole" class="form-select" required>
+                    <option value="" disabled selected>Choose your profile...</option>
+                    <option value="user">User (Customer)</option>
+                    <option value="vendor">Vendor (Installer)</option>
+                    <option value="admin">Super Admin</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa-solid fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="name@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa-solid fa-lock"></i> Password</label>
+                <input type="password" id="password" class="form-input" placeholder="Enter password" required>
+            </div>
+
+            <button type="submit" class="btn-auth">Login Securely <i class="fa-solid fa-arrow-right"></i></button>
+        </form>
+
+        <div class="footer-links">
+            <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+            <p style="margin-top: 5px;"><a href="#" style="color: #95a5a6; font-size: 13px;">Forgot Password?</a></p>
+        </div>
+    </div>
+
+    <script src="../../js/auth.js"></script>
+</body>
+</html>

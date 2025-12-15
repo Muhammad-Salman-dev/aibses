@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects - ISES Partner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+</head>
+<body>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="brand">
+            <i class="fa-solid fa-leaf brand-icon"></i> 
+            <div class="brand-text">
+                <h2>ISES</h2>
+                <span>PARTNER</span>
+            </div>
+        </div>
+
+        <ul class="menu-list">
+    <li><a href="dashboard.html" class="menu-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
+    
+    <li><a href="leads.html" class="menu-item"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
+    
+    <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
+
+    <li><a href="#" class="menu-item active"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
+    
+    <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
+    
+    <li><a href="profile.html" class="menu-item"><i class="fa-solid fa-user-gear"></i> <span>Company Profile</span></a></li>
+</ul>
+        <div class="logout-section">
+            <a href="../../index.html" class="menu-item logout-btn"><i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span></a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+
+        <header class="top-header">
+            <div class="header-left">
+                <button class="menu-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+                <div class="page-title">
+                    <h1>Project Management</h1>
+                    <p>Track progress, manage installations, and payments</p>
+                </div>
+            </div>
+            
+            <div class="user-profile">
+                <div class="user-info">
+                    <span class="name">Solar Tech</span>
+                    <span class="role">Verified Vendor</span>
+                </div>
+                <div class="user-img" style="background-image: url('https://www.w3schools.com/howto/img_avatar.png');"></div>
+            </div>
+        </header>
+
+        <div class="dashboard-container">
+
+            <div class="stats-grid" style="margin-bottom: 25px;">
+                <div class="stat-card" style="padding: 15px 20px;">
+                    <div class="stat-info">
+                        <span class="stat-title">Ongoing</span>
+                        <h2 class="stat-value" style="font-size: 24px;">3</h2>
+                    </div>
+                    <div class="stat-icon icon-blue" style="width: 40px; height: 40px; font-size: 16px;">
+                        <i class="fa-solid fa-spinner"></i>
+                    </div>
+                </div>
+                <div class="stat-card" style="padding: 15px 20px;">
+                    <div class="stat-info">
+                        <span class="stat-title">Completed</span>
+                        <h2 class="stat-value" style="font-size: 24px;">12</h2>
+                    </div>
+                    <div class="stat-icon icon-green" style="width: 40px; height: 40px; font-size: 16px;">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                </div>
+                <div class="stat-card" style="padding: 15px 20px;">
+                    <div class="stat-info">
+                        <span class="stat-title">Pending Revenue</span>
+                        <h2 class="stat-value" style="font-size: 24px;">Rs 1.2L</h2>
+                    </div>
+                    <div class="stat-icon icon-purple" style="width: 40px; height: 40px; font-size: 16px;">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recent-section">
+                
+                <div class="project-tabs">
+                    <button class="tab-btn active">Ongoing Projects</button>
+                    <button class="tab-btn">Completed History</button>
+                    <button class="tab-btn">Issues / Canceled</button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Project Info</th>
+                                <th>Progress</th>
+                                <th>Stage</th>
+                                <th>Deadline</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="avatar bg-blue">AK</div>
+                                        <div>
+                                            <span style="display:block;">Ahmed Khan</span>
+                                            <small class="text-muted">10kW Hybrid - DHA</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td width="20%">
+                                    <div class="progress-wrapper">
+                                        <div class="progress-info">
+                                            <span>65%</span>
+                                            <span>Installation</span>
+                                        </div>
+                                        <div class="progress-bar-bg">
+                                            <div class="progress-bar-fill" style="width: 65%;"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-yellow">Work in Progress</span></td>
+                                <td>15 Dec 2025</td>
+                                <td>Rs 1,200,000</td>
+                                <td><button class="btn-manage">Manage</button></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="avatar bg-purple">MZ</div>
+                                        <div>
+                                            <span style="display:block;">Mariya Zahid</span>
+                                            <small class="text-muted">5kW On-Grid - Bahria</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td width="20%">
+                                    <div class="progress-wrapper">
+                                        <div class="progress-info">
+                                            <span>20%</span>
+                                            <span>Procurement</span>
+                                        </div>
+                                        <div class="progress-bar-bg">
+                                            <div class="progress-bar-fill orange-fill" style="width: 20%;"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-blue">Material Sourcing</span></td>
+                                <td>20 Dec 2025</td>
+                                <td>Rs 850,000</td>
+                                <td><button class="btn-manage">Manage</button></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="avatar bg-green">GS</div>
+                                        <div>
+                                            <span style="display:block;">Global Solutions</span>
+                                            <small class="text-muted">20kW Commercial</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td width="20%">
+                                    <div class="progress-wrapper">
+                                        <div class="progress-info">
+                                            <span>90%</span>
+                                            <span>Testing</span>
+                                        </div>
+                                        <div class="progress-bar-bg">
+                                            <div class="progress-bar-fill" style="width: 90%;"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-yellow">Final Testing</span></td>
+                                <td>Tomorrow</td>
+                                <td>Rs 2,500,000</td>
+                                <td><button class="btn-manage">Manage</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.querySelector('.main-content').classList.toggle('sidebar-active');
+        }
+
+        // Simple script to handle active tab styling
+        const tabs = document.querySelectorAll('.tab-btn');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

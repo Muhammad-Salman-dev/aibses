@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Leads - ISES Partner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+</head>
+<body>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="brand">
+            <i class="fa-solid fa-leaf brand-icon"></i> 
+            <div class="brand-text">
+                <h2>ISES</h2>
+                <span>PARTNER</span>
+            </div>
+        </div>
+
+        <ul class="menu-list">
+    <li><a href="dashboard.html" class="menu-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
+    
+    <li><a href="#" class="menu-item active"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
+    
+    <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
+
+    <li><a href="my-projects.html" class="menu-item"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
+    
+    <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
+    
+    <li><a href="profile.html" class="menu-item"><i class="fa-solid fa-user-gear"></i> <span>Company Profile</span></a></li>
+</ul>
+
+        <div class="logout-section">
+            <a href="../../index.html" class="menu-item logout-btn"><i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span></a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+
+        <header class="top-header">
+            <div class="header-left">
+                <button class="menu-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+                <div class="page-title">
+                    <h1>Solar Opportunities</h1>
+                    <p>Find and bid on new installation requests</p>
+                </div>
+            </div>
+            
+            <div class="user-profile">
+                <div class="user-info">
+                    <span class="name">Solar Tech</span>
+                    <span class="role">Verified Vendor</span>
+                </div>
+                <div class="user-img" style="background-image: url('https://www.w3schools.com/howto/img_avatar.png');"></div>
+            </div>
+        </header>
+
+        <div class="dashboard-container">
+
+            <div class="filter-card">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search by area or ID...">
+                </div>
+                
+                <div class="filter-options">
+                    <select class="custom-select">
+                        <option>All Cities</option>
+                        <option>Karachi</option>
+                        <option>Lahore</option>
+                        <option>Islamabad</option>
+                    </select>
+
+                    <select class="custom-select">
+                        <option>Any System Size</option>
+                        <option>3kW - 5kW</option>
+                        <option>6kW - 10kW</option>
+                        <option>10kW+</option>
+                    </select>
+                    
+                    <button class="btn-filter">Apply Filters</button>
+                </div>
+            </div>
+
+            <div class="recent-section">
+                <div class="table-responsive">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Project ID</th>
+                                <th>Customer & Location</th>
+                                <th>System Specs</th>
+                                <th>Posted</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="id-tag">#SOL-294</span></td>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="avatar">OM</div>
+                                        <div>
+                                            <span style="display:block;">Osama Malik</span>
+                                            <small class="text-muted">DHA Phase 8, Karachi</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge badge-blue">10kW Hybrid</span>
+                                    <div style="font-size: 11px; margin-top: 4px; color:#8898aa;">Inverter: GoodWe</div>
+                                </td>
+                                <td>2 hours ago</td>
+                                <td><span class="status-dot green"></span> New</td>
+                                <td><button class="btn-bid-primary">View & Bid</button></td>
+                            </tr>
+
+                            <tr>
+                                <td><span class="id-tag">#SOL-291</span></td>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="avatar bg-orange">SZ</div>
+                                        <div>
+                                            <span style="display:block;">Sarah Zafar</span>
+                                            <small class="text-muted">Gulberg III, Lahore</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge badge-blue">5kW On-Grid</span>
+                                    <div style="font-size: 11px; margin-top: 4px; color:#8898aa;">Net Metering Req.</div>
+                                </td>
+                                <td>Yesterday</td>
+                                <td><span class="status-dot orange"></span> Urgent</td>
+                                <td><button class="btn-bid-primary">View & Bid</button></td>
+                            </tr>
+
+                            <tr>
+                                <td><span class="id-tag">#SOL-288</span></td>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="avatar bg-teal">FK</div>
+                                        <div>
+                                            <span style="display:block;">Fahad Khan</span>
+                                            <small class="text-muted">F-10, Islamabad</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge badge-blue">15kW Hybrid</span>
+                                    <div style="font-size: 11px; margin-top: 4px; color:#8898aa;">Commercial</div>
+                                </td>
+                                <td>2 Days ago</td>
+                                <td><span class="status-dot green"></span> Active</td>
+                                <td><button class="btn-bid-primary">View & Bid</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination-container">
+                    <span class="page-info">Showing 3 of 15 leads</span>
+                    <div class="pagination">
+                        <a href="#" class="page-link disabled">&laquo;</a>
+                        <a href="#" class="page-link active">1</a>
+                        <a href="#" class="page-link">2</a>
+                        <a href="#" class="page-link">3</a>
+                        <a href="#" class="page-link">&raquo;</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.querySelector('.main-content').classList.toggle('sidebar-active');
+        }
+    </script>
+</body>
+</html>

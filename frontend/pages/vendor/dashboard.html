@@ -4,95 +4,165 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vendor Dashboard - ISES</title>
-    <link rel="stylesheet" href="../../css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        /* Warning Banner Styles */
-        .warning-banner {
-            background-color: #fff3cd;
-            color: #856404;
-            border: 1px solid #ffeeba;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .warning-content { display: flex; align-items: center; gap: 10px; }
-        .btn-warning {
-            background: #856404; color: white; border: none; padding: 8px 15px;
-            border-radius: 5px; cursor: pointer; font-size: 13px; text-decoration: none;
-        }
-        .btn-warning:hover { background: #533f03; }
-    </style>
+    <link rel="stylesheet" href="../../css/dashboard.css">
 </head>
 <body>
 
     <nav class="sidebar" id="sidebar">
         <div class="brand">
-            <i class="fa-solid fa-leaf"></i> ISES <span style="font-size:10px; opacity:0.7;">PARTNER</span>
+            <i class="fa-solid fa-leaf brand-icon"></i> 
+            <div class="brand-text">
+                <h2>ISES</h2>
+                <span>PARTNER</span>
+            </div>
         </div>
 
-        <a href="#" class="menu-item active"><i class="fa-solid fa-house"></i> Dashboard</a>
-        <a href="leads.html" class="menu-item"><i class="fa-solid fa-list-ul"></i> New Leads</a>
-        <a href="my-projects.html" class="menu-item"><i class="fa-solid fa-briefcase"></i> My Projects</a>
-        <a href="profile.html" class="menu-item"><i class="fa-solid fa-user-gear"></i> Company Profile</a>
+        <ul class="menu-list">
+    <li><a href="#" class="menu-item active"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
+    
+    <li><a href="leads.html" class="menu-item"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
+    
+    <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
 
-        <a href="../../index.html" class="menu-item" style="margin-top: auto;"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+    <li><a href="my-projects.html" class="menu-item"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
+    
+    <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
+    
+    <li><a href="profile.html" class="menu-item"><i class="fa-solid fa-user-gear"></i> <span>Company Profile</span></a></li>
+</ul>
+
+        <div class="logout-section">
+            <a href="../../index.html" class="menu-item logout-btn"><i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span></a>
+        </div>
     </nav>
 
     <main class="main-content">
 
-        <div class="header">
-            <div style="display: flex; align-items: center; gap: 15px;">
+        <header class="top-header">
+            <div class="header-left">
                 <button class="menu-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
-                <div>
+                <div class="page-title">
                     <h1>Vendor Dashboard</h1>
-                    <p style="color: #7f8c8d;">Welcome, Solar Tech Solutions</p>
+                    <p>Welcome, Solar Tech Solutions</p>
                 </div>
             </div>
+            
             <div class="user-profile">
-                <span>Solar Tech</span>
+                <div class="user-info">
+                    <span class="name">Solar Tech</span>
+                    <span class="role">Verified Vendor</span>
+                </div>
                 <div class="user-img" style="background-image: url('https://www.w3schools.com/howto/img_avatar.png');"></div>
             </div>
-        </div>
+        </header>
 
-        <div class="warning-banner">
-            <div class="warning-content">
-                <i class="fa-solid fa-triangle-exclamation" style="font-size: 20px;"></i>
-                <div>
-                    <strong>Action Required: Complete your profile</strong>
-                    <p style="margin: 0; font-size: 13px;">You cannot bid on projects until you verify your phone number and address.</p>
+        <div class="dashboard-container">
+
+            <div class="action-alert">
+                <div class="alert-left">
+                    <i class="fa-solid fa-triangle-exclamation alert-icon"></i>
+                    <div class="alert-text">
+                        <strong>Action Required: Complete your profile</strong>
+                        <p>You cannot bid on projects until you verify your phone number and address.</p>
+                    </div>
+                </div>
+                <div class="alert-right">
+                    <a href="profile.html" class="btn-complete-setup">
+                        Complete Setup <i class="fa-solid fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
-            <a href="profile.html" class="btn-warning">Complete Setup <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
 
-        <div class="stats-grid">
-            <div class="card">
-                <div class="card-info"><h3>0</h3><p>Active Bids</p></div>
-                <i class="fa-solid fa-gavel card-icon"></i>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <span class="stat-title">Active Bids</span>
+                        <h2 class="stat-value">5</h2>
+                        <span class="stat-desc text-success"><i class="fa-solid fa-arrow-up"></i> 2 new today</span>
+                    </div>
+                    <div class="stat-icon icon-blue">
+                        <i class="fa-solid fa-gavel"></i>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <span class="stat-title">Projects Won</span>
+                        <h2 class="stat-value">12</h2>
+                        <span class="stat-desc text-muted">Last month: 4</span>
+                    </div>
+                    <div class="stat-icon icon-green">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <span class="stat-title">Total Earnings</span>
+                        <h2 class="stat-value">Rs 45k</h2>
+                        <span class="stat-desc text-success">+15% growth</span>
+                    </div>
+                    <div class="stat-icon icon-purple">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <div class="card-info"><h3>0</h3><p>Projects Won</p></div>
-                <i class="fa-solid fa-trophy card-icon"></i>
+
+            <div class="recent-section">
+                <div class="section-header">
+                    <h3>New Leads Available</h3>
+                    <a href="leads.html" class="view-all">View All</a>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <th>Location</th>
+                                <th>System Size</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="avatar">AK</div>
+                                        <span>Ali Khan</span>
+                                    </div>
+                                </td>
+                                <td>Gulshan-e-Iqbal, KHI</td>
+                                <td><span class="badge badge-blue">5kW</span></td>
+                                <td>Today, 10:00 AM</td>
+                                <td><button class="btn-bid">Bid Now</button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="avatar bg-orange">SA</div>
+                                        <span>Sara Ahmed</span>
+                                    </div>
+                                </td>
+                                <td>DHA Phase 6, LHR</td>
+                                <td><span class="badge badge-blue">10kW</span></td>
+                                <td>Yesterday</td>
+                                <td><button class="btn-bid">Bid Now</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="card">
-                <div class="card-info"><h3>Rs 0</h3><p>Total Earnings</p></div>
-                <i class="fa-solid fa-wallet card-icon"></i>
-            </div>
-        </div>
 
-        <div class="table-container" style="text-align: center; padding: 50px;">
-            <i class="fa-solid fa-folder-open" style="font-size: 50px; color: #ddd; margin-bottom: 15px;"></i>
-            <h3 style="color: #7f8c8d;">No Leads Visible</h3>
-            <p style="color: #95a5a6; font-size: 14px;">Complete your profile verification to start seeing solar installation requests in your area.</p>
-        </div>
+        </div> </main>
 
-    </main>
-
-    <script src="../../js/userDashboard.js"></script>
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.querySelector('.main-content').classList.toggle('sidebar-active');
+        }
+    </script>
 </body>
 </html>

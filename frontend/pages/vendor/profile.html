@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Profile - ISES Partner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+</head>
+<body>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="brand">
+            <i class="fa-solid fa-leaf brand-icon"></i> 
+            <div class="brand-text">
+                <h2>ISES</h2>
+                <span>PARTNER</span>
+            </div>
+        </div>
+
+        <ul class="menu-list">
+    <li><a href="dashboard.html" class="menu-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
+    
+    <li><a href="leads.html" class="menu-item"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
+    
+    <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
+
+    <li><a href="my-projects.html" class="menu-item"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
+    
+    <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
+    
+    <li><a href="#" class="menu-item active"><i class="fa-solid fa-user-gear"></i> <span>Company Profile</span></a></li>
+</ul>
+
+        <div class="logout-section">
+            <a href="../../index.html" class="menu-item logout-btn"><i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span></a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+
+        <header class="top-header">
+            <div class="header-left">
+                <button class="menu-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+                <div class="page-title">
+                    <h1>Account Settings</h1>
+                    <p>Manage your company profile and contact info</p>
+                </div>
+            </div>
+            
+            <div class="user-profile">
+                <div class="user-info">
+                    <span class="name">Solar Tech</span>
+                    <span class="role">Verified Vendor</span>
+                </div>
+                <div class="user-img" style="background-image: url('https://www.w3schools.com/howto/img_avatar.png');"></div>
+            </div>
+        </header>
+
+        <div class="dashboard-container">
+            
+            <div class="profile-grid">
+                
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar-large">
+                            <img src="https://dummyimage.com/150x150/f5365c/ffffff&text=Sass" alt="SkyElectric Logo">
+                            <button class="btn-edit-photo"><i class="fa-solid fa-camera"></i></button>
+                        </div>
+                        <h3>SkyElectric Pvt Ltd</h3>
+                        <p class="text-muted">Solar Installation Partner</p>
+                        <span class="status-badge verified"><i class="fa-solid fa-circle-check"></i> VERIFIED VENDOR</span>
+                    </div>
+
+                    <div class="profile-details-list">
+                        <div class="detail-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>contact@skyelectric.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>+92 300 1234567</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Lahore, Pakistan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <div class="card-header">
+                        <h3>Edit Company Details</h3>
+                    </div>
+                    
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Company Name</label>
+                                <input type="text" class="form-control" value="SkyElectric Pvt Ltd">
+                            </div>
+                            <div class="form-group">
+                                <label>Representative Name</label>
+                                <input type="text" class="form-control" value="Ahmed Raza">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" class="form-control" value="contact@skyelectric.com">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="text" class="form-control" value="+92 300 1234567">
+                            </div>
+                            <div class="form-group">
+                                <label>NTN Number</label>
+                                <input type="text" class="form-control" placeholder="Enter NTN or CNIC">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Business Address</label>
+                            <textarea class="form-control" rows="3">Gulberg III, Main Boulevard, Lahore</textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-cancel">Cancel</button>
+                            <button type="submit" class="btn-save">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.querySelector('.main-content').classList.toggle('sidebar-active');
+        }
+    </script>
+</body>
+</html>

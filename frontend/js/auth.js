@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ============================
-    // 1. LOGIN LOGIC
+    // 1. LOGIN LOGIC (UPDATED: Auto-Detect Role via Email)
     // ============================
     const loginForm = document.getElementById('loginForm');
 
@@ -11,9 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Inputs Values uthao
-            const role = document.getElementById('userRole').value;
-            const email = document.getElementById('email').value;
+            // Inputs Values uthao (Ab Role ki zaroorat nahi)
+            const email = document.getElementById('email').value.trim(); // .trim() extra spaces hata deta hai
             const password = document.getElementById('password').value;
 
             // Default Password for Prototype
@@ -22,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // --- VALIDATION LOGIC ---
 
             // 1. Check if fields are empty
-            if (!role || !email || !password) {
+            if (!email || !password) {
                 alert("Please fill all fields!");
                 return;
             }
@@ -33,37 +32,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // 3. Role Based Login Check
-            if (role === 'admin') {
-                if (email === 'admin@ises.com') {
-                    console.log("Login Success: Admin");
-                    window.location.href = '../admin/dashboard.html';
-                } else {
-                    alert("Invalid Admin Email! Try: admin@ises.com");
-                }
+            // 3. AUTO-REDIRECT BASED ON EMAIL
+            // System khud check karega email kaunsi hai aur usi hisab se bhejega
+
+            if (email === 'admin@ises.com') {
+                console.log("Login Success: Admin");
+                // Redirect to Admin Dashboard
+                window.location.href = '../admin/dashboard.html';
             }
-            else if (role === 'vendor') {
-                if (email === 'vendor@ises.com') {
-                    console.log("Login Success: Vendor");
-                    window.location.href = '../vendor/dashboard.html';
-                } else {
-                    alert("Invalid Vendor Email! Try: vendor@ises.com");
-                }
+            else if (email === 'vendor@ises.com') {
+                console.log("Login Success: Vendor");
+                // Redirect to Vendor Dashboard
+                window.location.href = '../vendor/dashboard.html';
             }
-            else if (role === 'user') {
-                // User ke liye hum koi bhi email allow kar dete hain ya specific
-                if (email === 'user@ises.com' || email.includes('@')) {
-                    console.log("Login Success: User");
-                    window.location.href = '../user/dashboard.html';
-                } else {
-                    alert("Invalid Email Format!");
-                }
+            else {
+                // Agar Admin ya Vendor nahi hai, toh User hoga
+                // Koi bhi doosri email User Dashboard par jayegi
+                console.log("Login Success: User");
+                window.location.href = '../user/dashboard.html';
             }
         });
     }
 
     // ============================
-    // 2. SIGNUP LOGIC (UPDATED & DYNAMIC)
+    // 2. SIGNUP LOGIC (SAME AS BEFORE)
     // ============================
     const signupForm = document.getElementById('signupForm');
     const roleSelect = document.getElementById('signupRole');
@@ -78,8 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 userFields.classList.add('hidden');
                 vendorFields.classList.remove('hidden');
 
-                // User input se 'required' hatao, Company input pe lagao
-                // (Taaki hidden field ki wajah se form error na de)
                 document.getElementById('fullNameInput').removeAttribute('required');
                 document.getElementById('companyInput').setAttribute('required', 'true');
             } else {
@@ -87,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 userFields.classList.remove('hidden');
                 vendorFields.classList.add('hidden');
 
-                // Company input se 'required' hatao, User input pe lagao
                 document.getElementById('fullNameInput').setAttribute('required', 'true');
                 document.getElementById('companyInput').removeAttribute('required');
             }
@@ -100,9 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
 
             const role = roleSelect.value;
-            const email = document.querySelector('input[type="email"]').value; // Email field grab kiya
+            const email = document.querySelector('input[type="email"]').value;
 
-            // Sahi Name grab karo role ke hisab se
             let name;
             if (role === 'user') {
                 name = document.getElementById('fullNameInput').value;
@@ -120,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================
-    // 3. SOCIAL LOGIN LOGIC (NEW)
+    // 3. SOCIAL LOGIN LOGIC
     // ============================
     const socialBtns = document.querySelectorAll('.btn-social');
     if (socialBtns) {

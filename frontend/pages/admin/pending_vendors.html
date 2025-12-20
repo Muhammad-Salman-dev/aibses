@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ISES Admin | Pending Approvals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-logo"><i class="fa-solid fa-bolt"></i></div>
+            <div class="brand-name">ISES <span>Admin</span></div>
+        </div>
+
+        <nav class="menu">
+            <div class="menu-dropdown">
+                <div class="menu-item dropdown-toggle" onclick="toggleDropdown(this)">
+                    <div style="display:flex; gap:14px; align-items:center;">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Overview</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                </div>
+
+                <div class="submenu">
+                    <a href="users.html" class="submenu-item">
+                        <i class="fa-solid fa-users"></i> All Users
+                    </a>
+                    <a href="commission.html" class="submenu-item">
+                        <i class="fa-solid fa-file-invoice-dollar"></i> Commission
+                    </a>
+                    <a href="ai_models.html" class="submenu-item">
+                        <i class="fa-solid fa-robot"></i> AI Review
+                    </a>
+                    <a href="vendors.html" class="submenu-item" style="color:white; background:rgba(255,255,255,0.1);">
+                        <i class="fa-solid fa-user-clock"></i> Pending Vendors
+                    </a>
+                </div>
+            </div>
+            <a href="vendors.html" class="menu-item active"><i class="fa-solid fa-user-check"></i><span>New Signups</span></a>
+            <a href="docs.html" class="menu-item"><i class="fa-solid fa-file-contract"></i><span>Review Docs</span></a>
+            <a href="projects.html" class="menu-item"><i class="fa-solid fa-desktop"></i><span>Project Monitor</span></a>
+            <a href="disputes.html" class="menu-item"><i class="fa-solid fa-gavel"></i><span>Disputes</span></a>
+            <a href="inventory.html" class="menu-item"><i class="fa-solid fa-shop"></i><span>Inventory</span></a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <h1>Pending Vendor Requests</h1>
+        </header>
+
+        <div class="section-card">
+            <table class="glass-table">
+                <thead>
+                    <tr><th style="padding-left:20px;">Vendor Details</th><th>Documents</th><th>Applied Date</th><th>Action</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="user-cell">
+                                <div class="avatar bg-orange">S</div>
+                                <div><h5>Solar Power Hub</h5><small>Multan, PK</small></div>
+                            </div>
+                        </td>
+                        <td><a href="docs.html" class="btn-xs btn-outline">Check License</a></td>
+                        <td>Dec 19, 2025</td>
+                        <td>
+                            <div class="action-group">
+                                <button class="btn-icon-sm success"><i class="fa-solid fa-check"></i></button>
+                                <button class="btn-icon-sm danger"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="user-cell">
+                                <div class="avatar bg-blue">E</div>
+                                <div><h5>Eco Energy Solutions</h5><small>Faisalabad, PK</small></div>
+                            </div>
+                        </td>
+                        <td><a href="docs.html" class="btn-xs btn-outline">Check License</a></td>
+                        <td>Dec 18, 2025</td>
+                        <td>
+                            <div class="action-group">
+                                <button class="btn-icon-sm success"><i class="fa-solid fa-check"></i></button>
+                                <button class="btn-icon-sm danger"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="../../js/admin.js"></script>
+</body>
+</html>

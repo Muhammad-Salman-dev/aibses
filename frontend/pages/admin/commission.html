@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ISES Admin | Finances</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-logo"><i class="fa-solid fa-bolt"></i></div>
+            <div class="brand-name">ISES <span>Admin</span></div>
+        </div>
+
+        <nav class="menu">
+            <div class="menu-dropdown">
+                <div class="menu-item dropdown-toggle" onclick="toggleDropdown(this)">
+                    <div style="display:flex; gap:14px; align-items:center;">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Overview</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                </div>
+
+                <div class="submenu">
+                     <    <a href="dashboard.html" class="submenu-item">
+                        <i class="fa-solid fa-chart-line"></i> Dashboard
+                    </a>
+                    <a href="users.html" class="submenu-item">
+                        <i class="fa-solid fa-users"></i> All Users
+                    </a>
+                    <a href="commission.html" class="submenu-item" style="color:white; background:rgba(255,255,255,0.1);">
+                        <i class="fa-solid fa-file-invoice-dollar"></i> Commission
+                    </a>
+                    <a href="ai_models.html" class="submenu-item">
+                        <i class="fa-solid fa-robot"></i> AI Review
+                    </a>
+                    <a href="vendors.html" class="submenu-item">
+                        <i class="fa-solid fa-user-clock"></i> Pending Vendors
+                    </a>
+                </div>
+            </div>
+            <a href="vendors.html" class="menu-item"><i class="fa-solid fa-user-check"></i><span>New Signups</span></a>
+            <a href="docs.html" class="menu-item"><i class="fa-solid fa-file-contract"></i><span>Review Docs</span></a>
+            <a href="projects.html" class="menu-item"><i class="fa-solid fa-desktop"></i><span>Project Monitor</span></a>
+            <a href="disputes.html" class="menu-item"><i class="fa-solid fa-gavel"></i><span>Disputes</span></a>
+            <a href="inventory.html" class="menu-item"><i class="fa-solid fa-shop"></i><span>Inventory</span></a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+    <header class="top-bar">
+        <div class="greeting">
+            <h1>Financial Overview</h1>
+            <p>Track Revenue & Commission History</p>
+        </div>
+        <div class="actions">
+            <button class="btn-primary-icon"><i class="fa-solid fa-download"></i> Export Report</button>
+        </div>
+    </header>
+
+    <div class="finance-grid">
+        <div class="finance-card dark-card">
+            <div class="fin-icon"><i class="fa-solid fa-wallet"></i></div>
+            <div class="fin-info">
+                <small>Total Commission (1%)</small>
+                <h2>$4,200</h2>
+                <span class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> +12% this month</span>
+            </div>
+            <div class="bg-pattern"></div>
+        </div>
+
+        <div class="finance-card white-card">
+            <div class="fin-icon blue-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <div class="fin-info">
+                <small>Total Project Value</small>
+                <h2>$150,000</h2>
+            </div>
+        </div>
+
+        <div class="finance-card white-card">
+            <div class="fin-icon orange-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <div class="fin-info">
+                <small>Pending Release</small>
+                <h2>$300</h2>
+                <span class="status-badge pending">Processing</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-card mt-large">
+        <div class="card-header">
+            <h3><i class="fa-solid fa-money-bill-transfer theme-text"></i> Recent Transactions</h3>
+            <div class="filter-tabs">
+                <span class="active">All</span>
+                <span>Credited</span>
+                <span>Pending</span>
+            </div>
+        </div>
+
+        <table class="glass-table finance-table">
+            <thead>
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>Project</th>
+                    <th>Project Value</th>
+                    <th>Commission (1%)</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="mono-font">#TRX-9981</td>
+                    <td>
+                        <div class="project-mini">
+                            <span class="prj-id">#PRJ-102</span>
+                            <small>Solar Install (Ali Khan)</small>
+                        </div>
+                    </td>
+                    <td>Rs. 1,500,000</td>
+                    <td class="amount-highlight">+ Rs. 15,000</td>
+                    <td>Dec 19, 2025</td>
+                    <td><span class="badge green">Paid</span></td>
+                </tr>
+                <tr>
+                    <td class="mono-font">#TRX-9975</td>
+                    <td>
+                        <div class="project-mini">
+                            <span class="prj-id">#PRJ-098</span>
+                            <small>Inverter Setup (Sara)</small>
+                        </div>
+                    </td>
+                    <td>Rs. 800,000</td>
+                    <td class="amount-highlight">+ Rs. 8,000</td>
+                    <td>Dec 18, 2025</td>
+                    <td><span class="badge green">Paid</span></td>
+                </tr>
+                 <tr>
+                    <td class="mono-font text-muted">#TRX-9970</td>
+                    <td>
+                        <div class="project-mini">
+                            <span class="prj-id">#PRJ-105</span>
+                            <small>Panel Maintenance</small>
+                        </div>
+                    </td>
+                    <td>Rs. 50,000</td>
+                    <td class="amount-pending">Rs. 500</td>
+                    <td>Dec 18, 2025</td>
+                    <td><span class="badge yellow">Pending</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<script src="../../js/admin.js"></script>
+</body>
+</html>

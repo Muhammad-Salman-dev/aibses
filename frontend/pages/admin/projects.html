@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ISES Admin | Projects</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-logo"><i class="fa-solid fa-bolt"></i></div>
+            <div class="brand-name">ISES <span>Admin</span></div>
+        </div>
+
+        <nav class="menu">
+            <div class="menu-dropdown">
+                <div class="menu-item dropdown-toggle" onclick="toggleDropdown(this)">
+                    <div style="display:flex; gap:14px; align-items:center;">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Overview</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                </div>
+
+                <div class="submenu">
+                    <a href="dashboard.html" class="submenu-item">
+                        <i class="fa-solid fa-chart-line"></i> Dashboard
+                    </a>
+                    <a href="users.html" class="submenu-item">
+                        <i class="fa-solid fa-users"></i> All Users
+                    </a>
+                    <a href="commission.html" class="submenu-item">
+                        <i class="fa-solid fa-file-invoice-dollar"></i> Commission
+                    </a>
+                    <a href="ai-review.html" class="submenu-item">
+                        <i class="fa-solid fa-robot"></i> AI Review
+                    </a>
+                    <a href="vendors.html" class="submenu-item">
+                        <i class="fa-solid fa-user-clock"></i> Pending Vendors
+                    </a>
+                </div>
+            </div>
+
+            <a href="vendors.html" class="menu-item"><i class="fa-solid fa-user-check"></i><span>New Signups</span></a>
+            <a href="docs.html" class="menu-item"><i class="fa-solid fa-file-contract"></i><span>Review Docs</span></a>
+
+            <a href="projects.html" class="menu-item active">
+                <i class="fa-solid fa-desktop"></i>
+                <span>Project Monitor</span>
+            </a>
+
+            <a href="disputes.html" class="menu-item"><i class="fa-solid fa-gavel"></i><span>Disputes</span></a>
+            <a href="inventory.html" class="menu-item"><i class="fa-solid fa-shop"></i><span>Inventory</span></a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <h1>Project Monitoring</h1>
+        </header>
+
+        <div class="section-card">
+            <table class="glass-table">
+                <thead>
+                    <tr><th>Project ID</th><th>User</th><th>Stage</th><th>AI Status</th><th>Action</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#PRJ-105</td>
+                        <td>Sara Ahmed</td>
+                        <td><span class="status-badge warning">In Progress</span></td>
+                        <td><i class="fa-solid fa-check text-green"></i> Verified</td>
+                        <td><button class="btn-xs theme-bg" style="color:white; border:none">Track</button></td>
+                    </tr>
+                    <tr>
+                        <td>#PRJ-108</td>
+                        <td>Usman Zafar</td>
+                        <td><span class="status-badge success">Completed</span></td>
+                        <td>-</td>
+                        <td><button class="btn-xs btn-outline">Archive</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="../../js/admin.js"></script>
+</body>
+</html>

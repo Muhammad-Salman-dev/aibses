@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ISES Admin | All Users</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-logo"><i class="fa-solid fa-bolt"></i></div>
+            <div class="brand-name">ISES <span>Admin</span></div>
+        </div>
+
+        <nav class="menu">
+            <div class="menu-dropdown">
+                <div class="menu-item dropdown-toggle" onclick="toggleDropdown(this)">
+                    <div style="display:flex; gap:14px; align-items:center;">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Overview</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                </div>
+
+                <div class="submenu">
+                    <a href="users.html" class="submenu-item" style="color:white; background:rgba(255,255,255,0.1);">
+                        <i class="fa-solid fa-users"></i> All Users
+                    </a>
+                    <a href="commission.html" class="submenu-item">
+                        <i class="fa-solid fa-file-invoice-dollar"></i> Commission
+                    </a>
+                    <a href="ai-review.html" class="submenu-item">
+                        <i class="fa-solid fa-robot"></i> AI Review
+                    </a>
+                    <a href="vendors.html" class="submenu-item">
+                        <i class="fa-solid fa-user-clock"></i> Pending Vendors
+                    </a>
+                </div>
+            </div>
+            <a href="vendors.html" class="menu-item"><i class="fa-solid fa-user-check"></i><span>New Signups</span></a>
+            <a href="docs.html" class="menu-item"><i class="fa-solid fa-file-contract"></i><span>Review Docs</span></a>
+            <a href="projects.html" class="menu-item"><i class="fa-solid fa-desktop"></i><span>Project Monitor</span></a>
+            <a href="disputes.html" class="menu-item"><i class="fa-solid fa-gavel"></i><span>Disputes</span></a>
+            <a href="inventory.html" class="menu-item"><i class="fa-solid fa-shop"></i><span>Inventory</span></a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <h1>User Management Database</h1>
+            <div class="search-glass">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search User...">
+            </div>
+        </header>
+
+        <div class="section-card">
+            <h3>Registered Users (1,204)</h3>
+            <table class="glass-table">
+                <thead>
+                    <tr><th>User ID</th><th>Name</th><th>Role</th><th>City</th><th>Status</th><th>Action</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#USR-1001</td>
+                        <td><strong>Ali Khan</strong></td>
+                        <td><span class="badge blue">Homeowner</span></td>
+                        <td>Karachi</td>
+                        <td><span class="status success">Active</span></td>
+                        <td><button class="btn-xs btn-outline">Details</button></td>
+                    </tr>
+                    <tr>
+                        <td>#VND-502</td>
+                        <td><strong>SolarTech Ltd</strong></td>
+                        <td><span class="badge yellow">Vendor</span></td>
+                        <td>Islamabad</td>
+                        <td><span class="status success">Active</span></td>
+                        <td><button class="btn-xs btn-outline">Profile</button></td>
+                    </tr>
+                    <tr>
+                        <td>#USR-1045</td>
+                        <td><strong>Sara Ahmed</strong></td>
+                        <td><span class="badge blue">Homeowner</span></td>
+                        <td>Lahore</td>
+                        <td><span class="status pending">Unverified</span></td>
+                        <td><button class="btn-xs btn-outline">Verify</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="../../js/admin.js"></script>
+</body>
+</html>

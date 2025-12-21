@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ISES Admin | Review Documents</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body>
+   <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-logo"><i class="fa-solid fa-bolt"></i></div>
+            <div class="brand-name">ISES <span>Admin</span></div>
+        </div>
+
+        <nav class="menu">
+            <div class="menu-dropdown">
+                <div class="menu-item dropdown-toggle" onclick="toggleDropdown(this)">
+                    <div style="display:flex; gap:14px; align-items:center;">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Overview</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                </div>
+
+                <div class="submenu">
+                    <a href="dashboard.html" class="submenu-item">
+                        <i class="fa-solid fa-chart-line"></i> Dashboard
+                    </a>
+                    <a href="users.html" class="submenu-item">
+                        <i class="fa-solid fa-users"></i> All Users
+                    </a>
+                    <a href="commission.html" class="submenu-item">
+                        <i class="fa-solid fa-file-invoice-dollar"></i> Commission
+                    </a>
+                    <a href="ai-review.html" class="submenu-item">
+                        <i class="fa-solid fa-robot"></i> AI Review
+                    </a>
+                    <a href="vendors.html" class="submenu-item">
+                        <i class="fa-solid fa-user-clock"></i> Pending Vendors
+                    </a>
+                </div>
+            </div>
+
+            <a href="vendors.html" class="menu-item"><i class="fa-solid fa-user-check"></i><span>New Signups</span></a>
+
+            <a href="docs.html" class="menu-item active">
+                <i class="fa-solid fa-file-contract"></i>
+                <span>Review Docs</span>
+            </a>
+
+            <a href="projects.html" class="menu-item"><i class="fa-solid fa-desktop"></i><span>Project Monitor</span></a>
+            <a href="disputes.html" class="menu-item"><i class="fa-solid fa-gavel"></i><span>Disputes</span></a>
+            <a href="inventory.html" class="menu-item"><i class="fa-solid fa-shop"></i><span>Inventory</span></a>
+        </nav>
+    </aside>
+    <main class="main-content">
+        <header class="top-bar">
+            <h1>Document Verification</h1>
+        </header>
+
+        <div class="dashboard-grid">
+            <div class="section-card">
+                <h3>Pending Licenses</h3>
+                <table class="glass-table">
+                    <thead><tr><th>Vendor</th><th>Document Type</th><th>Action</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>SolarTech Ltd</td>
+                            <td>Business License</td>
+                            <td><button class="btn-sm btn-outline" onclick="openModal('license1.jpg')"><i class="fa-solid fa-eye"></i> View</button></td>
+                        </tr>
+                        <tr>
+                            <td>Green Energy Co</td>
+                            <td>Tax Certificate</td>
+                            <td><button class="btn-sm btn-outline" onclick="openModal('tax.jpg')"><i class="fa-solid fa-eye"></i> View</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <div id="docModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h3>Document Preview</h3>
+            <img src="https://dummyimage.com/600x400/ccc/000&text=License+Document" class="doc-preview" alt="Doc">
+            <div style="margin-top:20px; display:flex; gap:10px; justify-content:center;">
+                <button class="btn-sm btn-green">Verify</button>
+                <button class="btn-sm btn-danger">Reject</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/admin.js"></script>
+</body>
+</html>

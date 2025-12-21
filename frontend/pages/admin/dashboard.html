@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISES Admin | Dashboard Overview</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-logo">
+                <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div class="brand-name">ISES <span>Admin</span></div>
+        </div>
+
+        <nav class="menu">
+            <div class="menu-dropdown">
+    <div class="menu-item dropdown-toggle" onclick="toggleDropdown(this)">
+        <div style="display:flex; gap:14px; align-items:center;">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Overview</span>
+        </div>
+        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+    </div>
+
+    <div class="submenu">
+        <a href="dashboard.html" class="submenu-item">
+             <i class="fa-solid fa-chart-line"></i> Dashboard
+        </a>
+        <a href="users.html" class="submenu-item">
+            <i class="fa-solid fa-users"></i> All Users
+        </a>
+        <a href="commission.html" class="submenu-item">
+            <i class="fa-solid fa-file-invoice-dollar"></i> Commission
+        </a>
+        <a href="ai_models.html" class="submenu-item">
+            <i class="fa-solid fa-robot"></i> AI Review
+        </a>
+        <a href="vendors.html" class="submenu-item">
+            <i class="fa-solid fa-user-clock"></i> Pending Vendors
+        </a>
+    </div>
+</div>
+
+            <div class="menu-label">Vendor Management</div>
+            <a href="vendors.html" class="menu-item">
+                <i class="fa-solid fa-user-check"></i>
+                <span>New Signups</span>
+                <span class="badge red">3</span>
+            </a>
+            <a href="docs.html" class="menu-item">
+                <i class="fa-solid fa-file-contract"></i>
+                <span>Review Docs</span>
+            </a>
+
+            <div class="menu-label">Project & Users</div>
+            <a href="projects.html" class="menu-item">
+                <i class="fa-solid fa-desktop"></i>
+                <span>Project Monitor</span>
+            </a>
+            <a href="disputes.html" class="menu-item">
+                <i class="fa-solid fa-gavel"></i>
+                <span>Disputes</span>
+                <span class="badge red">1</span>
+            </a>
+
+            <div class="menu-label">Marketplace</div>
+            <a href="inventory.html" class="menu-item">
+                <i class="fa-solid fa-shop"></i>
+                <span>Inventory</span>
+            </a>
+        </nav>
+
+        <div class="admin-profile">
+            <div class="avatar-initials bg-green">SA</div>
+            <div class="admin-info">
+                <h4>System Admin</h4>
+                <p>Super User</p>
+            </div>
+          <button class="logout-btn" onclick="window.location.href='../../index.html'">
+                <i class="fa-solid fa-power-off"></i>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="greeting">
+                <h1>Dashboard Overview</h1>
+                <p>Monitor System Health, Vendors, and Projects.</p>
+            </div>
+            <div class="actions">
+                <div class="search-glass">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search ID, Name...">
+                </div>
+                <button class="icon-btn notification">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="dot"></span>
+                </button>
+            </div>
+        </header>
+
+        <div class="dashboard-grid">
+
+            <div class="stats-row">
+                <a href="users.html" class="stat-card theme-blue">
+                    <div class="icon-box"><i class="fa-solid fa-users"></i></div>
+                    <div class="stat-data">
+                        <h3>1,204</h3>
+                        <p>Total Users</p>
+                    </div>
+                </a>
+
+                <a href="pending_vendors.html" class="stat-card theme-orange">
+                    <div class="icon-box"><i class="fa-solid fa-user-clock"></i></div>
+                    <div class="stat-data">
+                        <h3>03</h3>
+                        <p>Pending Vendors</p>
+                    </div>
+                </a>
+
+                <a href="ai_models.html" class="stat-card theme-purple">
+                    <div class="icon-box"><i class="fa-solid fa-robot"></i></div>
+                    <div class="stat-data">
+                        <h3>12</h3>
+                        <p>AI Models Pending</p>
+                    </div>
+                </a>
+
+                <a href="commission.html" class="stat-card theme-green main-stat">
+                    <div class="icon-box"><i class="fa-solid fa-wallet"></i></div>
+                    <div class="stat-data">
+                        <h3>$4.2k</h3>
+                        <p>Commission (1%)</p>
+                    </div>
+                </a>
+            </div>
+            <div class="middle-section">
+                <div class="section-card vendor-section">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-user-plus theme-text"></i> New Vendor Signups</h3>
+                        <a href="vendors.html" class="btn-text">View All</a> </div>
+
+                    <table class="glass-table">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left; padding-left: 20px;">Vendor Details</th>
+                                <th>Docs</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="avatar bg-blue">S</div>
+                                        <div>
+                                            <h5>SolarTech Ltd</h5>
+                                            <small>Islamabad</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><a href="docs.html" class="btn-xs btn-outline">View License</a></td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td>
+                                    <div class="action-group">
+                                        <button class="btn-icon-sm success"><i class="fa-solid fa-check"></i></button>
+                                        <button class="btn-icon-sm danger"><i class="fa-solid fa-xmark"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="section-card market-section">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-shop theme-text"></i> Market Control</h3>
+                        <small>Update Daily Prices</small>
+                    </div>
+                    <div class="market-controls">
+                        <div class="control-item">
+                            <label>Longi Hi-MO 6</label>
+                            <div class="input-group">
+                                <span>Rs.</span>
+                                <input type="text" value="38,000" id="price-1">
+                                <button class="btn-update" onclick="updatePrice('price-1')"><i class="fa-solid fa-rotate"></i></button>
+                            </div>
+                        </div>
+                        <div class="control-item">
+                            <label>Huawei Inverter 10kW</label>
+                            <div class="input-group">
+                                <span>Rs.</span>
+                                <input type="text" value="450,000" id="price-2">
+                                <button class="btn-update" onclick="updatePrice('price-2')"><i class="fa-solid fa-rotate"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="inventory.html" class="btn-full-width theme-bg" style="display:block; text-align:center; text-decoration:none; color:white; padding:10px;">Go to Inventory</a>
+                </div>
+            </div>
+
+            <div class="section-card projects-section">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-triangle-exclamation theme-text-red"></i> Project Monitor & Disputes</h3>
+                    <div class="tabs">
+                        <span class="tab active" onclick="switchTab(this)">Active Issues</span>
+                        <span class="tab" onclick="switchTab(this)">AI Review</span>
+                    </div>
+                </div>
+
+                <div class="project-alert-row">
+                    <div class="alert-item high-priority">
+                        <div class="alert-icon"><i class="fa-solid fa-gavel"></i></div>
+                        <div class="alert-info">
+                            <h4>Dispute: #PRJ-102 (Ali Khan)</h4>
+                            <p>Vendor claims installation complete. User denies.</p>
+                        </div>
+                        <div class="alert-actions">
+                            <a href="disputes.html" class="btn-sm btn-danger">Resolve Dispute</a>
+                            <a href="disputes.html" class="btn-sm btn-ghost">View Chat</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ISES Admin | AI Models</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body>
+   <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-logo"><i class="fa-solid fa-bolt"></i></div>
+            <div class="brand-name">ISES <span>Admin</span></div>
+        </div>
+
+        <nav class="menu">
+            <div class="menu-dropdown">
+                <div class="menu-item dropdown-toggle" onclick="toggleDropdown(this)">
+                    <div style="display:flex; gap:14px; align-items:center;">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Overview</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                </div>
+
+                <div class="submenu">
+                        <a href="dashboard.html" class="submenu-item">
+                        <i class="fa-solid fa-chart-line"></i> Dashboard
+                    </a>
+                    <a href="users.html" class="submenu-item">
+                        <i class="fa-solid fa-users"></i> All Users
+                    </a>
+                    <a href="commission.html" class="submenu-item">
+                        <i class="fa-solid fa-file-invoice-dollar"></i> Commission
+                    </a>
+                    <a href="ai_models.html" class="submenu-item" style="color:white; background:rgba(255,255,255,0.1);">
+                        <i class="fa-solid fa-robot"></i> AI Review
+                    </a>
+                    <a href="vendors.html" class="submenu-item">
+                        <i class="fa-solid fa-user-clock"></i> Pending Vendors
+                    </a>
+                </div>
+            </div>
+            <a href="vendors.html" class="menu-item"><i class="fa-solid fa-user-check"></i><span>New Signups</span></a>
+            <a href="docs.html" class="menu-item"><i class="fa-solid fa-file-contract"></i><span>Review Docs</span></a>
+            <a href="projects.html" class="menu-item"><i class="fa-solid fa-desktop"></i><span>Project Monitor</span></a>
+            <a href="disputes.html" class="menu-item"><i class="fa-solid fa-gavel"></i><span>Disputes</span></a>
+            <a href="inventory.html" class="menu-item"><i class="fa-solid fa-shop"></i><span>Inventory</span></a>
+        </nav>
+    </aside>
+    <main class="main-content">
+        <header class="top-bar">
+            <h1>AI Design Validation Queue</h1>
+        </header>
+
+        <div class="section-card">
+            <h3>Pending AI Approvals (12)</h3>
+            <table class="glass-table">
+                <thead><tr><th>Project Ref</th><th>System Size</th><th>Roof Area</th><th>AI Accuracy Score</th><th>Admin Action</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><strong>#PRJ-105</strong><br><small>User: Bilal</small></td>
+                        <td>10 kW</td>
+                        <td>1200 sqft</td>
+                        <td><span class="badge green">98% Match</span></td>
+                        <td><button class="btn-sm theme-bg" style="color:#fff;">View Design</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#PRJ-112</strong><br><small>User: Hamza</small></td>
+                        <td>5 kW</td>
+                        <td>800 sqft</td>
+                        <td><span class="badge yellow">75% Match</span></td>
+                        <td><button class="btn-sm theme-bg" style="color:#fff;">View Design</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#PRJ-118</strong><br><small>User: Nida</small></td>
+                        <td>15 kW</td>
+                        <td>2500 sqft</td>
+                        <td><span class="badge red">40% Error</span></td>
+                        <td><button class="btn-sm danger">Manual Review</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="../../js/admin.js"></script>
+</body>
+</html>

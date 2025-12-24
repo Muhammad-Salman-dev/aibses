@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Profile - ISES Partner</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="../../css/vendor-dashboard.css">
 </head>
+
 <body>
 
     <nav class="sidebar" id="sidebar">
         <div class="brand">
-            <i class="fa-solid fa-leaf brand-icon"></i>
+            <i class="fa-solid fa-leaf brand-icon"></i> 
             <div class="brand-text">
                 <h2>ISES</h2>
                 <span>PARTNER</span>
@@ -19,18 +22,13 @@
         </div>
 
         <ul class="menu-list">
-    <li><a href="dashboard.html" class="menu-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
-
-    <li><a href="leads.html" class="menu-item"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
-
-    <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
-
-    <li><a href="my-projects.html" class="menu-item"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
-
-    <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
-
-    <li><a href="#" class="menu-item active"><i class="fa-solid fa-user-gear"></i> <span>Company Profile</span></a></li>
-</ul>
+            <li><a href="dashboard.html" class="menu-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
+            <li><a href="leads.html" class="menu-item"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
+            <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
+            <li><a href="my-projects.html" class="menu-item"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
+            <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
+            <li><a href="#" class="menu-item active"><i class="fa-solid fa-user-gear"></i> <span>Company Profile</span></a></li>
+        </ul>
 
         <div class="logout-section">
             <a href="../../index.html" class="menu-item logout-btn"><i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span></a>
@@ -62,34 +60,34 @@
             <div class="profile-grid">
 
                 <div class="profile-card">
-                    <div class="profile-header">
+                    <div class="profile-header-center">
                         <div class="profile-avatar-large">
-                            <img src="https://dummyimage.com/150x150/f5365c/ffffff&text=Sass" alt="SkyElectric Logo">
-                            <button class="btn-edit-photo"><i class="fa-solid fa-camera"></i></button>
+                            <img src="https://dummyimage.com/150x150/5e72e4/ffffff&text=ST" alt="Company Logo">
+                            <button class="btn-edit-photo" title="Change Logo"><i class="fa-solid fa-camera"></i></button>
                         </div>
-                        <h3>SkyElectric Pvt Ltd</h3>
+                        <h3>Solar Tech Solutions</h3>
                         <p class="text-muted">Solar Installation Partner</p>
                         <span class="status-badge verified"><i class="fa-solid fa-circle-check"></i> VERIFIED VENDOR</span>
                     </div>
 
                     <div class="profile-details-list">
                         <div class="detail-item">
-                            <i class="fa-solid fa-envelope"></i>
-                            <span>contact@skyelectric.com</span>
+                            <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
+                            <span>contact@solartech.com</span>
                         </div>
                         <div class="detail-item">
-                            <i class="fa-solid fa-phone"></i>
+                            <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
                             <span>+92 300 1234567</span>
                         </div>
                         <div class="detail-item">
-                            <i class="fa-solid fa-location-dot"></i>
+                            <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
                             <span>Lahore, Pakistan</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="settings-card">
-                    <div class="card-header">
+                    <div class="card-header-simple">
                         <h3>Edit Company Details</h3>
                     </div>
 
@@ -97,7 +95,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Company Name</label>
-                                <input type="text" class="form-control" value="SkyElectric Pvt Ltd">
+                                <input type="text" class="form-control" value="Solar Tech Solutions">
                             </div>
                             <div class="form-group">
                                 <label>Representative Name</label>
@@ -107,7 +105,7 @@
 
                         <div class="form-group">
                             <label>Email Address</label>
-                            <input type="email" class="form-control" value="contact@skyelectric.com">
+                            <input type="email" class="form-control" value="contact@solartech.com">
                         </div>
 
                         <div class="form-row">
@@ -125,6 +123,8 @@
                             <label>Business Address</label>
                             <textarea class="form-control" rows="3">Gulberg III, Main Boulevard, Lahore</textarea>
                         </div>
+
+                        <hr class="form-divider">
 
                         <div class="form-actions">
                             <button type="button" class="btn-cancel">Cancel</button>

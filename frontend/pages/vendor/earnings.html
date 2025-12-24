@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Earnings - ISES Partner</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="../../css/vendor-dashboard.css">
 </head>
 <body>
 
     <nav class="sidebar" id="sidebar">
         <div class="brand">
-            <i class="fa-solid fa-leaf brand-icon"></i>
+            <i class="fa-solid fa-leaf brand-icon"></i> 
             <div class="brand-text">
                 <h2>ISES</h2>
                 <span>PARTNER</span>
@@ -19,18 +21,13 @@
         </div>
 
         <ul class="menu-list">
-    <li><a href="dashboard.html" class="menu-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
-
-    <li><a href="leads.html" class="menu-item"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
-
-    <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
-
-    <li><a href="my-projects.html" class="menu-item"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
-
-    <li><a href="#" class="menu-item active"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
-
-    <li><a href="profile.html" class="menu-item"><i class="fa-solid fa-user-gear"></i> <span>Company Profile</span></a></li>
-</ul>
+            <li><a href="dashboard.html" class="menu-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
+            <li><a href="leads.html" class="menu-item"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
+            <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
+            <li><a href="my-projects.html" class="menu-item"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
+            <li><a href="#" class="menu-item active"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
+            <li><a href="profile.html" class="menu-item"><i class="fa-solid fa-user-gear"></i> <span>Company Profile</span></a></li>
+        </ul>
 
         <div class="logout-section">
             <a href="../../index.html" class="menu-item logout-btn"><i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span></a>
@@ -59,16 +56,17 @@
 
         <div class="dashboard-container">
 
-            <div class="stats-grid" style="margin-bottom: 25px;">
+            <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-info">
                         <span class="stat-title">Total Earned (Lifetime)</span>
-                        <h2 class="stat-value" style="color: #2dce89;">Rs 15,500,000</h2>
+                        <h2 class="stat-value" style="color: #2dce89;">Rs 15,500,000</h2> 
                     </div>
                     <div class="stat-icon icon-green">
                         <i class="fa-solid fa-chart-line"></i>
                     </div>
                 </div>
+
                 <div class="stat-card">
                     <div class="stat-info">
                         <span class="stat-title">Paid Out (Last 30 Days)</span>
@@ -78,6 +76,7 @@
                         <i class="fa-solid fa-wallet"></i>
                     </div>
                 </div>
+
                 <div class="stat-card">
                     <div class="stat-info">
                         <span class="stat-title">Pending Balance</span>
@@ -92,15 +91,15 @@
             <div class="recent-section">
 
                 <div class="section-header">
-    <h2>Payment History</h2>
-    <button class="btn-primary">
-        <i class="fa-solid fa-download"></i>
-        Download Report
-    </button>
-</div>
+                    <h3>Payment History</h3>
+                    <button class="btn-primary">
+                        <i class="fa-solid fa-download"></i>
+                        Download Report
+                    </button>
+                </div>
 
-                <div class="filter-card" style="margin-bottom: 20px;">
-                    <div class="search-box" style="flex: none; width: 250px;">
+                <div class="filter-card">
+                    <div class="search-box">
                         <i class="fa-solid fa-calendar"></i>
                         <input type="text" placeholder="Filter by Date Range...">
                     </div>
@@ -112,8 +111,7 @@
                             <option>Pending</option>
                             <option>Reversed</option>
                         </select>
-
-                        <button class="btn-filter" style="background-color: #525f7f;">Apply</button>
+                        <button class="btn-filter">Apply</button>
                     </div>
                 </div>
 
@@ -134,7 +132,7 @@
                                 <td><span class="id-tag">TXN-4592</span></td>
                                 <td>2025-11-28</td>
                                 <td>Final payment for Project #P-902 (Khan Residence)</td>
-                                <td><span style="color:#2dce89; font-weight: 600;">+ Rs 800,000</span></td>
+                                <td><span class="amount-plus">+ Rs 800,000</span></td>
                                 <td><span class="status-dot green"></span> Completed</td>
                                 <td><button class="btn-manage">View Invoice</button></td>
                             </tr>
@@ -143,7 +141,7 @@
                                 <td><span class="id-tag">TXN-4593</span></td>
                                 <td>2025-12-05</td>
                                 <td>Milestone 1 for Project #P-905 (Zahid Commercial)</td>
-                                <td><span style="color:#fb6340; font-weight: 600;">+ Rs 450,000</span></td>
+                                <td><span class="amount-plus">+ Rs 450,000</span></td>
                                 <td><span class="status-dot orange"></span> Pending</td>
                                 <td><button class="btn-manage">Track Status</button></td>
                             </tr>
@@ -152,7 +150,7 @@
                                 <td><span class="id-tag">WDR-0012</span></td>
                                 <td>2025-11-15</td>
                                 <td>Weekly Withdrawal to Bank Account</td>
-                                <td><span style="color:#f5365c; font-weight: 600;">- Rs 1,500,000</span></td>
+                                <td><span class="amount-minus">- Rs 1,500,000</span></td>
                                 <td><span class="status-dot green"></span> Processed</td>
                                 <td><button class="btn-manage">Details</button></td>
                             </tr>
@@ -173,7 +171,6 @@
 
             </div>
         </div>
-
     </main>
 
     <script>

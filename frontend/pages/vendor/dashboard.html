@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vendor Dashboard - ISES</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="../../css/vendor-dashboard.css">
 </head>
 <body>
 
     <nav class="sidebar" id="sidebar">
         <div class="brand">
-            <i class="fa-solid fa-leaf brand-icon"></i>
+            <i class="fa-solid fa-leaf brand-icon"></i> 
             <div class="brand-text">
                 <h2>ISES</h2>
                 <span>PARTNER</span>
@@ -19,18 +21,13 @@
         </div>
 
         <ul class="menu-list">
-    <li><a href="#" class="menu-item active"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
-
-    <li><a href="leads.html" class="menu-item"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
-
-    <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
-
-    <li><a href="my-projects.html" class="menu-item"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
-
-    <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
-
-    <li><a href="profile.html" class="menu-item"><i class="fa-solid fa-user-gear"></i> <span>Company Profile</span></a></li>
-</ul>
+            <li><a href="#" class="menu-item active"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
+            <li><a href="leads.html" class="menu-item"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
+            <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
+            <li><a href="my-projects.html" class="menu-item"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
+            <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
+            <li><a href="profile.html" class="menu-item"><i class="fa-solid fa-user-gear"></i> <span>Company Profile</span></a></li>
+        </ul>
 
         <div class="logout-section">
             <a href="../../index.html" class="menu-item logout-btn"><i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span></a>
@@ -110,53 +107,75 @@
             </div>
 
             <div class="recent-section">
-                <div class="section-header">
-                    <h3>New Leads Available</h3>
-                    <a href="leads.html" class="view-all">View All</a>
+                <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h3>Ongoing Projects Summary</h3>
+                    <a href="my-projects.html" class="view-all">View All Projects</a>
                 </div>
 
                 <div class="table-responsive">
                     <table class="custom-table">
                         <thead>
                             <tr>
-                                <th>Customer</th>
-                                <th>Location</th>
-                                <th>System Size</th>
-                                <th>Date</th>
-                                <th>Action</th>
+                                <th width="30%">Project Info</th>
+                                <th width="25%">Progress</th>
+                                <th class="no-wrap">Current Stage</th>
+                                <th class="no-wrap">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>
-                                    <div class="user-cell">
-                                        <div class="avatar">AK</div>
-                                        <span>Ali Khan</span>
+                                    <div class="user-cell" style="display: flex; align-items: center; gap: 10px;">
+                                        <div class="avatar bg-blue" style="width: 35px; height: 35px; background: #e3f2fd; color: #2196f3; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px;">AK</div>
+                                        <div>
+                                            <span style="display:block; font-weight:600; color:#32325d; font-size: 13px;">Ahmed Khan</span>
+                                            <small class="text-muted" style="color:#8898aa; font-size: 11px;">10kW Hybrid</small>
+                                        </div>
                                     </div>
                                 </td>
-                                <td>Gulshan-e-Iqbal, KHI</td>
-                                <td><span class="badge badge-blue">5kW</span></td>
-                                <td>Today, 10:00 AM</td>
-                                <td><button class="btn-bid">Bid Now</button></td>
+                                <td>
+                                    <div class="progress-wrapper">
+                                        <div style="display:flex; justify-content:space-between; font-size:10px; margin-bottom:3px;">
+                                            <strong>65%</strong>
+                                        </div>
+                                        <div style="height: 4px; background: #e9ecef; border-radius: 10px; overflow: hidden;">
+                                            <div style="width: 65%; height: 100%; background: #2dce89;"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="no-wrap"><span class="badge badge-yellow">Work in Progress</span></td>
+                                <td><a href="my-projects.html"><button class="btn-manage">Track</button></a></td>
                             </tr>
+
                             <tr>
                                 <td>
-                                    <div class="user-cell">
-                                        <div class="avatar bg-orange">SA</div>
-                                        <span>Sara Ahmed</span>
+                                    <div class="user-cell" style="display: flex; align-items: center; gap: 10px;">
+                                        <div class="avatar bg-purple" style="width: 35px; height: 35px; background: #f3e5f5; color: #9c27b0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px;">MZ</div>
+                                        <div>
+                                            <span style="display:block; font-weight:600; color:#32325d; font-size: 13px;">Mariya Zahid</span>
+                                            <small class="text-muted" style="color:#8898aa; font-size: 11px;">5kW On-Grid</small>
+                                        </div>
                                     </div>
                                 </td>
-                                <td>DHA Phase 6, LHR</td>
-                                <td><span class="badge badge-blue">10kW</span></td>
-                                <td>Yesterday</td>
-                                <td><button class="btn-bid">Bid Now</button></td>
+                                <td>
+                                    <div class="progress-wrapper">
+                                        <div style="display:flex; justify-content:space-between; font-size:10px; margin-bottom:3px;">
+                                            <strong>20%</strong>
+                                        </div>
+                                        <div style="height: 4px; background: #e9ecef; border-radius: 10px; overflow: hidden;">
+                                            <div style="width: 20%; height: 100%; background: #fb6340;"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="no-wrap"><span class="badge badge-blue">Material Sourcing</span></td>
+                                <td><a href="my-projects.html"><button class="btn-manage">Track</button></a></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-
-        </div> </main>
+            </div> 
+    </main>
 
     <script>
         function toggleSidebar() {

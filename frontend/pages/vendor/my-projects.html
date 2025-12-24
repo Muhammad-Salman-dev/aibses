@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Projects - ISES Partner</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="../../css/vendor-dashboard.css">
 </head>
 <body>
 
     <nav class="sidebar" id="sidebar">
         <div class="brand">
-            <i class="fa-solid fa-leaf brand-icon"></i>
+            <i class="fa-solid fa-leaf brand-icon"></i> 
             <div class="brand-text">
                 <h2>ISES</h2>
                 <span>PARTNER</span>
@@ -19,25 +21,20 @@
         </div>
 
         <ul class="menu-list">
-    <li><a href="dashboard.html" class="menu-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
+            <li><a href="dashboard.html" class="menu-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
+            <li><a href="leads.html" class="menu-item"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
+            <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
+            <li><a href="#" class="menu-item active"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
+            <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
+            <li><a href="profile.html" class="menu-item"><i class="fa-solid fa-user-gear"></i> <span>Company Profile</span></a></li>
+        </ul>
 
-    <li><a href="leads.html" class="menu-item"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
-
-    <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
-
-    <li><a href="#" class="menu-item active"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
-
-    <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
-
-    <li><a href="profile.html" class="menu-item"><i class="fa-solid fa-user-gear"></i> <span>Company Profile</span></a></li>
-</ul>
         <div class="logout-section">
             <a href="../../index.html" class="menu-item logout-btn"><i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span></a>
         </div>
     </nav>
 
     <main class="main-content">
-
         <header class="top-header">
             <div class="header-left">
                 <button class="menu-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
@@ -46,7 +43,6 @@
                     <p>Track progress, manage installations, and payments</p>
                 </div>
             </div>
-
             <div class="user-profile">
                 <div class="user-info">
                     <span class="name">Solar Tech</span>
@@ -57,39 +53,32 @@
         </header>
 
         <div class="dashboard-container">
-
-            <div class="stats-grid" style="margin-bottom: 25px;">
-                <div class="stat-card" style="padding: 15px 20px;">
+            
+            <div class="stats-grid">
+                <div class="stat-card">
                     <div class="stat-info">
                         <span class="stat-title">Ongoing</span>
-                        <h2 class="stat-value" style="font-size: 24px;">3</h2>
+                        <h2 class="stat-value">3</h2>
                     </div>
-                    <div class="stat-icon icon-blue" style="width: 40px; height: 40px; font-size: 16px;">
-                        <i class="fa-solid fa-spinner"></i>
-                    </div>
+                    <div class="stat-icon icon-blue"><i class="fa-solid fa-spinner"></i></div>
                 </div>
-                <div class="stat-card" style="padding: 15px 20px;">
+                <div class="stat-card">
                     <div class="stat-info">
                         <span class="stat-title">Completed</span>
-                        <h2 class="stat-value" style="font-size: 24px;">12</h2>
+                        <h2 class="stat-value">12</h2>
                     </div>
-                    <div class="stat-icon icon-green" style="width: 40px; height: 40px; font-size: 16px;">
-                        <i class="fa-solid fa-check"></i>
-                    </div>
+                    <div class="stat-icon icon-green"><i class="fa-solid fa-check"></i></div>
                 </div>
-                <div class="stat-card" style="padding: 15px 20px;">
+                <div class="stat-card">
                     <div class="stat-info">
                         <span class="stat-title">Pending Revenue</span>
-                        <h2 class="stat-value" style="font-size: 24px;">Rs 1.2L</h2>
+                        <h2 class="stat-value">Rs 1.2L</h2>
                     </div>
-                    <div class="stat-icon icon-purple" style="width: 40px; height: 40px; font-size: 16px;">
-                        <i class="fa-solid fa-money-bill-wave"></i>
-                    </div>
+                    <div class="stat-icon icon-purple"><i class="fa-solid fa-money-bill-wave"></i></div>
                 </div>
             </div>
 
             <div class="recent-section">
-
                 <div class="project-tabs">
                     <button class="tab-btn active">Ongoing Projects</button>
                     <button class="tab-btn">Completed History</button>
@@ -100,11 +89,11 @@
                     <table class="custom-table">
                         <thead>
                             <tr>
-                                <th>Project Info</th>
-                                <th>Progress</th>
+                                <th width="28%">Project Info</th>
+                                <th width="22%">Progress</th>
                                 <th>Stage</th>
-                                <th>Deadline</th>
                                 <th>Amount</th>
+                                <th>Payment</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -112,90 +101,99 @@
                             <tr>
                                 <td>
                                     <div class="user-cell">
-                                        <div class="avatar bg-blue">AK</div>
-                                        <div>
-                                            <span style="display:block;">Ahmed Khan</span>
-                                            <small class="text-muted">10kW Hybrid - DHA</small>
+                                        <div class="avatar-circle bg-light-blue">AK</div>
+                                        <div class="user-details">
+                                            <span class="user-name">Ahmed Khan</span>
+                                            <span class="user-meta">10kW Hybrid System</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td width="20%">
+                                <td>
                                     <div class="progress-wrapper">
                                         <div class="progress-info">
-                                            <span>65%</span>
-                                            <span>Installation</span>
+                                            <strong>65%</strong> <span class="text-muted">Installation</span>
                                         </div>
-                                        <div class="progress-bar-bg">
-                                            <div class="progress-bar-fill" style="width: 65%;"></div>
+                                        <div class="progress-bg">
+                                            <div class="progress-fill green" style="width: 65%;"></div>
                                         </div>
                                     </div>
                                 </td>
-                                <td><span class="badge badge-yellow">Work in Progress</span></td>
-                                <td>15 Dec 2025</td>
-                                <td>Rs 1,200,000</td>
-                                <td><button class="btn-manage">Manage</button></td>
+                                <td><span class="badge badge-orange">Work in Progress</span></td>
+                                <td class="font-weight-bold text-dark">Rs 1,200,000</td>
+                                <td><span class="badge badge-green"><i class="fa-solid fa-check"></i> Advance Paid</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action-chat" onclick="openChat('Ahmed Khan')" title="Chat">
+                                            <i class="fa-regular fa-comments"></i>
+                                        </button>
+                                        <button class="btn-action-manage">Manage</button>
+                                    </div>
+                                </td>
                             </tr>
 
                             <tr>
                                 <td>
                                     <div class="user-cell">
-                                        <div class="avatar bg-purple">MZ</div>
-                                        <div>
-                                            <span style="display:block;">Mariya Zahid</span>
-                                            <small class="text-muted">5kW On-Grid - Bahria</small>
+                                        <div class="avatar-circle bg-light-purple">MZ</div>
+                                        <div class="user-details">
+                                            <span class="user-name">Mariya Zahid</span>
+                                            <span class="user-meta">5kW On-Grid System</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td width="20%">
+                                <td>
                                     <div class="progress-wrapper">
                                         <div class="progress-info">
-                                            <span>20%</span>
-                                            <span>Procurement</span>
+                                            <strong>20%</strong> <span class="text-muted">Procurement</span>
                                         </div>
-                                        <div class="progress-bar-bg">
-                                            <div class="progress-bar-fill orange-fill" style="width: 20%;"></div>
+                                        <div class="progress-bg">
+                                            <div class="progress-fill orange" style="width: 20%;"></div>
                                         </div>
                                     </div>
                                 </td>
                                 <td><span class="badge badge-blue">Material Sourcing</span></td>
-                                <td>20 Dec 2025</td>
-                                <td>Rs 850,000</td>
-                                <td><button class="btn-manage">Manage</button></td>
-                            </tr>
-
-                            <tr>
+                                <td class="font-weight-bold text-dark">Rs 850,000</td>
+                                <td><span class="badge badge-red"><i class="fa-regular fa-clock"></i> Pending</span></td>
                                 <td>
-                                    <div class="user-cell">
-                                        <div class="avatar bg-green">GS</div>
-                                        <div>
-                                            <span style="display:block;">Global Solutions</span>
-                                            <small class="text-muted">20kW Commercial</small>
-                                        </div>
+                                    <div class="action-buttons">
+                                        <button class="btn-action-chat" onclick="openChat('Mariya Zahid')" title="Chat">
+                                            <i class="fa-regular fa-comments"></i>
+                                        </button>
+                                        <button class="btn-action-manage">Manage</button>
                                     </div>
                                 </td>
-                                <td width="20%">
-                                    <div class="progress-wrapper">
-                                        <div class="progress-info">
-                                            <span>90%</span>
-                                            <span>Testing</span>
-                                        </div>
-                                        <div class="progress-bar-bg">
-                                            <div class="progress-bar-fill" style="width: 90%;"></div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><span class="badge badge-yellow">Final Testing</span></td>
-                                <td>Tomorrow</td>
-                                <td>Rs 2,500,000</td>
-                                <td><button class="btn-manage">Manage</button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
     </main>
+
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <div style="display: flex; align-items: center;">
+                <span class="status-indicator"></span>
+                <span id="chatUserName">Chat</span>
+            </div>
+            <i class="fa-solid fa-xmark close-chat" onclick="closeChat()"></i>
+        </div>
+        
+        <div class="chat-body" id="chatBody">
+            <div class="chat-date">Today</div>
+            <div class="message received">
+                Hello, I had a question about the invoice.
+            </div>
+            <div class="message sent">
+                Sure, please let me know.
+            </div>
+        </div>
+
+        <div class="chat-footer">
+            <input type="text" placeholder="Type your message..." id="chatInput">
+            <button onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
 
     <script>
         function toggleSidebar() {
@@ -203,7 +201,6 @@
             document.querySelector('.main-content').classList.toggle('sidebar-active');
         }
 
-        // Simple script to handle active tab styling
         const tabs = document.querySelectorAll('.tab-btn');
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
@@ -211,6 +208,28 @@
                 tab.classList.add('active');
             });
         });
+
+        function openChat(userName) {
+            document.getElementById('chatWidget').classList.add('active');
+            document.getElementById('chatUserName').innerText = "Chat with " + userName;
+        }
+
+        function closeChat() {
+            document.getElementById('chatWidget').classList.remove('active');
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const body = document.getElementById('chatBody');
+            if(input.value.trim() !== "") {
+                const newMsg = document.createElement('div');
+                newMsg.classList.add('message', 'sent');
+                newMsg.innerText = input.value;
+                body.appendChild(newMsg);
+                input.value = "";
+                body.scrollTop = body.scrollHeight;
+            }
+        }
     </script>
 </body>
 </html>

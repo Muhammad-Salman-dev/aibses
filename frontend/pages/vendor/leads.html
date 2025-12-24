@@ -4,14 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Leads - ISES Partner</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../css/vendor-dashboard.css">
+
+    <style>
+        /* --- SEARCH ICON FIX (Perfect Center) --- */
+        .search-box { 
+            position: relative; 
+            flex: 1; 
+            min-width: 200px; 
+        }
+        .search-box input { 
+            width: 100%; 
+            padding: 10px 10px 10px 40px; 
+            border: 1px solid #ddd; 
+            border-radius: 6px; 
+            height: 45px;
+        }
+        .search-box i { 
+            position: absolute; 
+            left: 15px; 
+            top: 50%; 
+            transform: translateY(-50%); /* Icon ko exact center krne k liye */
+            color: #aaa; 
+            pointer-events: none;
+        }
+
+        /* --- FILTERS STYLING --- */
+        .filter-card { background: #fff; padding: 20px; border-radius: 8px; display: flex; flex-wrap: wrap; gap: 15px; align-items: center; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .custom-select { padding: 0 10px; height: 45px; border: 1px solid #ddd; border-radius: 6px; min-width: 150px; background-color: #fff;}
+        .btn-filter { background: #2c3e50; color: #fff; border: none; height: 45px; padding: 0 25px; border-radius: 6px; cursor: pointer; font-weight: 500;}
+        .btn-filter:hover { background: #34495e; }
+        
+        /* Helpers for JS Logic */
+        .location-text { display: block; } 
+    </style>
 </head>
 <body>
 
     <nav class="sidebar" id="sidebar">
         <div class="brand">
-            <i class="fa-solid fa-leaf brand-icon"></i>
+            <i class="fa-solid fa-leaf brand-icon"></i> 
             <div class="brand-text">
                 <h2>ISES</h2>
                 <span>PARTNER</span>
@@ -19,18 +53,13 @@
         </div>
 
         <ul class="menu-list">
-    <li><a href="dashboard.html" class="menu-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
-
-    <li><a href="#" class="menu-item active"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
-
-    <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
-
-    <li><a href="my-projects.html" class="menu-item"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
-
-    <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
-
-    <li><a href="profile.html" class="menu-item"><i class="fa-solid fa-user-gear"></i> <span>Company Profile</span></a></li>
-</ul>
+            <li><a href="dashboard.html" class="menu-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
+            <li><a href="#" class="menu-item active"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
+            <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
+            <li><a href="my-projects.html" class="menu-item"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
+            <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
+            <li><a href="profile.html" class="menu-item"><i class="fa-solid fa-user-gear"></i> <span>Company Profile</span></a></li>
+        </ul>
 
         <div class="logout-section">
             <a href="../../index.html" class="menu-item logout-btn"><i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span></a>
@@ -38,7 +67,6 @@
     </nav>
 
     <main class="main-content">
-
         <header class="top-header">
             <div class="header-left">
                 <button class="menu-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
@@ -47,7 +75,6 @@
                     <p>Find and bid on new installation requests</p>
                 </div>
             </div>
-
             <div class="user-profile">
                 <div class="user-info">
                     <span class="name">Solar Tech</span>
@@ -62,31 +89,31 @@
             <div class="filter-card">
                 <div class="search-box">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Search by area or ID...">
+                    <input type="text" id="searchInput" placeholder="Search by area or ID...">
                 </div>
 
                 <div class="filter-options">
-                    <select class="custom-select">
-                        <option>All Cities</option>
-                        <option>Karachi</option>
-                        <option>Lahore</option>
-                        <option>Islamabad</option>
+                    <select class="custom-select" id="citySelect">
+                        <option value="all">All Cities</option>
+                        <option value="Karachi">Karachi</option>
+                        <option value="Lahore">Lahore</option>
+                        <option value="Islamabad">Islamabad</option>
                     </select>
 
-                    <select class="custom-select">
-                        <option>Any System Size</option>
-                        <option>3kW - 5kW</option>
-                        <option>6kW - 10kW</option>
-                        <option>10kW+</option>
+                    <select class="custom-select" id="sizeSelect">
+                        <option value="all">Any System Size</option>
+                        <option value="3-5">3kW - 5kW</option>
+                        <option value="6-10">6kW - 10kW</option>
+                        <option value="10+">10kW+</option>
                     </select>
 
-                    <button class="btn-filter">Apply Filters</button>
+                    <button class="btn-filter" id="filterBtn">Apply Filters</button>
                 </div>
             </div>
 
             <div class="recent-section">
                 <div class="table-responsive">
-                    <table class="custom-table">
+                    <table class="custom-table" id="leadsTable">
                         <thead>
                             <tr>
                                 <th>Project ID</th>
@@ -104,16 +131,16 @@
                                     <div class="user-cell">
                                         <div class="avatar">OM</div>
                                         <div>
-                                            <span style="display:block;">Osama Malik</span>
-                                            <small class="text-muted">DHA Phase 8, Karachi</small>
+                                            <span style="display:block; font-weight: 600; color: #34495e;">Osama Malik</span>
+                                            <small class="text-muted location-text">DHA Phase 8, Karachi</small>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <span class="badge badge-blue">10kW Hybrid</span>
-                                    <div style="font-size: 11px; margin-top: 4px; color:#8898aa;">Inverter: GoodWe</div>
+                                    <span class="badge badge-blue system-spec">10kW Hybrid</span>
+                                    <div style="font-size: 11px; margin-top: 4px;" class="text-muted">Inverter: GoodWe</div>
                                 </td>
-                                <td>2 hours ago</td>
+                                <td class="text-muted">2 hours ago</td>
                                 <td><span class="status-dot green"></span> New</td>
                                 <td><button class="btn-bid-primary">View & Bid</button></td>
                             </tr>
@@ -124,16 +151,16 @@
                                     <div class="user-cell">
                                         <div class="avatar bg-orange">SZ</div>
                                         <div>
-                                            <span style="display:block;">Sarah Zafar</span>
-                                            <small class="text-muted">Gulberg III, Lahore</small>
+                                            <span style="display:block; font-weight: 600; color: #34495e;">Sarah Zafar</span>
+                                            <small class="text-muted location-text">Gulberg III, Lahore</small>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <span class="badge badge-blue">5kW On-Grid</span>
-                                    <div style="font-size: 11px; margin-top: 4px; color:#8898aa;">Net Metering Req.</div>
+                                    <span class="badge badge-blue system-spec">5kW On-Grid</span>
+                                    <div style="font-size: 11px; margin-top: 4px;" class="text-muted">Net Metering Req.</div>
                                 </td>
-                                <td>Yesterday</td>
+                                <td class="text-muted">Yesterday</td>
                                 <td><span class="status-dot orange"></span> Urgent</td>
                                 <td><button class="btn-bid-primary">View & Bid</button></td>
                             </tr>
@@ -144,16 +171,16 @@
                                     <div class="user-cell">
                                         <div class="avatar bg-teal">FK</div>
                                         <div>
-                                            <span style="display:block;">Fahad Khan</span>
-                                            <small class="text-muted">F-10, Islamabad</small>
+                                            <span style="display:block; font-weight: 600; color: #34495e;">Fahad Khan</span>
+                                            <small class="text-muted location-text">F-10, Islamabad</small>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <span class="badge badge-blue">15kW Hybrid</span>
-                                    <div style="font-size: 11px; margin-top: 4px; color:#8898aa;">Commercial</div>
+                                    <span class="badge badge-blue system-spec">15kW Hybrid</span>
+                                    <div style="font-size: 11px; margin-top: 4px;" class="text-muted">Commercial</div>
                                 </td>
-                                <td>2 Days ago</td>
+                                <td class="text-muted">2 Days ago</td>
                                 <td><span class="status-dot green"></span> Active</td>
                                 <td><button class="btn-bid-primary">View & Bid</button></td>
                             </tr>
@@ -161,27 +188,14 @@
                     </table>
                 </div>
 
-                <div class="pagination-container">
-                    <span class="page-info">Showing 3 of 15 leads</span>
-                    <div class="pagination">
-                        <a href="#" class="page-link disabled">&laquo;</a>
-                        <a href="#" class="page-link active">1</a>
-                        <a href="#" class="page-link">2</a>
-                        <a href="#" class="page-link">3</a>
-                        <a href="#" class="page-link">&raquo;</a>
-                    </div>
+                 <div class="pagination-container">
+                    <span class="page-info">Showing results</span>
                 </div>
-
             </div>
         </div>
-
     </main>
 
-    <script>
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('active');
-            document.querySelector('.main-content').classList.toggle('sidebar-active');
-        }
-    </script>
+    <script src="../../js/vendor.js"></script> 
+
 </body>
 </html>

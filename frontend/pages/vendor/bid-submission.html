@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Professional Bid - ISES</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/vendor-dashboard.css">
+</head>
+<body>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="brand">
+            <i class="fa-solid fa-leaf brand-icon"></i>
+            <div class="brand-text"><h2>ISES</h2><span>PARTNER</span></div>
+        </div>
+        <ul class="menu-list">
+            <li><a href="dashboard.html" class="menu-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
+            <li><a href="leads.html" class="menu-item active"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
+            <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
+            <li><a href="my-projects.html" class="menu-item"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
+            <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
+            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 20px;">
+            <li><a href="profile-setup.html" class="menu-item"><i class="fa-solid fa-shield-halved"></i> <span>Verification Center</span></a></li>
+            <li><a href="profile.html" class="menu-item"><i class="fa-solid fa-building"></i> <span>Company Profile</span></a></li>
+        </ul>
+        <div class="logout-section"><a href="../../index.html" class="menu-item logout-btn"><i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span></a></div>
+    </nav>
+
+    <main class="main-content">
+        <header class="top-header">
+            <div class="header-left">
+                <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+                <div class="page-title">
+                    <h1 id="page-header-id">Prepare Proposal</h1>
+                    <p>Analyze the AI model and submit your bid</p>
+                </div>
+            </div>
+            <div class="user-profile">
+                <div class="user-info"><span class="name">Solar Tech</span><span class="role">Verified Vendor</span></div>
+                <div class="user-img" style="background-image: url('https://www.w3schools.com/howto/img_avatar.png');"></div>
+            </div>
+        </header>
+
+        <div class="dashboard-container">
+            <a href="leads.html" class="back-link">
+                <i class="fa-solid fa-arrow-left-long"></i> Back to Opportunities
+            </a>
+
+            <div class="bid-layout">
+
+                <div class="project-card">
+
+                    <div class="ai-model-viewer">
+                        <div class="map-bg"></div>
+
+                        <div class="model-overlay">
+                            <span class="ai-badge"><i class="fa-solid fa-robot"></i> AI Generated Layout</span>
+                            <button class="btn-expand-model"><i class="fa-solid fa-expand"></i> View 3D</button>
+                        </div>
+
+                        <div class="model-stats">
+                            <div class="stat">
+                                <small>Est. Generation</small>
+                                <strong>1,450 units/mo</strong>
+                            </div>
+                            <div class="stat">
+                                <small>Roof Area</small>
+                                <strong>1,200 sq.ft</strong>
+                            </div>
+                            <div class="stat">
+                                <small>Sun Hours</small>
+                                <strong>5.5 Hrs</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-body">
+                        <div class="customer-strip">
+                            <div class="c-info">
+                                <h3 id="detail-name">Loading...</h3>
+                                <span class="loc-text"><i class="fa-solid fa-location-dot"></i> <span id="detail-location">...</span></span>
+                            </div>
+                            <div class="id-box" id="detail-id">#SOL-000</div>
+                        </div>
+
+                        <div class="tech-insights">
+                            <h4><i class="fa-solid fa-microchip"></i> System Configuration</h4>
+                            <div class="insight-row">
+                                <span>Required Capacity</span>
+                                <strong id="detail-system" class="highlight-blue">Loading...</strong>
+                            </div>
+                            <div class="insight-row">
+                                <span>Connection Type</span>
+                                <strong>Hybrid (Batteries Required)</strong>
+                            </div>
+                            <div class="insight-row">
+                                <span>Mounting Type</span>
+                                <strong>Elevated Structure (L2)</strong>
+                            </div>
+                        </div>
+
+                        <div class="requirements-box">
+                            <h4><i class="fa-solid fa-triangle-exclamation"></i> Client Preferences</h4>
+                            <ul>
+                                <li>Prefer Tier-1 Panels (Jinko/Longi).</li>
+                                <li>Wiring must be concealed (Civil work needed).</li>
+                                <li>Old meter replacement required.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bidding-card">
+                    <div class="bid-header">
+                        <h3>Submit Your Proposal</h3>
+                        <p>Based on the AI model, place your best offer.</p>
+                    </div>
+
+                    <form id="bidForm">
+                        <div class="price-input-wrapper">
+                            <label>Total Quotation Price</label>
+                            <div class="input-with-currency">
+                                <span>PKR</span>
+                                <input type="number" placeholder="0.00" required>
+                            </div>
+                            <small class="helper-text">Include structure, installation & net metering.</small>
+                        </div>
+
+                        <div class="row-2-col">
+                            <div class="modern-group">
+                                <label>Inverter Choice</label>
+                                <div class="select-wrapper">
+                                    <select>
+                                        <option>Select Brand...</option>
+                                        <option>Huawei</option>
+                                        <option>GoodWe</option>
+                                        <option>Growatt</option>
+                                        <option>Solis</option>
+                                    </select>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="modern-group">
+                                <label>Panel Choice</label>
+                                <div class="select-wrapper">
+                                    <select>
+                                        <option>Select Brand...</option>
+                                        <option>Jinko Solar</option>
+                                        <option>Longi</option>
+                                        <option>Canadian Solar</option>
+                                        <option>JA Solar</option>
+                                    </select>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modern-group">
+                            <label>Maintenance Warranty</label>
+                            <div class="select-wrapper highlight-select">
+                                <select>
+                                    <option value="0">No Free Maintenance</option>
+                                    <option value="1">1 Year Free Maintenance</option>
+                                    <option value="2" selected>2 Years Free Maintenance (Recommended)</option>
+                                    <option value="5">5 Years Free Maintenance</option>
+                                </select>
+                                <i class="fa-solid fa-shield-heart"></i>
+                            </div>
+                        </div>
+
+                        <div class="modern-group">
+                            <label>Message to Customer</label>
+                            <textarea rows="4" placeholder="Mention specific details about structure quality or cabling..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit-pro">
+                            <span>Send Official Quote</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <script src="../../js/vendor.js"></script>
+</body>
+</html>

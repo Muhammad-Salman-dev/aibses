@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Profile Settings - ISES</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../../css/vendor-dashboard.css">
+</head>
+<body>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="brand">
+            <i class="fa-solid fa-leaf brand-icon"></i>
+            <div class="brand-text"><h2>ISES</h2><span>PARTNER</span></div>
+        </div>
+        <ul class="menu-list">
+            <li><a href="dashboard.html" class="menu-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
+            <li><a href="leads.html" class="menu-item"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
+            <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
+            <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
+            <li><a href="profile.html" class="menu-item active"><i class="fa-solid fa-user-gear"></i> <span>Profile Settings</span></a></li>
+
+           <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 20px;">
+
+            <li>
+                <a href="profile-setup.html" class="menu-item">
+                    <i class="fa-solid fa-shield-halved"></i> <span>Verification Center</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="profile.html" class="menu-item">
+                    <i class="fa-solid fa-building"></i> <span>Company Profile</span>
+                </a>
+            </li>
+
+        </ul>
+        <div class="logout-section">
+            <a href="../../index.html" class="menu-item logout-btn"><i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span></a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="top-header">
+            <div class="header-left">
+                <div class="page-title">
+                    <h1>Profile Settings</h1>
+                    <p>Manage your company details and verification documents</p>
+                </div>
+            </div>
+            <div class="user-profile">
+                <div class="user-info"><span class="name">Solar Tech</span><span class="role">Unverified</span></div>
+                <div class="user-img" style="background-image: url('https://www.w3schools.com/howto/img_avatar.png');"></div>
+            </div>
+        </header>
+
+        <div class="dashboard-container">
+
+            <div class="settings-layout">
+
+                <div class="settings-sidebar">
+                    <div class="vendor-card-sm">
+                        <div class="v-avatar">
+                            <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Logo">
+                            <button class="btn-cam"><i class="fa-solid fa-camera"></i></button>
+                        </div>
+                        <h3>Solar Tech Solutions</h3>
+                        <p>ID: #VEN-2024</p>
+                        <span class="badge-status">Incomplete</span>
+                    </div>
+
+                    <div class="setting-tabs">
+                        <button class="tab-link active" onclick="openTab(event, 'Company')">
+                            <i class="fa-solid fa-building"></i> Company Info
+                        </button>
+                        <button class="tab-link" onclick="openTab(event, 'Location')">
+                            <i class="fa-solid fa-map-location-dot"></i> Address & Location
+                        </button>
+                        <button class="tab-link" onclick="openTab(event, 'Bank')">
+                            <i class="fa-solid fa-building-columns"></i> Bank Details
+                        </button>
+                        <button class="tab-link" onclick="openTab(event, 'Legal')">
+                            <i class="fa-solid fa-scale-balanced"></i> Legal & Tax (NTN)
+                        </button>
+                    </div>
+                </div>
+
+                <div class="settings-content">
+
+                    <div id="Company" class="tab-content active-content">
+                        <div class="content-header">
+                            <h3>Company Information</h3>
+                            <p>Enter your basic business details for public view.</p>
+                        </div>
+                        <form>
+                            <div class="grid-2">
+                                <div class="form-group">
+                                    <label>Company Name <span class="text-red">*</span></label>
+                                    <input type="text" class="form-control" value="Solar Tech Solutions">
+                                </div>
+                                <div class="form-group">
+                                    <label>Owner Name <span class="text-red">*</span></label>
+                                    <input type="text" class="form-control" placeholder="e.g. Ali Khan">
+                                </div>
+                                <div class="form-group">
+                                    <label>Official Email</label>
+                                    <input type="email" class="form-control" value="contact@solartech.com" readonly style="background:#f9f9f9">
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone Number <span class="text-red">*</span></label>
+                                    <input type="text" class="form-control" value="+92 300 1234567">
+                                </div>
+                                <div class="form-group">
+                                    <label>Website (Optional)</label>
+                                    <input type="text" class="form-control" placeholder="www.yourwebsite.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>Established Year</label>
+                                    <input type="number" class="form-control" placeholder="2020">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label>About Company</label>
+                                <textarea class="form-control" rows="4" placeholder="Describe your expertise, services, and experience..."></textarea>
+                            </div>
+                            <div class="form-actions-right">
+                                <button type="button" class="btn-save">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="Location" class="tab-content">
+                        <div class="content-header">
+                            <h3>Office Address</h3>
+                            <p>Where is your head office located?</p>
+                        </div>
+                        <form>
+                            <div class="form-group">
+                                <label>Street Address</label>
+                                <input type="text" class="form-control" placeholder="Plot No, Street, Building Name">
+                            </div>
+                            <div class="grid-2 mt-3">
+                                <div class="form-group">
+                                    <label>City</label>
+                                    <select class="form-control">
+                                        <option>Karachi</option>
+                                        <option>Lahore</option>
+                                        <option>Islamabad</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Zip Code</label>
+                                    <input type="text" class="form-control" placeholder="75500">
+                                </div>
+                                <div class="form-group">
+                                    <label>Province</label>
+                                    <input type="text" class="form-control" value="Sindh">
+                                </div>
+                                <div class="form-group">
+                                    <label>Nearest Landmark</label>
+                                    <input type="text" class="form-control" placeholder="e.g. Near Civic Center">
+                                </div>
+                            </div>
+                            <div class="form-actions-right">
+                                <button type="button" class="btn-save">Save Location</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="Bank" class="tab-content">
+                        <div class="content-header">
+                            <h3>Bank Information</h3>
+                            <p>We need this to transfer your earnings.</p>
+                        </div>
+                        <div class="alert-box">
+                            <i class="fa-solid fa-lock"></i> Your bank details are secure and only used for payouts.
+                        </div>
+                        <form class="mt-3">
+                            <div class="grid-2">
+                                <div class="form-group">
+                                    <label>Bank Name</label>
+                                    <select class="form-control">
+                                        <option>Meezan Bank</option>
+                                        <option>HBL</option>
+                                        <option>UBL</option>
+                                        <option>Bank Alfalah</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Account Title</label>
+                                    <input type="text" class="form-control" placeholder="Same as Company/Owner Name">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label>IBAN Number <span class="text-red">*</span></label>
+                                <input type="text" class="form-control" placeholder="PKxx MZEN xxxx xxxx xxxx xxxx">
+                            </div>
+                            <div class="form-actions-right">
+                                <button type="button" class="btn-save">Update Bank Info</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="Legal" class="tab-content">
+                        <div class="content-header">
+                            <h3>Legal & Tax Documents</h3>
+                            <p>Upload documents to get the "Verified" badge.</p>
+                        </div>
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label>NTN Number</label>
+                                <input type="text" class="form-control" placeholder="xxxxxxx-x">
+                            </div>
+                            <div class="form-group">
+                                <label>STRN (Sales Tax) - Optional</label>
+                                <input type="text" class="form-control" placeholder="17-00-xxxx-xxx-xx">
+                            </div>
+                        </div>
+
+                        <h4 class="mt-3" style="font-size:14px; margin-bottom:10px;">Required Uploads</h4>
+                        <div class="docs-grid">
+                            <div class="doc-box">
+                                <div class="icon"><i class="fa-solid fa-id-card"></i></div>
+                                <span>CNIC (Front & Back)</span>
+                                <button type="button" class="btn-up">Upload</button>
+                            </div>
+                            <div class="doc-box">
+                                <div class="icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                                <span>NTN Certificate</span>
+                                <button type="button" class="btn-up">Upload</button>
+                            </div>
+                            <div class="doc-box">
+                                <div class="icon"><i class="fa-solid fa-file-signature"></i></div>
+                                <span>Company Letterhead</span>
+                                <button type="button" class="btn-up">Upload</button>
+                            </div>
+                        </div>
+
+                       <div class="form-actions-right">
+    <button type="button" class="btn-save" onclick="window.location.href='verification-status.html'">
+        Submit for Verification
+    </button>
+</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+<script src="../../js/vendor.js"></script>
+</body>
+</html>

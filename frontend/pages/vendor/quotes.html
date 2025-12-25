@@ -4,20 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Quotations - ISES Partner</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../../css/vendor-dashboard.css"> 
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../../css/vendor-dashboard.css">
 </head>
 
 <body>
 
     <nav class="sidebar" id="sidebar">
         <div class="brand">
-            <i class="fa-solid fa-leaf brand-icon"></i> 
+            <i class="fa-solid fa-leaf brand-icon"></i>
             <div class="brand-text">
                 <h2>ISES</h2>
                 <span>PARTNER</span>
             </div>
+            <button class="close-sidebar-btn" id="close-sidebar-btn"><i class="fa-solid fa-xmark"></i></button>
         </div>
 
         <ul class="menu-list">
@@ -27,6 +29,20 @@
             <li><a href="my-projects.html" class="menu-item"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
             <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
             <li><a href="profile.html" class="menu-item"><i class="fa-solid fa-user-gear"></i> <span>Company Profile</span></a></li>
+           <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 20px;">
+
+            <li>
+                <a href="profile-setup.html" class="menu-item">
+                    <i class="fa-solid fa-shield-halved"></i> <span>Verification Center</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="profile.html" class="menu-item">
+                    <i class="fa-solid fa-building"></i> <span>Company Profile</span>
+                </a>
+            </li>
+
         </ul>
 
         <div class="logout-section">
@@ -38,10 +54,10 @@
 
         <header class="top-header">
             <div class="header-left">
-                <button class="menu-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+                <button class="menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></button>
                 <div class="page-title">
                     <h1>My Quotations</h1>
-                    <p>Track the status of your sent quotes and bids</p>
+                    <p>Manage proposals and negotiate with clients</p>
                 </div>
             </div>
 
@@ -57,132 +73,156 @@
         <div class="dashboard-container">
 
             <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <span class="stat-title">Total Sent</span>
-                        <h2 class="stat-value">18</h2>
+                <div class="mini-stat-card blue">
+                    <div class="ms-info">
+                        <h4>Total Sent</h4>
+                        <h2>18</h2>
                     </div>
-                    <div class="stat-icon icon-blue"><i class="fa-solid fa-paper-plane"></i></div>
+                    <div class="ms-icon bg-blue-soft"><i class="fa-solid fa-paper-plane"></i></div>
                 </div>
 
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <span class="stat-title">Accepted</span>
-                        <h2 class="stat-value">5</h2>
+                <div class="mini-stat-card orange">
+                    <div class="ms-info">
+                        <h4>In Negotiation</h4>
+                        <h2>3</h2>
                     </div>
-                    <div class="stat-icon icon-green"><i class="fa-solid fa-check-circle"></i></div>
+                    <div class="ms-icon bg-orange-soft"><i class="fa-solid fa-comments-dollar"></i></div>
                 </div>
 
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <span class="stat-title">Pending</span>
-                        <h2 class="stat-value">11</h2>
+                <div class="mini-stat-card green">
+                    <div class="ms-info">
+                        <h4>Accepted</h4>
+                        <h2>5</h2>
                     </div>
-                    <div class="stat-icon icon-yellow"><i class="fa-solid fa-clock"></i></div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <span class="stat-title">Rejected</span>
-                        <h2 class="stat-value">2</h2>
-                    </div>
-                    <div class="stat-icon icon-red"><i class="fa-solid fa-circle-xmark"></i></div>
+                    <div class="ms-icon bg-green-soft"><i class="fa-solid fa-check"></i></div>
                 </div>
             </div>
 
-            <div class="content-card">
-                <div class="card-header">
-                    <h3>Recent Quotations</h3>
-                    <button class="btn-new-quote"><i class="fa-solid fa-plus"></i> Create Quote</button>
+            <div class="smart-container">
+
+                <div class="smart-tabs">
+                    <button class="tab-btn active">All Quotes</button>
+                    <button class="tab-btn">Needs Action <span class="badge-count">2</span></button>
+                    <button class="tab-btn">Accepted</button>
+                    <button class="tab-btn">Archived</button>
                 </div>
 
-                <div class="filter-section">
-                    <div class="search-box">
+                <div class="table-controls">
+                    <div class="search-box-smart">
                         <i class="fa-solid fa-search"></i>
-                        <input type="text" placeholder="Search by Client ID or Name...">
+                        <input type="text" placeholder="Search client or Quote ID...">
                     </div>
-                    <select class="status-select">
-                        <option value="all">All Status</option>
-                        <option value="pending">Pending</option>
-                        <option value="accepted">Accepted</option>
-                        <option value="rejected">Rejected</option>
-                    </select>
+                    <a href="#" class="create-btn"><i class="fa-solid fa-plus"></i> Create New Quote</a>
                 </div>
 
                 <div class="table-responsive">
-                    <table class="custom-table">
+                    <table class="smart-table">
                         <thead>
                             <tr>
-                                <th>Client Name</th>
-                                <th>Quote ID</th>
-                                <th>Date Sent</th>
+                                <th>Client Details</th>
+                                <th>Quote Info</th>
+                                <th>Last Activity (Status)</th>
                                 <th>Amount</th>
-                                <th>Status</th>
-                                <th class="text-center">Actions</th>
+                                <th class="text-center">Quick Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+
+                            <tr class="highlight-row">
                                 <td>
-                                    <div class="user-cell">
-                                        <div class="avatar-circle bg-light-blue">AA</div>
-                                        <div class="user-details">
-                                            <span class="user-name">Ali Ahmed</span>
-                                            <span class="user-meta">5kW Solar System</span>
+                                    <div class="client-box">
+                                        <div class="client-avatar blue-avatar">AA</div>
+                                        <div class="client-info">
+                                            <h5>Ali Ahmed</h5>
+                                            <span>Lahore, DHA Phase 6</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="text-secondary">#QT-2024-001</td>
-                                <td>Oct 24, 2023</td>
-                                <td class="font-weight-bold">Rs. 850,000</td>
-                                <td><span class="badge badge-accepted">Accepted</span></td>
-                                <td class="text-center">
-                                    <div class="action-buttons">
-                                        <button class="btn-icon" title="View"><i class="fa-solid fa-eye"></i></button>
-                                        <button class="btn-icon" title="Download"><i class="fa-solid fa-download"></i></button>
+                                <td>
+                                    <div class="quote-id">#QT-2024-001</div>
+                                    <div class="quote-desc">10kW Hybrid System</div>
+                                </td>
+                                <td>
+                                    <div class="status-pill negotiating">
+                                        <span class="dot dot-orange"></span> Negotiation
+                                    </div>
+                                    <div class="last-activity">
+                                        <i class="fa-solid fa-reply orange-text"></i>
+                                        <span class="text-highlight">Client asked for discount</span>
+                                        <div class="time-ago">2 hours ago</div>
+                                    </div>
+                                </td>
+                                <td class="quote-amount">Rs. 850,000</td>
+                                <td>
+                                    <div class="action-group">
+                                        <button class="btn-action btn-chat-active" title="Reply to Client">
+                                            <i class="fa-solid fa-comment-dots"></i>
+                                            <span class="notif-badge">1</span>
+                                        </button>
+                                        <button class="btn-action" title="Edit/Revise Quote"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button class="btn-action" title="View Details"><i class="fa-solid fa-eye"></i></button>
                                     </div>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td>
-                                    <div class="user-cell">
-                                        <div class="avatar-circle bg-light-green">GR</div>
-                                        <div class="user-details">
-                                            <span class="user-name">Green Residency</span>
-                                            <span class="user-meta">Inverter Installation</span>
+                                    <div class="client-box">
+                                        <div class="client-avatar green-avatar">GR</div>
+                                        <div class="client-info">
+                                            <h5>Green Residency</h5>
+                                            <span>Islamabad, F-10</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="text-secondary">#QT-2024-002</td>
-                                <td>Oct 22, 2023</td>
-                                <td class="font-weight-bold">Rs. 120,000</td>
-                                <td><span class="badge badge-pending">Pending</span></td>
-                                <td class="text-center">
-                                    <div class="action-buttons">
-                                        <button class="btn-icon" title="View"><i class="fa-solid fa-eye"></i></button>
-                                        <button class="btn-icon" title="Edit"><i class="fa-solid fa-pen"></i></button>
+                                <td>
+                                    <div class="quote-id">#QT-2024-002</div>
+                                    <div class="quote-desc">Inverter Only</div>
+                                </td>
+                                <td>
+                                    <div class="status-pill sent">
+                                        <span class="dot dot-blue"></span> Sent
+                                    </div>
+                                    <div class="last-activity">
+                                        <span class="text-muted">Waiting for client view...</span>
+                                    </div>
+                                </td>
+                                <td class="quote-amount">Rs. 120,000</td>
+                                <td>
+                                    <div class="action-group">
+                                        <button class="btn-action" title="Send Reminder"><i class="fa-regular fa-bell"></i></button>
+                                        <button class="btn-action" title="View Details"><i class="fa-solid fa-eye"></i></button>
                                     </div>
                                 </td>
                             </tr>
-                            
-                             <tr>
+
+                            <tr>
                                 <td>
-                                    <div class="user-cell">
-                                        <div class="avatar-circle bg-light-red">MS</div>
-                                        <div class="user-details">
-                                            <span class="user-name">M. Siddique</span>
-                                            <span class="user-meta">12kW Hybrid</span>
+                                    <div class="client-box">
+                                        <div class="client-avatar red-avatar">MS</div>
+                                        <div class="client-info">
+                                            <h5>M. Siddique</h5>
+                                            <span>Karachi, Gulshan</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="text-secondary">#QT-2024-003</td>
-                                <td>Oct 20, 2023</td>
-                                <td class="font-weight-bold">Rs. 1,450,000</td>
-                                <td><span class="badge badge-rejected">Rejected</span></td>
-                                <td class="text-center">
-                                    <div class="action-buttons">
-                                        <button class="btn-icon" title="View"><i class="fa-solid fa-eye"></i></button>
+                                <td>
+                                    <div class="quote-id">#QT-2024-003</div>
+                                    <div class="quote-desc">12kW On-Grid</div>
+                                </td>
+                                <td>
+                                    <div class="status-pill accepted">
+                                        <span class="dot dot-green"></span> Accepted
+                                    </div>
+                                    <div class="last-activity">
+                                        <span class="green-text"><i class="fa-solid fa-check-double"></i> Project Created</span>
+                                    </div>
+                                </td>
+                                <td class="quote-amount">Rs. 1,450,000</td>
+                                <td>
+                                    <div class="action-group">
+                                        <button class="btn-action" title="Go to Project"><i class="fa-solid fa-briefcase"></i></button>
+                                        <button class="btn-action" title="Download Invoice"><i class="fa-solid fa-file-pdf"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -192,7 +232,7 @@
                 </div>
             </div>
 
-        </div> 
+        </div>
     </main>
 
     <script src="../../js/vendor.js"></script>

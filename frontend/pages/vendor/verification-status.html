@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Status - ISES</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../../css/vendor-dashboard.css">
+</head>
+<body>
+
+   <nav class="sidebar" id="sidebar">
+        <div class="brand">
+            <i class="fa-solid fa-leaf brand-icon"></i>
+            <div class="brand-text">
+                <h2>ISES</h2>
+                <span>PARTNER</span>
+            </div>
+        </div>
+
+        <ul class="menu-list">
+            <li><a href="dashboard.html" class="menu-item active"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
+            <li><a href="leads.html" class="menu-item"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
+            <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
+            <li><a href="my-projects.html" class="menu-item"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
+            <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
+
+            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 20px;">
+
+            <li>
+                <a href="profile-setup.html" class="menu-item">
+                    <i class="fa-solid fa-shield-halved"></i> <span>Verification Center</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="profile.html" class="menu-item">
+                    <i class="fa-solid fa-building"></i> <span>Company Profile</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="logout-section">
+            <a href="../../index.html" class="menu-item logout-btn"><i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span></a>
+        </div>
+    </nav>
+
+
+    <main class="main-content">
+        <header class="top-header">
+            <div class="header-left">
+                <div class="page-title">
+                    <h1>Verification Status</h1>
+                    <p>Track your application progress</p>
+                </div>
+            </div>
+            <div class="user-profile">
+                <div class="user-info"><span class="name">Solar Tech</span><span class="role">Unverified</span></div>
+                <div class="user-img" style="background-image: url('https://www.w3schools.com/howto/img_avatar.png');"></div>
+            </div>
+        </header>
+
+        <div class="dashboard-container">
+
+            <div style="margin-bottom: 20px; text-align: center;">
+                <p style="font-size: 12px; color: #777; margin-bottom: 5px;">(Demo Controls: Click to see different states)</p>
+                <button onclick="showState('pending')" style="padding: 5px 10px; cursor: pointer;">Show Pending</button>
+                <button onclick="showState('rejected')" style="padding: 5px 10px; cursor: pointer;">Show Rejected</button>
+                <button onclick="showState('approved')" style="padding: 5px 10px; cursor: pointer;">Show Approved</button>
+            </div>
+            <div class="status-wrapper">
+
+                <div id="view-pending" class="status-card">
+                    <div class="status-icon pulse-anim pending">
+                        <i class="fa-solid fa-hourglass-half"></i>
+                    </div>
+                    <h2>Under Review</h2>
+                    <p class="status-desc">Thank you for submitting your documents. Our admin team is currently reviewing your profile details.</p>
+
+                    <div class="status-timeline">
+                        <div class="t-step completed">
+                            <i class="fa-solid fa-check"></i> <span>Submission</span>
+                        </div>
+                        <div class="t-line active"></div>
+                        <div class="t-step active">
+                            <i class="fa-solid fa-magnifying-glass"></i> <span>Review</span>
+                        </div>
+                        <div class="t-line"></div>
+                        <div class="t-step">
+                            <i class="fa-solid fa-star"></i> <span>Approval</span>
+                        </div>
+                    </div>
+
+                    <div class="info-alert">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span>Expected time: <strong>24 - 48 Hours</strong>. You will receive an email once updated.</span>
+                    </div>
+                </div>
+
+                <div id="view-rejected" class="status-card" style="display: none;">
+                    <div class="status-icon rejected">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </div>
+                    <h2 class="text-danger">Action Required</h2>
+                    <p class="status-desc">Unfortunately, your verification could not be completed. Please fix the issues below and resubmit.</p>
+
+                    <div class="feedback-box">
+                        <h4><i class="fa-solid fa-comment-dots"></i> Admin Note:</h4>
+                        <p>"The CNIC image uploaded is blurry and the expiration date is not visible. Please upload a clear scan."</p>
+                    </div>
+
+                    <div class="action-buttons-center">
+                        <a href="profile.html" class="btn-primary-lg">Edit Profile & Resubmit</a>
+                        <button class="btn-ghost">Contact Support</button>
+                    </div>
+                </div>
+
+                <div id="view-approved" class="status-card" style="display: none;">
+                    <div class="status-icon approved bounce-anim">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h2 class="text-success">You are Verified!</h2>
+                    <p class="status-desc">Congratulations! Your profile has been approved. You now have full access to bid on solar projects.</p>
+
+                    <div class="success-features">
+                        <div class="feat-item"><i class="fa-solid fa-check"></i> Unlimited Bidding</div>
+                        <div class="feat-item"><i class="fa-solid fa-check"></i> Verified Badge</div>
+                        <div class="feat-item"><i class="fa-solid fa-check"></i> Access to Leads</div>
+                    </div>
+
+                    <div class="action-buttons-center">
+                        <a href="leads.html" class="btn-primary-lg">Browse New Leads</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+<script src="../../js/vendor.js"></script>
+</body>
+</html>

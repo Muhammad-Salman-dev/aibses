@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Earnings - ISES Partner</title>
-    
+    <title>My Earnings | ISES Partner</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <link rel="stylesheet" href="../../css/vendor-dashboard.css">
 </head>
 <body>
 
     <nav class="sidebar" id="sidebar">
         <div class="brand">
-            <i class="fa-solid fa-leaf brand-icon"></i> 
+            <i class="fa-solid fa-leaf brand-icon"></i>
             <div class="brand-text">
                 <h2>ISES</h2>
                 <span>PARTNER</span>
@@ -25,159 +26,195 @@
             <li><a href="leads.html" class="menu-item"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
             <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
             <li><a href="my-projects.html" class="menu-item"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
-            <li><a href="#" class="menu-item active"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
-            <li><a href="profile.html" class="menu-item"><i class="fa-solid fa-user-gear"></i> <span>Company Profile</span></a></li>
+
+            <li><a href="earnings.html" class="menu-item active"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
+
+            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 20px;">
+
+            <li>
+                <a href="profile-setup.html" class="menu-item">
+                    <i class="fa-solid fa-shield-halved"></i> <span>Verification Center</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="profile.html" class="menu-item">
+                    <i class="fa-solid fa-building"></i> <span>Company Profile</span>
+                </a>
+            </li>
         </ul>
 
         <div class="logout-section">
             <a href="../../index.html" class="menu-item logout-btn"><i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span></a>
         </div>
     </nav>
-
     <main class="main-content">
-
         <header class="top-header">
-            <div class="header-left">
-                <button class="menu-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
-                <div class="page-title">
-                    <h1>Earnings Overview</h1>
-                    <p>View total revenue, payment history, and pending balances</p>
+            <div class="header-toggle">
+                <button id="openSidebar" class="menu-toggle-btn"><i class="fa-solid fa-bars"></i></button>
+                <div class="page-breadcrumb">
+                    <h1>Financial Overview</h1>
+                    <span>Manage your revenue and payouts</span>
                 </div>
             </div>
-
-            <div class="user-profile">
-                <div class="user-info">
+            <div class="header-actions">
+                <div class="user-profile">
                     <span class="name">Solar Tech</span>
-                    <span class="role">Verified Vendor</span>
+                    <img src="https://ui-avatars.com/api/?name=Solar+Tech&background=0D8ABC&color=fff" alt="User" class="user-avatar">
                 </div>
-                <div class="user-img" style="background-image: url('https://www.w3schools.com/howto/img_avatar.png');"></div>
             </div>
         </header>
 
         <div class="dashboard-container">
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <span class="stat-title">Total Earned (Lifetime)</span>
-                        <h2 class="stat-value" style="color: #2dce89;">Rs 15,500,000</h2> 
+            <div class="earnings-grid">
+
+                <div class="wallet-card">
+                    <div class="wallet-header">
+                        <span>Available Balance</span>
+                        <i class="fa-brands fa-cc-visa"></i>
                     </div>
-                    <div class="stat-icon icon-green">
-                        <i class="fa-solid fa-chart-line"></i>
+                    <div class="wallet-balance">
+                        Rs 950,000
+                    </div>
+                    <div class="wallet-footer">
+                        <div class="wallet-info">
+                            <span>Pending Clearance</span>
+                            <strong>Rs 450,000</strong>
+                        </div>
+                        <button class="btn-withdraw">
+                            Withdraw Funds <i class="fa-solid fa-arrow-right"></i>
+                        </button>
                     </div>
                 </div>
 
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <span class="stat-title">Paid Out (Last 30 Days)</span>
-                        <h2 class="stat-value" style="color: #5e72e4;">Rs 2,100,000</h2>
+                <div class="finance-stats">
+                    <div class="mini-stat-card">
+                        <div class="icon-box green-box"><i class="fa-solid fa-sack-dollar"></i></div>
+                        <div>
+                            <p>Total Revenue</p>
+                            <h3>Rs 15.5M</h3>
+                            <span class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> +12% this month</span>
+                        </div>
                     </div>
-                    <div class="stat-icon icon-blue">
-                        <i class="fa-solid fa-wallet"></i>
-                    </div>
-                </div>
 
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <span class="stat-title">Pending Balance</span>
-                        <h2 class="stat-value" style="color: #fb6340;">Rs 950,000</h2>
+                    <div class="mini-stat-card">
+                        <div class="icon-box blue-box"><i class="fa-solid fa-building-columns"></i></div>
+                        <div>
+                            <p>Total Withdrawn</p>
+                            <h3>Rs 14.1M</h3>
+                            <span class="sub-text">Last: Nov 15, 2025</span>
+                        </div>
                     </div>
-                    <div class="stat-icon icon-orange">
-                        <i class="fa-solid fa-hourglass-half"></i>
+
+                    <div class="bank-card">
+                        <div class="bank-icon"><i class="fa-solid fa-building-columns"></i></div>
+                        <div class="bank-details">
+                            <span class="bank-name">Meezan Bank Ltd</span>
+                            <span class="bank-account">PK32 MEZN **** **** 9012</span>
+                            <span class="bank-status verified"><i class="fa-solid fa-check-circle"></i> Verified</span>
+                        </div>
+                        <button class="btn-edit-bank"><i class="fa-solid fa-pen"></i></button>
                     </div>
                 </div>
             </div>
 
-            <div class="recent-section">
-
-                <div class="section-header">
-                    <h3>Payment History</h3>
-                    <button class="btn-primary">
-                        <i class="fa-solid fa-download"></i>
-                        Download Report
-                    </button>
-                </div>
-
-                <div class="filter-card">
-                    <div class="search-box">
-                        <i class="fa-solid fa-calendar"></i>
-                        <input type="text" placeholder="Filter by Date Range...">
-                    </div>
-
-                    <div class="filter-options">
-                        <select class="custom-select">
-                            <option>All Status</option>
-                            <option>Completed</option>
-                            <option>Pending</option>
-                            <option>Reversed</option>
-                        </select>
-                        <button class="btn-filter">Apply</button>
+            <div class="content-section">
+                <div class="section-header-row">
+                    <h3>Recent Transactions</h3>
+                    <div class="header-tools">
+                        <div class="date-range">
+                            <i class="fa-regular fa-calendar"></i>
+                            <span>Last 30 Days</span>
+                        </div>
+                        <button class="btn-outline"><i class="fa-solid fa-download"></i> CSV</button>
                     </div>
                 </div>
 
                 <div class="table-responsive">
-                    <table class="custom-table">
+                    <table class="finance-table">
                         <thead>
                             <tr>
-                                <th>Transaction ID</th>
+                                <th>Transaction</th>
                                 <th>Date</th>
-                                <th>Description</th>
+                                <th>Source/Method</th>
                                 <th>Amount</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th>Receipt</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><span class="id-tag">TXN-4592</span></td>
-                                <td>2025-11-28</td>
-                                <td>Final payment for Project #P-902 (Khan Residence)</td>
-                                <td><span class="amount-plus">+ Rs 800,000</span></td>
-                                <td><span class="status-dot green"></span> Completed</td>
-                                <td><button class="btn-manage">View Invoice</button></td>
+                                <td>
+                                    <div class="txn-info">
+                                        <div class="txn-icon in"><i class="fa-solid fa-arrow-down"></i></div>
+                                        <div>
+                                            <span class="txn-title">Project Payment</span>
+                                            <span class="txn-id">#TXN-4592 - Khan Residence</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Nov 28, 2025</td>
+                                <td>Solar Install Final</td>
+                                <td class="amount-plus">+ Rs 800,000</td>
+                                <td><span class="badge badge-success">Completed</span></td>
+                                <td><button class="action-btn"><i class="fa-solid fa-file-pdf"></i></button></td>
                             </tr>
 
                             <tr>
-                                <td><span class="id-tag">TXN-4593</span></td>
-                                <td>2025-12-05</td>
-                                <td>Milestone 1 for Project #P-905 (Zahid Commercial)</td>
-                                <td><span class="amount-plus">+ Rs 450,000</span></td>
-                                <td><span class="status-dot orange"></span> Pending</td>
-                                <td><button class="btn-manage">Track Status</button></td>
+                                <td>
+                                    <div class="txn-info">
+                                        <div class="txn-icon pending"><i class="fa-solid fa-clock"></i></div>
+                                        <div>
+                                            <span class="txn-title">Milestone Payment</span>
+                                            <span class="txn-id">#TXN-4593 - Zahid Commercial</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Dec 05, 2025</td>
+                                <td>Escrow Release</td>
+                                <td class="amount-plus">+ Rs 450,000</td>
+                                <td><span class="badge badge-warning">Pending</span></td>
+                                <td><button class="action-btn"><i class="fa-solid fa-eye"></i></button></td>
                             </tr>
 
                             <tr>
-                                <td><span class="id-tag">WDR-0012</span></td>
-                                <td>2025-11-15</td>
-                                <td>Weekly Withdrawal to Bank Account</td>
-                                <td><span class="amount-minus">- Rs 1,500,000</span></td>
-                                <td><span class="status-dot green"></span> Processed</td>
-                                <td><button class="btn-manage">Details</button></td>
+                                <td>
+                                    <div class="txn-info">
+                                        <div class="txn-icon out"><i class="fa-solid fa-arrow-up"></i></div>
+                                        <div>
+                                            <span class="txn-title">Withdrawal</span>
+                                            <span class="txn-id">#WDR-0012</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Nov 15, 2025</td>
+                                <td>Meezan Bank ****9012</td>
+                                <td class="amount-minus">- Rs 1,500,000</td>
+                                <td><span class="badge badge-success">Processed</span></td>
+                                <td><button class="action-btn"><i class="fa-solid fa-file-invoice"></i></button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-
-                <div class="pagination-container">
-                    <span class="page-info">Showing 3 of 50 transactions</span>
-                    <div class="pagination">
-                        <a href="#" class="page-link disabled">&laquo;</a>
-                        <a href="#" class="page-link active">1</a>
-                        <a href="#" class="page-link">2</a>
-                        <a href="#" class="page-link">3</a>
-                        <a href="#" class="page-link">&raquo;</a>
-                    </div>
-                </div>
-
             </div>
+
         </div>
     </main>
 
     <script>
-        function toggleSidebar() {
+        // Sidebar Toggle Logic (Sirf Mobile ke liye, Desktop pe asar nahi karega)
+        document.getElementById('openSidebar').addEventListener('click', () => {
             document.getElementById('sidebar').classList.toggle('active');
-            document.querySelector('.main-content').classList.toggle('sidebar-active');
-        }
+        });
+
+        // Agar tumhara sidebar "Cross" button ke bina hai, toh mobile par band karne ke liye
+        // humein content area pe click karwana padega (Optional UX improvement)
+        document.querySelector('.main-content').addEventListener('click', () => {
+            if(window.innerWidth < 992) {
+                document.getElementById('sidebar').classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>

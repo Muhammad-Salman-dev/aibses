@@ -4,48 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Leads - ISES Partner</title>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../css/vendor-dashboard.css">
-
-    <style>
-        /* --- SEARCH ICON FIX (Perfect Center) --- */
-        .search-box { 
-            position: relative; 
-            flex: 1; 
-            min-width: 200px; 
-        }
-        .search-box input { 
-            width: 100%; 
-            padding: 10px 10px 10px 40px; 
-            border: 1px solid #ddd; 
-            border-radius: 6px; 
-            height: 45px;
-        }
-        .search-box i { 
-            position: absolute; 
-            left: 15px; 
-            top: 50%; 
-            transform: translateY(-50%); /* Icon ko exact center krne k liye */
-            color: #aaa; 
-            pointer-events: none;
-        }
-
-        /* --- FILTERS STYLING --- */
-        .filter-card { background: #fff; padding: 20px; border-radius: 8px; display: flex; flex-wrap: wrap; gap: 15px; align-items: center; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .custom-select { padding: 0 10px; height: 45px; border: 1px solid #ddd; border-radius: 6px; min-width: 150px; background-color: #fff;}
-        .btn-filter { background: #2c3e50; color: #fff; border: none; height: 45px; padding: 0 25px; border-radius: 6px; cursor: pointer; font-weight: 500;}
-        .btn-filter:hover { background: #34495e; }
-        
-        /* Helpers for JS Logic */
-        .location-text { display: block; } 
-    </style>
 </head>
 <body>
 
     <nav class="sidebar" id="sidebar">
         <div class="brand">
-            <i class="fa-solid fa-leaf brand-icon"></i> 
+            <i class="fa-solid fa-leaf brand-icon"></i>
             <div class="brand-text">
                 <h2>ISES</h2>
                 <span>PARTNER</span>
@@ -54,11 +21,24 @@
 
         <ul class="menu-list">
             <li><a href="dashboard.html" class="menu-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
-            <li><a href="#" class="menu-item active"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
+            <li><a href="leads.html" class="menu-item active"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
             <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
             <li><a href="my-projects.html" class="menu-item"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
             <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
-            <li><a href="profile.html" class="menu-item"><i class="fa-solid fa-user-gear"></i> <span>Company Profile</span></a></li>
+
+            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 20px;">
+
+            <li>
+                <a href="profile-setup.html" class="menu-item">
+                    <i class="fa-solid fa-shield-halved"></i> <span>Verification Center</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="profile.html" class="menu-item">
+                    <i class="fa-solid fa-building"></i> <span>Company Profile</span>
+                </a>
+            </li>
         </ul>
 
         <div class="logout-section">
@@ -69,7 +49,7 @@
     <main class="main-content">
         <header class="top-header">
             <div class="header-left">
-                <button class="menu-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+                <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
                 <div class="page-title">
                     <h1>Solar Opportunities</h1>
                     <p>Find and bid on new installation requests</p>
@@ -195,7 +175,7 @@
         </div>
     </main>
 
-    <script src="../../js/vendor.js"></script> 
+    <script src="../../js/vendor.js"></script>
 
 </body>
 </html>

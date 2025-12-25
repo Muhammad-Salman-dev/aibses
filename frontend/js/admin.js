@@ -1,7 +1,7 @@
 // admin.js
 
 // Global variables top par declare karein
-let currentRow = null; 
+let currentRow = null;
 let activePriceRow = null;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -30,7 +30,7 @@ document.addEventListener('click', (e) => {
         const row = e.target.closest('tr');
         if (row) {
             const name = row.cells[1].innerText;
-            
+
             document.getElementById('infoName').innerText = name;
             document.getElementById('infoAvatar').innerText = name.charAt(0);
             document.getElementById('infoRole').innerText = row.cells[2].innerText;
@@ -48,16 +48,45 @@ document.addEventListener('click', (e) => {
     }
 
    // 3. Verify Button (No inline CSS anymore)
+   // 3. Verify Button (Color Fix Added)
     if (e.target.innerText === 'Verify') {
         const row = e.target.closest('tr');
         if (row && typeof openActionPopup === 'function') {
-            // Humne color code hata kar sirf class pass kar di
+
+            // Popup kholne ka function
             openActionPopup(
-                'Verify User', 
-                `Confirm verification for <b>${row.cells[1].innerText}</b>?`, 
-                'modal-theme-success', // Yeh CSS class hai
+                'Verify User',
+                `Confirm verification for <b>${row.cells[1].innerText}</b>?`,
+                'modal-theme-success',
                 'fa-user-check'
             );
+
+            // === [FIX START] ===
+            // Thoda sa wait karke button par zabardasti Green Color lagana
+            setTimeout(() => {
+                // Koshish 1: ID ke zariye dhoondna (Standard way)
+                let btn = document.getElementById('confirmActionBtn');
+
+                // Koshish 2: Agar ID nahi mili, to Text se dhoondna
+                if (!btn) {
+                    const allBtns = document.querySelectorAll('button');
+                    for (let b of allBtns) {
+                        if (b.innerText.trim() === 'Confirm' && b.offsetParent !== null) { // Jo button visible ho
+                            btn = b;
+                            break;
+                        }
+                    }
+                }
+
+                // Agar button mil gaya to Green kar do
+                if (btn) {
+                    btn.style.backgroundColor = '#2dce89';
+                    btn.style.color = '#ffffff';
+                    btn.style.border = 'none';
+                    btn.style.boxShadow = '0 4px 6px rgba(45, 206, 137, 0.4)';
+                }
+            }, 50); // 50ms ka delay taaki popup load ho chuka ho
+            // === [FIX END] ===
         }
     }
 });
@@ -163,7 +192,7 @@ document.addEventListener('click', (e) => {
 });
 
 // ==========================================
-// GLOBAL HELPER FUNCTIONS 
+// GLOBAL HELPER FUNCTIONS
 // ==========================================
 
 // Ye function bahar hona chahiye taake har jagah se call ho sake
@@ -179,19 +208,19 @@ function openActionPopup(title, msg, color, icon) {
         modalMessage.innerHTML = msg;
         modalIcon.innerHTML = `<i class="fa-solid ${icon}" style="color: ${color}"></i>`;
         confirmBtn.style.backgroundColor = color;
-        
+
         // Modal dikhao
         actionModal.style.display = 'flex';
-        
+
         // Confirm button par action
         confirmBtn.onclick = () => {
             alert(title + " Processed Successfully! ✅");
             actionModal.style.display = 'none';
-            
+
             // Agar koi row delete karni ho (Vendors page ke liye)
             if (currentRow) {
                 currentRow.remove();
-                currentRow = null; 
+                currentRow = null;
             }
         };
     } else {
@@ -203,7 +232,7 @@ function openActionPopup(title, msg, color, icon) {
 function toggleDropdown(element) {
     const arrow = element.querySelector('.arrow-icon');
     if (arrow) arrow.classList.toggle('rotate');
-    
+
     const submenu = element.nextElementSibling;
     if (submenu) submenu.classList.toggle('open');
 }
@@ -244,7 +273,7 @@ if (exportBtn) {
         const original = exportBtn.innerHTML;
         // Button par loading spinner dikhayein
         exportBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Exporting...';
-        
+
         setTimeout(() => {
             // 1. Table se live data collect karna
             const table = document.querySelector(".finance-table");
@@ -254,13 +283,13 @@ if (exportBtn) {
                 return;
             }
             const rows = Array.from(table.querySelectorAll("tr"));
-            
+
             // 2. Data ko CSV string mein badalna
             const csvContent = rows.map(row => {
                 const cells = Array.from(row.querySelectorAll("th, td"));
                 return cells.map(cell => {
                     let data = cell.innerText.replace(/\s+/g, ' ').trim();
-                    return `"${data}"`; 
+                    return `"${data}"`;
                 }).join(",");
             }).join("\n");
 
@@ -271,10 +300,10 @@ if (exportBtn) {
             link.setAttribute("href", url);
             link.setAttribute("download", "ISES_Financial_Report_Dec2025.csv");
             document.body.appendChild(link);
-            
+
             link.click(); // File download trigger
             document.body.removeChild(link);
-            
+
             // 4. Success feedback
             alert("Financial Report (CSV) is downloaded!✅");
             exportBtn.innerHTML = original;
@@ -311,7 +340,7 @@ if (exportBtn) {
         card.onclick = function() {
             finCards.forEach(c => c.classList.remove('active-card'));
             this.classList.add('active-card');
-            
+
             // Sync with Table Filters
             const type = this.id;
             if (type === 'card-pending') {

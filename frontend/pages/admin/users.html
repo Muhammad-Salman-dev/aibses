@@ -63,32 +63,49 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>#USR-1001</td>
-                        <td><strong>Ali Khan</strong></td>
-                        <td><span class="badge blue">Homeowner</span></td>
-                        <td>Karachi</td>
-                        <td><span class="status success">Active</span></td>
-                        <td><button class="btn-xs btn-outline">Details</button></td>
-                    </tr>
-                    <tr>
-                        <td>#VND-502</td>
-                        <td><strong>SolarTech Ltd</strong></td>
-                        <td><span class="badge yellow">Vendor</span></td>
-                        <td>Islamabad</td>
-                        <td><span class="status success">Active</span></td>
-                        <td><button class="btn-xs btn-outline">Profile</button></td>
-                    </tr>
-                    <tr>
-                        <td>#USR-1045</td>
-                        <td><strong>Sara Ahmed</strong></td>
-                        <td><span class="badge blue">Homeowner</span></td>
-                        <td>Lahore</td>
-                        <td><span class="status pending">Unverified</span></td>
-                        <td><button class="btn-xs btn-outline">Verify</button></td>
-                    </tr>
+    <td>#USR-1001</td>
+    <td><strong>Ali Khan</strong></td>
+    <td><span class="badge blue-badge">Homeowner</span></td>
+    <td>Karachi</td>
+    <td><span class="status success">Active</span></td>
+    <td><button class="btn-xs view-user-btn">Details</button></td>
+</tr>
+<tr>
+    <td>#VND-502</td>
+    <td><strong>SolarTech Ltd</strong></td>
+    <td><span class="badge yellow-badge">Vendor</span></td>
+    <td>Islamabad</td>
+    <td><span class="status success">Active</span></td>
+    <td><button class="btn-xs view-user-btn">Profile</button></td>
+</tr>
+<tr>
+    <td>#USR-1045</td>
+    <td><strong>Sara Ahmed</strong></td>
+    <td><span class="badge blue-badge">Homeowner</span></td>
+    <td>Lahore</td>
+    <td><span class="status pending">Unverified</span></td>
+    <td><button class="btn-xs verify-user-btn">Verify</button></td>
+</tr>
                 </tbody>
             </table>
+<div id="infoModal" class="info-modal">
+    <div class="info-modal-content">
+        <i class="fa-solid fa-xmark close-info" id="closeInfoModal"></i>
+        <div class="info-modal-header">
+            <div class="info-avatar" id="infoAvatar"></div>
+            <h3 id="infoName"></h3>
+            <p id="infoRole"></p>
         </div>
+        <div class="info-details-list">
+            <div class="info-row"><label>User ID</label><span id="detID"></span></div>
+            <div class="info-row"><label>City</label><span id="detCity"></span></div>
+            <div class="info-row"><label>Status</label><span id="detStatus"></span></div>
+        </div>
+        <button class="btn-send-message">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+        </button>
+    </div>
+</div>
     </main>
     <script src="../../js/admin.js"></script>
 </body>

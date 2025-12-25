@@ -212,6 +212,49 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
 .btn-danger:hover { background: #dc2626; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); }
 .btn-ghost { background: white; border: 1px solid var(--border-light); color: var(--text-dark); }
 .btn-ghost:hover { border-color: var(--text-dark); background: #f8fafc; }
+/* --- DISPUTE ACTIONS DYNAMIC STYLES --- */
+
+/* 1. Base style (Normal state mein sab buttons gray/white honge) */
+.action-group .btn-sm {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid var(--border-light);
+    background: #f8fafc;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+/* 2. Hover aur Active Effects (Sirf tabhi color aayega jab mouse upar ho ya click kiya ho) */
+
+/* Mark Resolved - Green */
+#resolveDisputeBtn:hover, 
+#resolveDisputeBtn.active {
+    background-color: var(--primary-green) !important;
+    color: white !important;
+    border-color: var(--primary-green);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+/* Refund User - Red */
+#refundUserBtn:hover, 
+#refundUserBtn.active {
+    background-color: var(--danger-red) !important;
+    color: white !important;
+    border-color: var(--danger-red);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+/* Call Vendor - Blue */
+#callVendorBtn:hover, 
+#callVendorBtn.active {
+    background-color: var(--accent-blue) !important;
+    color: white !important;
+    border-color: var(--accent-blue);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
 
 /* Responsive Media Queries */
 @media (max-width: 1200px) {
@@ -277,10 +320,104 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
             transform: translateY(-5px); /* Hover par thoda upar uthega */
         }
 
+/* --- ULTIMATE SCROLLBAR HIDER --- */
 
+/* 1. Sidebar aur Menu dono se scrollbar hatao */
+.sidebar, .menu {
+    -ms-overflow-style: none !important;  /* IE/Edge ke liye */
+    scrollbar-width: none !important;  /* Firefox ke liye */
+    overflow-y: scroll !important; /* Scroll chalega par dikhega nahi */
+}
+
+/* 2. Chrome, Safari, Edge ke liye Zabardasti Hide */
+.sidebar::-webkit-scrollbar,
+.menu::-webkit-scrollbar {
+    display: none !important; /* Gayab */
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+}
+
+/* Safety: Agar fir bhi dikhe to track ko transparent kar do */
+.sidebar::-webkit-scrollbar-track,
+.menu::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.menu::-webkit-scrollbar-thumb {
+    background: transparent !important;
+}
+/* Status Badge Styling taake text nazar aaye */
+.status-paid {
+    background-color: #dcfce7 !important; /* Light Green */
+    color: #166534 !important;           /* Dark Green Text */
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.status-pending {
+    background-color: #fef9c3 !important; /* Light Yellow */
+    color: #854d0e !important;           /* Dark Brown Text */
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* Card Interaction Fix */
+.finance-card {
+    background: #ffffff !important;
+    transition: all 0.3s ease;
+}
+
+.finance-card.active-card {
+    background: #0f172a !important; /* Sirf active wala black hoga */
+    color: #ffffff !important;
+}
+
+.finance-card.active-card .fin-icon {
+    background: rgba(255,255,255,0.1) !important;
+    color: #4ade80 !important;
+}
+/* Status Badges visibility fix */
+.badge.status-paid {
+    background-color: #dcfce7 !important;
+    color: #166534 !important;
+    padding: 6px 14px;
+    border-radius: 8px; /* Square type look */
+    font-weight: 600;
+    display: inline-block;
+}
+
+.badge.status-pending {
+    background-color: #fef9c3 !important;
+    color: #854d0e !important;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* All, Credited, Pending tabs ko ek jaisa square style dena */
+.filter-tabs span {
+    padding: 8px 16px;
+    border-radius: 8px; /* Sub buttons square honge */
+    background: #f1f5f9;
+    color: #64748b;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.filter-tabs span.active {
+    background: #10b981 !important; /* Green background for active tab */
+    color: white !important;
+    border-bottom: none; /* Purani line hata di */
+}
+/*------------------------------------------------------------------------*/
     /* COMMISION PAGE STYLES */
     /* --- Commission / Finance Page Specific Styling --- */
-
+/*-------------------------------------------------------------------------*/
 /* 1. Grid Layout for Cards */
 .finance-grid {
     display: grid;
@@ -289,7 +426,8 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
     margin-bottom: 30px;
 }
 
-/* 2. Finance Cards Styling */
+/* --- Finance Cards Styling (Combined & Cleaned) --- */
+
 .finance-card {
     border-radius: 16px;
     padding: 25px;
@@ -299,13 +437,23 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
     align-items: flex-start;
     gap: 15px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    transition: transform 0.2s;
+    background: #ffffff !important; /* Default background White */
+    border: 1px solid #e2e8f0;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    color: var(--text-dark);
 }
 
-.finance-card:hover {
-    transform: translateY(-5px);
+/* Hover aur Active State: Jab click ho ya mouse upar aaye tab BLACK hoga */
+.finance-card:hover, 
+.finance-card.active-card {
+    background: #0f172a !important; /* Dark Black/Blue background */
+    color: #ffffff !important;      /* Text white ho jayega */
+    transform: translateY(-8px);    /* Thoda upar uthega */
+    border-color: #0f172a;
 }
 
+/* Icons ki default styling */
 .finance-card .fin-icon {
     width: 45px;
     height: 45px;
@@ -314,48 +462,28 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
     align-items: center;
     justify-content: center;
     font-size: 20px;
+    transition: 0.3s;
 }
 
-.finance-card .fin-info {
-    z-index: 2;
-}
-
-.finance-card h2 {
-    font-size: 28px;
-    font-weight: 700;
-    margin: 5px 0;
-}
-
-.finance-card small {
-    font-size: 13px;
-    font-weight: 500;
-    opacity: 0.8;
-}
-
-/* Dark Card (Primary) */
-.dark-card {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-    color: #fff;
-}
-.dark-card .fin-icon {
-    background: rgba(255,255,255,0.1);
-    color: #4ade80; /* Bright Green Icon */
-}
-.trend.up {
-    color: #4ade80;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-/* White Cards */
-.white-card {
-    background: #fff;
-    color: #333;
-    border: 1px solid #e2e8f0;
-}
+/* Icons Colors for White State */
 .blue-icon { background: #eff6ff; color: #2563eb; }
 .orange-icon { background: #fff7ed; color: #f59e0b; }
+/* Wallet icon (Green) default for first card */
+.finance-card .fa-wallet { background: #dcfce7; color: #10b981; padding: 12px; border-radius: 10px;}
 
+/* Hover/Active par icon ka look badalna */
+.finance-card:hover .fin-icon, 
+.finance-card.active-card .fin-icon {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #4ade80 !important; /* Green icon on dark bg */
+}
+
+/* Trend aur small text handling */
+.finance-card:hover small, 
+.finance-card:hover .trend,
+.finance-card.active-card small {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
 /* 3. Transaction Table Tweaks */
 .mt-large { margin-top: 30px; }
 
@@ -393,37 +521,49 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
     font-style: italic;
 }
 
-/* Filter Tabs inside Card Header */
-.filter-tabs {
-    display: flex;
-    gap: 15px;
-    font-size: 13px;
+/* Filter Tabs Styling */
+.filter-tabs span {
+    padding: 6px 15px;
+    border-radius: 6px;
+    background: #f1f5f9;
     color: #64748b;
     cursor: pointer;
-}
-.filter-tabs span.active {
-    color: #2563eb;
-    font-weight: 700;
-    border-bottom: 2px solid #2563eb;
-}
-
-/* Export Button */
-.btn-primary-icon {
-    background: #2563eb;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
     font-size: 13px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.btn-primary-icon:hover {
-    background: #1d4ed8;
+    transition: 0.2s;
+    display: inline-block;
 }
 
+.filter-tabs span.active {
+    background: #10b981 !important;
+    color: white !important;
+    font-weight: 600;
+}
+
+/* Badge colors taake text chhupay nahi */
+.badge.green {
+    background: #dcfce7 !important;
+    color: #15803d !important;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+.badge.yellow {
+    background: #fef9c3 !important;
+    color: #a16207 !important;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+/* Finance Card Hover Fast and Smooth */
+.finance-card {
+    transition: transform 0.2s, background 0.2s !important;
+}
+
+.finance-card:hover, .finance-card.active-card {
+    background: #0f172a !important;
+    color: white !important;
+    transform: translateY(-5px);
+}
 /* --- Sidebar Dropdown Styling --- */
 
 .menu-dropdown {
@@ -483,32 +623,213 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
     font-size: 12px;
     width: 15px; /* Icons ko align rakhne ke liye */
 }
-
-/* --- ULTIMATE SCROLLBAR HIDER --- */
-
-/* 1. Sidebar aur Menu dono se scrollbar hatao */
-.sidebar, .menu {
-    -ms-overflow-style: none !important;  /* IE/Edge ke liye */
-    scrollbar-width: none !important;  /* Firefox ke liye */
-    overflow-y: scroll !important; /* Scroll chalega par dikhega nahi */
+/* Export Report Button Final Color Fix */
+#exportReportBtn.btn-primary-icon {
+    background-color: #2563eb !important; /* Solid Blue Background */
+    color: #ffffff !important;           /* White Text */
+    border: none !important;
+    padding: 10px 22px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25) !important;
+    opacity: 1 !important;               /* Blur/Transparency khatam karne ke liye */
+    visibility: visible !important;
 }
 
-/* 2. Chrome, Safari, Edge ke liye Zabardasti Hide */
-.sidebar::-webkit-scrollbar,
-.menu::-webkit-scrollbar {
-    display: none !important; /* Gayab */
-    width: 0 !important;
-    height: 0 !important;
-    background: transparent !important;
+/* Hover effect: Jab mouse button par jaye */
+#exportReportBtn.btn-primary-icon:hover {
+    background-color: #1d4ed8 !important; /* Thoda dark blue */
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.35) !important;
 }
 
-/* Safety: Agar fir bhi dikhe to track ko transparent kar do */
-.sidebar::-webkit-scrollbar-track,
-.menu::-webkit-scrollbar-track {
-    background: transparent !important;
+/* Icon ka color white karne ke liye */
+#exportReportBtn.btn-primary-icon i {
+    color: #ffffff !important;
+    font-size: 14px !important;
 }
 
-.sidebar::-webkit-scrollbar-thumb,
-.menu::-webkit-scrollbar-thumb {
-    background: transparent !important;
+/* User management */
+/*--------------------------------------
+/* Badge Colors Fix */
+.blue-badge { background: #e0f2fe !important; color: #0369a1 !important; padding: 4px 10px; border-radius: 6px; font-weight: 600; display: inline-block; }
+.yellow-badge { background: #fef9c3 !important; color: #854d0e !important; padding: 4px 10px; border-radius: 6px; font-weight: 600; display: inline-block; }
+
+/* Action Buttons Styling */
+.btn-xs { padding: 6px 12px; border-radius: 6px; cursor: pointer; transition: 0.2s; border: 1px solid #e2e8f0; background: white; }
+.btn-xs:hover { background: #f8fafc; border-color: #cbd5e1; }
+
+/* Info Popup Styles */
+.info-modal {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px);
+    z-index: 10000; justify-content: center; align-items: center;
+}
+.info-modal-content {
+    background: white; width: 400px; padding: 30px; border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); position: relative;
+}
+.info-modal-header { text-align: center; margin-bottom: 20px; }
+.info-avatar {
+    width: 70px; height: 70px; background: #10b981; color: white;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 24px; font-weight: bold; margin: 0 auto 10px;
+}
+.info-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f1f5f9; }
+.info-row label { color: #64748b; font-size: 13px; }
+.info-row span { font-weight: 600; color: #1e293b; }
+.close-info { position: absolute; top: 15px; right: 15px; cursor: pointer; color: #94a3b8; }
+/* --- User Management Popup Styles --- */
+.info-modal {
+    display: none; 
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.7); 
+    backdrop-filter: blur(5px);
+    z-index: 10000; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.info-modal-content {
+    background: #ffffff;
+    width: 380px;
+    padding: 30px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.close-info {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    color: #94a3b8;
+    font-size: 18px;
+}
+
+.info-modal-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.info-avatar {
+    background: #10b981;
+    color: #fff;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.info-row label {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.info-row span {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.full-width-btn {
+    width: 100%;
+    margin-top: 25px;
+    justify-content: center;
+}
+/* --- User Management Popup Styles --- */
+.info-modal {
+    display: none; 
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.7); 
+    backdrop-filter: blur(5px);
+    z-index: 10000; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.info-modal-content {
+    background: #ffffff;
+    width: 380px;
+    padding: 30px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.info-avatar {
+    background: #10b981;
+    color: #fff;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-size: 26px;
+    font-weight: bold;
+}
+/* 1. Button ke liye (Green Background) */
+.modal-theme-success { 
+    background-color: #10b981 !important; 
+    color: white !important; 
+    border: none !important;
+}
+
+/* 2. Icon ke liye (Green Text) */
+.modal-text-success i { 
+    color: #10b981 !important; 
+}
+
+/* 3. Base style taake button gayab na ho */
+.confirm-btn-base {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.confirm-btn-base:hover {
+    opacity: 0.9;
+}
+
+/* Send Message Button Styling */
+.btn-send-message {
+    width: 100%;
+    margin-top: 25px;
+    background-color: #2563eb; /* Blue Color */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }

@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="submenu">
-                     <    <a href="dashboard.html" class="submenu-item">
+                    <a href="dashboard.html" class="submenu-item">
                         <i class="fa-solid fa-chart-line"></i> Dashboard
                     </a>
                     <a href="users.html" class="submenu-item">
@@ -56,22 +56,23 @@
             <p>Track Revenue & Commission History</p>
         </div>
         <div class="actions">
-            <button class="btn-primary-icon"><i class="fa-solid fa-download"></i> Export Report</button>
+            <button id="exportReportBtn" class="btn-primary-icon">
+                <i class="fa-solid fa-download"></i> Export Report
+            </button>
         </div>
     </header>
 
     <div class="finance-grid">
-        <div class="finance-card dark-card">
+        <div class="finance-card" id="card-commission">
             <div class="fin-icon"><i class="fa-solid fa-wallet"></i></div>
             <div class="fin-info">
                 <small>Total Commission (1%)</small>
                 <h2>$4,200</h2>
                 <span class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> +12% this month</span>
             </div>
-            <div class="bg-pattern"></div>
         </div>
 
-        <div class="finance-card white-card">
+        <div class="finance-card" id="card-value">
             <div class="fin-icon blue-icon"><i class="fa-solid fa-layer-group"></i></div>
             <div class="fin-info">
                 <small>Total Project Value</small>
@@ -79,7 +80,7 @@
             </div>
         </div>
 
-        <div class="finance-card white-card">
+        <div class="finance-card" id="card-pending">
             <div class="fin-icon orange-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
             <div class="fin-info">
                 <small>Pending Release</small>
@@ -93,9 +94,9 @@
         <div class="card-header">
             <h3><i class="fa-solid fa-money-bill-transfer theme-text"></i> Recent Transactions</h3>
             <div class="filter-tabs">
-                <span class="active">All</span>
-                <span>Credited</span>
-                <span>Pending</span>
+                <span class="active" data-filter="all">All</span>
+                <span data-filter="paid">Credited</span>
+                <span data-filter="pending">Pending</span>
             </div>
         </div>
 
@@ -113,12 +114,7 @@
             <tbody>
                 <tr>
                     <td class="mono-font">#TRX-9981</td>
-                    <td>
-                        <div class="project-mini">
-                            <span class="prj-id">#PRJ-102</span>
-                            <small>Solar Install (Ali Khan)</small>
-                        </div>
-                    </td>
+                    <td><div class="project-mini"><span class="prj-id">#PRJ-102</span><small>Solar Install (Ali Khan)</small></div></td>
                     <td>Rs. 1,500,000</td>
                     <td class="amount-highlight">+ Rs. 15,000</td>
                     <td>Dec 19, 2025</td>
@@ -126,25 +122,15 @@
                 </tr>
                 <tr>
                     <td class="mono-font">#TRX-9975</td>
-                    <td>
-                        <div class="project-mini">
-                            <span class="prj-id">#PRJ-098</span>
-                            <small>Inverter Setup (Sara)</small>
-                        </div>
-                    </td>
+                    <td><div class="project-mini"><span class="prj-id">#PRJ-098</span><small>Inverter Setup (Sara)</small></div></td>
                     <td>Rs. 800,000</td>
                     <td class="amount-highlight">+ Rs. 8,000</td>
                     <td>Dec 18, 2025</td>
                     <td><span class="badge green">Paid</span></td>
                 </tr>
-                 <tr>
+                <tr>
                     <td class="mono-font text-muted">#TRX-9970</td>
-                    <td>
-                        <div class="project-mini">
-                            <span class="prj-id">#PRJ-105</span>
-                            <small>Panel Maintenance</small>
-                        </div>
-                    </td>
+                    <td><div class="project-mini"><span class="prj-id">#PRJ-105</span><small>Panel Maintenance</small></div></td>
                     <td>Rs. 50,000</td>
                     <td class="amount-pending">Rs. 500</td>
                     <td>Dec 18, 2025</td>
@@ -154,6 +140,6 @@
         </table>
     </div>
 </main>
-<script src="../../js/admin.js"></script>
+    <script src="../../js/admin.js"></script>
 </body>
 </html>

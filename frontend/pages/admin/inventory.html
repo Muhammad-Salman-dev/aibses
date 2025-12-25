@@ -90,6 +90,36 @@
             </table>
         </div>
     </main>
+    <div id="priceModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center;">
+    <div style="background:white; padding:30px; border-radius:15px; width:350px; text-align:center;">
+        <h3>Update Product Price</h3>
+        <p id="targetProductName" style="font-weight:bold; color:#10b981;"></p>
+        <input type="number" id="newPriceInput" placeholder="Enter New Price (Rs.)" style="width:100%; padding:12px; margin:15px 0; border:1px solid #ddd; border-radius:8px;">
+        <div style="display:flex; gap:10px;">
+            <button id="savePriceBtn" class="btn-sm theme-bg" style="flex:1; color:white; border:none;">Update Now</button>
+            <button onclick="document.getElementById('priceModal').style.display='none'" class="btn-sm" style="flex:1; border:1px solid #ddd;">Cancel</button>
+        </div>
+    </div>
+</div>
+<div id="addProductModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center;">
+    <div style="background:white; padding:30px; border-radius:15px; width:400px;">
+        <h3 style="text-align:center;">Add New Product</h3>
+        <label>Product Name</label>
+        <input type="text" id="addName" placeholder="e.g. Jinko Tiger 540W" style="width:100%; padding:10px; margin:8px 0; border:1px solid #ddd; border-radius:5px;">
+        <label>Category</label>
+        <select id="addCategory" style="width:100%; padding:10px; margin:8px 0; border:1px solid #ddd; border-radius:5px;">
+            <option value="Solar Panel">Solar Panel</option>
+            <option value="Inverter">Inverter</option>
+            <option value="Battery">Battery</option>
+        </select>
+        <label>Base Price (Rs.)</label>
+        <input type="number" id="addPrice" style="width:100%; padding:10px; margin:8px 0; border:1px solid #ddd; border-radius:5px;">
+        <div style="display:flex; gap:10px; margin-top:15px;">
+            <button id="confirmAddBtn" class="btn-sm theme-bg" style="flex:1; color:white; border:none;">Add Product</button>
+            <button onclick="document.getElementById('addProductModal').style.display='none'" class="btn-sm" style="flex:1; border:1px solid #ddd;">Cancel</button>
+        </div>
+    </div>
+</div>
     <script src="../../js/admin.js"></script>
 </body>
 </html>

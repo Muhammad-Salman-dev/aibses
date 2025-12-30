@@ -1,8 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    // =================================================
-    // 1. GLOBAL: SIDEBAR TOGGLE
-    // =================================================
     const menuBtn = document.querySelector('.menu-toggle');
     const sidebar = document.getElementById('sidebar');
     const mainContent = document.querySelector('.main-content');
@@ -26,9 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // =================================================
-    // 2. PAGE: PROFILE SETTINGS (Tab Switching Logic)
-    // =================================================
     window.openTab = function(evt, tabName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tab-content");
@@ -50,17 +44,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (evt) evt.currentTarget.className += " active";
     };
 
-    // Initialize default tab if on profile page
     if (document.querySelector('.setting-tabs')) {
         const firstTab = document.querySelector('.tab-link');
-        // Optional: uncomment if you want to force click the first tab on load
-        // if(firstTab) firstTab.click();
     }
 
-
-    // =================================================
-    // 3. PAGE: NEW LEADS (Apply Filters & Click Handling)
-    // =================================================
     if (window.location.pathname.includes('leads.html')) {
         const filterBtn = document.getElementById('filterBtn');
         const searchInput = document.getElementById('searchInput');
@@ -111,9 +98,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // =================================================
-    // 4. PAGE: BID SUBMISSION (Read Data from URL)
-    // =================================================
     if (window.location.pathname.includes('bid-submission.html')) {
         const params = new URLSearchParams(window.location.search);
         const leadID = params.get('id');
@@ -139,25 +123,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // =================================================
-    // 5. PAGE: VERIFICATION STATUS (Show/Hide States)
-    // =================================================
-    // Only runs if showState is called
     window.showState = function(state) {
-        // Get the containers based on your HTML IDs
         const pendingView = document.getElementById('view-pending');
         const rejectedView = document.getElementById('view-rejected');
         const approvedView = document.getElementById('view-approved');
 
-        // Check if elements exist (to avoid errors on other pages)
         if (!pendingView || !rejectedView || !approvedView) return;
 
-        // Hide all views first
         pendingView.style.display = 'none';
         rejectedView.style.display = 'none';
         approvedView.style.display = 'none';
 
-        // Show the one requested
         if (state === 'pending') {
             pendingView.style.display = 'block';
         } else if (state === 'rejected') {

@@ -1,5 +1,3 @@
-// File: frontend/js/userDashboard.js
-
 // ============================
 // 1. SIDEBAR TOGGLE (Mobile)
 // ============================
@@ -7,7 +5,6 @@ function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
 
-    // Toggle class 'active' to show/hide sidebar
     if(sidebar && overlay) {
         sidebar.classList.toggle('active');
         overlay.classList.toggle('active');
@@ -18,14 +15,7 @@ function toggleSidebar() {
 // 2. LOGOUT LOGIC
 // ============================
 function logout() {
-    // User se confirmation lo
     if(confirm("Are you sure you want to logout?")) {
-
-        // Optional: Session clear karna ho toh yahan karein
-        // localStorage.removeItem('userToken');
-
-        // --- REDIRECTION LOGIC ---
-        // ../../ ka matlab: 'user' folder se bahar -> 'pages' folder se bahar -> 'index.html'
         window.location.href = '../../index.html';
     }
 }
@@ -33,7 +23,6 @@ function logout() {
 // ============================
 // 3. AUTO CLOSE MENU ON RESIZE
 // ============================
-// Agar user mobile se desktop screen karta hai toh menu reset ho jaye
 window.addEventListener('resize', function() {
     if(window.innerWidth > 768) {
         const sidebar = document.getElementById('sidebar');
@@ -46,12 +35,11 @@ window.addEventListener('resize', function() {
 
 // --- TOGGLE VENDOR DROPDOWN ---
 function toggleVendorMenu(event) {
-    event.preventDefault(); // Link click hone se roko
+    event.preventDefault();
 
     const submenu = document.getElementById('vendorSubmenu');
-    const parentLink = event.currentTarget; // Jo button click hua
+    const parentLink = event.currentTarget;
 
-    // Class toggle karo (CSS mein display control karega)
     submenu.classList.toggle('open');
     parentLink.classList.toggle('active-parent');
 }
@@ -73,19 +61,14 @@ window.onclick = function(event) {
 }
 
 // --- PAYMENT MODAL LOGIC ---
-
-// Open Modal
 function openPaymentModal() {
     document.getElementById('paymentModal').style.display = 'flex';
 }
 
-// Select Payment Method (Card vs Bank)
 function selectMethod(element, type) {
-    // Highlight selected card
     document.querySelectorAll('.method-card').forEach(el => el.classList.remove('selected'));
     element.classList.add('selected');
 
-    // Show/Hide Forms
     document.getElementById('cardForm').style.display = 'none';
     document.getElementById('bankForm').style.display = 'none';
 
@@ -96,7 +79,6 @@ function selectMethod(element, type) {
     }
 }
 
-// Mock Process Payment
 function processPayment() {
     const btn = document.querySelector('#paymentModal .btn-primary');
     btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
@@ -112,7 +94,6 @@ function processPayment() {
 // 4. PDF RECEIPT GENERATOR
 // ============================
 function downloadReceipt(txnId, amount, description) {
-    // 1. Receipt ka Design (HTML)
     const receiptContent = `
         <html>
         <head>
@@ -152,17 +133,13 @@ function downloadReceipt(txnId, amount, description) {
                 </div>
             </div>
             <script>
-                // Window khulte hi Print dialog open karega
                 window.onload = function() { window.print(); }
             </script>
         </body>
         </html>
     `;
 
-    // 2. Nayi Window Kholo
     const printWindow = window.open('', '', 'width=800,height=600');
-
-    // 3. Content Write karo
     printWindow.document.write(receiptContent);
     printWindow.document.close();
 }
@@ -170,10 +147,7 @@ function downloadReceipt(txnId, amount, description) {
 // =========================================
 // 5. PROFILE PAGE LOGIC (Image Preview & Save)
 // =========================================
-
 document.addEventListener('DOMContentLoaded', () => {
-
-    // --- Elements ---
     const imageUpload = document.getElementById('imageUpload');
     const profilePreview = document.getElementById('profilePreview');
     const headerProfileImg = document.getElementById('headerProfileImg');
@@ -183,17 +157,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const fullNameInput = document.getElementById('fullNameInput');
     const headerUserName = document.getElementById('headerUserName');
 
-    // 1. Image Preview Logic
     if (imageUpload) {
         imageUpload.addEventListener('change', function(event) {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    // Update Main Profile Image
                     if(profilePreview) profilePreview.src = e.target.result;
-
-                    // Update Header Small Image (Instant Feedback)
                     if(headerProfileImg) {
                         headerProfileImg.style.backgroundImage = `url(${e.target.result})`;
                     }
@@ -203,27 +173,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Save Profile Logic
     if (profileForm) {
         profileForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Loading State
             const originalText = saveBtn.innerText;
             saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Saving...';
             saveBtn.style.opacity = '0.7';
             saveBtn.disabled = true;
 
-            // Simulate API Call (1.5 seconds delay)
             setTimeout(() => {
                 alert("Profile Updated Successfully!");
 
-                // Reset Button
                 saveBtn.innerHTML = originalText;
                 saveBtn.style.opacity = '1';
                 saveBtn.disabled = false;
 
-                // Update Name in Header instantly
                 if (headerUserName && fullNameInput) {
                     headerUserName.innerText = fullNameInput.value;
                 }
@@ -231,7 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Cancel Button Logic
     if (cancelBtn) {
         cancelBtn.addEventListener('click', () => {
             if(confirm("Discard unsaved changes?")) {

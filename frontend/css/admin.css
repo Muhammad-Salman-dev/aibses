@@ -1,21 +1,18 @@
 /* --- THEME VARIABLES --- */
 :root {
-    /* Core Theme Colors */
-    --primary-green: #10b981;    /* ISES Green */
-    --sidebar-bg: #0f172a;       /* Dark Blue Sidebar */
-    --bg-main: #f3f4f6;          /* Light Gray Background */
-    --card-bg: #ffffff;          /* White Cards */
-    --text-dark: #1e293b;        /* Dark Text */
-    --text-gray: #64748b;        /* Gray Text */
-    --border-light: #e2e8f0;     /* Light Borders */
-    --danger-red: #ef4444;       /* Red for Alerts */
+    --primary-green: #10b981;
+    --sidebar-bg: #0f172a;
+    --bg-main: #f3f4f6;
+    --card-bg: #ffffff;
+    --text-dark: #1e293b;
+    --text-gray: #64748b;
+    --border-light: #e2e8f0;
+    --danger-red: #ef4444;
 
-    /* Accent Colors for Stats/Badges */
     --accent-blue: #3b82f6;
     --accent-orange: #f97316;
     --accent-purple: #8b5cf6;
 
-    /* Soft Backgrounds for Accents */
     --soft-green: #dcfce7;
     --soft-blue: #dbeafe;
     --soft-orange: #ffedd5;
@@ -29,7 +26,7 @@ body { background: var(--bg-main); color: var(--text-dark); display: flex; min-h
 a { text-decoration: none; }
 button { cursor: pointer; font-family: 'Poppins', sans-serif; }
 
-/* --- SIDEBAR STYLING (UPDATED) --- */
+/* --- SIDEBAR STYLING --- */
 .sidebar {
     width: 260px;
     background: var(--sidebar-bg);
@@ -43,18 +40,11 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
     flex-direction: column;
     z-index: 100;
     box-shadow: 5px 0 25px rgba(0,0,0,0.05);
-
-    /* Scroll allow karein lekin dikhaye nahi */
-    overflow-y: scroll; /* Auto ki jagah Scroll use karein */
-
-    /* Firefox ke liye hide */
+    overflow-y: scroll;
     scrollbar-width: none !important;
-
-    /* IE/Edge ke liye hide */
     -ms-overflow-style: none !important;
 }
 
-/* Chrome, Safari, aur naye Edge ke liye (Zabardasti Hide) */
 .sidebar::-webkit-scrollbar {
     display: none !important;
     width: 0px !important;
@@ -80,7 +70,6 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
 .menu-item i { width: 20px; text-align: center; font-size: 16px; }
 .menu-item:hover { background: rgba(255,255,255,0.05); color: white; }
 
-/* Active State */
 .menu-item.active {
     background: var(--primary-green); color: white;
     box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); font-weight: 600;
@@ -101,7 +90,6 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
 /* --- MAIN CONTENT LAYOUT --- */
 .main-content { margin-left: 260px; padding: 30px 40px; flex: 1; width: calc(100% - 260px); }
 
-/* Top Bar */
 .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 35px; }
 .greeting h1 { font-size: 24px; font-weight: 700; color: var(--text-dark); margin-bottom: 5px; }
 .greeting p { color: var(--text-gray); font-size: 14px; }
@@ -124,11 +112,11 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
 /* --- DASHBOARD GRID --- */
 .dashboard-grid { display: flex; flex-direction: column; gap: 25px; }
 
-/* 1. Stats Row */
 .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .stat-card {
     padding: 20px; border-radius: 16px; display: flex; align-items: center; gap: 15px;
     background: white; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: transform 0.2s; border: 1px solid rgba(0,0,0,0.02);
+    text-decoration: none; color: inherit; cursor: pointer;
 }
 .stat-card:hover { transform: translateY(-5px); }
 
@@ -142,7 +130,6 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
 .theme-green .icon-box { background: var(--soft-green); color: var(--primary-green); }
 .main-stat h3 { color: var(--primary-green); }
 
-/* 2. Middle Section Grid */
 .middle-section { display: grid; grid-template-columns: 2fr 1fr; gap: 25px; }
 
 .section-card { background: white; border-radius: 20px; padding: 25px; box-shadow: 0 5px 25px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); }
@@ -164,8 +151,8 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
 .user-cell h5 { margin: 0; font-size: 14px; color: var(--text-dark); }
 .user-cell small { color: var(--text-gray); font-size: 12px; }
 
-.btn-xs { padding: 6px 12px; border-radius: 6px; font-size: 11px; border: 1px solid var(--border-light); background: white; color: var(--text-gray); transition: 0.2s; }
-.btn-xs:hover { border-color: var(--text-dark); color: var(--text-dark); }
+.btn-xs { padding: 6px 12px; border-radius: 6px; font-size: 11px; border: 1px solid var(--border-light); background: white; color: var(--text-gray); transition: 0.2s; cursor: pointer; }
+.btn-xs:hover { border-color: var(--text-dark); color: var(--text-dark); background: #f8fafc; }
 .status.pending { background: var(--soft-orange); color: var(--accent-orange); padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; }
 
 .action-group { display: flex; gap: 8px; justify-content: center; }
@@ -174,7 +161,7 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
 .btn-icon-sm.danger { background: var(--soft-red); color: var(--danger-red); }
 .btn-icon-sm:hover { transform: scale(1.1); }
 
-/* 3. Market Control Section */
+/* Market Control Section */
 .market-section { display: flex; flex-direction: column; gap: 20px; }
 .market-controls { display: flex; flex-direction: column; gap: 15px; }
 .control-item label { display: block; font-size: 12px; color: var(--text-gray); margin-bottom: 8px; font-weight: 500; }
@@ -188,7 +175,7 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
 .theme-bg { background: var(--primary-green); color: white; }
 .theme-bg:hover { background: #059669; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
 
-/* 4. Projects & Disputes Section */
+/* Projects & Disputes Section */
 .theme-text-red { color: var(--danger-red); }
 .tabs { display: flex; gap: 15px; }
 .tab { font-size: 13px; color: var(--text-gray); cursor: pointer; padding-bottom: 5px; }
@@ -212,9 +199,8 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
 .btn-danger:hover { background: #dc2626; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); }
 .btn-ghost { background: white; border: 1px solid var(--border-light); color: var(--text-dark); }
 .btn-ghost:hover { border-color: var(--text-dark); background: #f8fafc; }
-/* --- DISPUTE ACTIONS DYNAMIC STYLES --- */
 
-/* 1. Base style (Normal state mein sab buttons gray/white honge) */
+/* --- DISPUTE ACTIONS DYNAMIC STYLES --- */
 .action-group .btn-sm {
     transition: all 0.3s ease;
     cursor: pointer;
@@ -227,9 +213,6 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
     font-weight: 500;
 }
 
-/* 2. Hover aur Active Effects (Sirf tabhi color aayega jab mouse upar ho ya click kiya ho) */
-
-/* Mark Resolved - Green */
 #resolveDisputeBtn:hover,
 #resolveDisputeBtn.active {
     background-color: var(--primary-green) !important;
@@ -238,7 +221,6 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
     box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
 }
 
-/* Refund User - Red */
 #refundUserBtn:hover,
 #refundUserBtn.active {
     background-color: var(--danger-red) !important;
@@ -247,7 +229,6 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
     box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
 }
 
-/* Call Vendor - Blue */
 #callVendorBtn:hover,
 #callVendorBtn.active {
     background-color: var(--accent-blue) !important;
@@ -256,23 +237,7 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
     box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
 }
 
-/* Responsive Media Queries */
-@media (max-width: 1200px) {
-    .stats-row { grid-template-columns: repeat(2, 1fr); }
-    .middle-section { grid-template-columns: 1fr; }
-}
-@media (max-width: 768px) {
-    .sidebar { width: 70px; padding: 15px 10px; }
-    .brand-name, .menu-item span, .badge, .admin-info, .logout-btn { display: none; }
-    .menu-item { justify-content: center; padding: 15px; }
-    .main-content { margin-left: 70px; width: calc(100% - 70px); padding: 20px; }
-    .stats-row { grid-template-columns: 1fr; }
-    .top-bar { flex-direction: column; align-items: flex-start; gap: 15px; }
-    .actions { width: 100%; justify-content: space-between; }
-    .search-glass { flex-grow: 1; width: auto; }
-}
-
-/* --- EXTRA STYLES FOR DASHBOARD OVERVIEW INNER PAGES --- */
+/* --- EXTRA STYLES FOR DASHBOARD --- */
 .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
 .filters { display: flex; gap: 10px; }
 .filter-btn { padding: 8px 16px; border: 1px solid var(--border-light); background: white; border-radius: 8px; color: var(--text-gray); font-size: 13px; font-weight: 500; transition: 0.2s; }
@@ -288,7 +253,7 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
 .page-btn { width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-light); background: white; border-radius: 6px; color: var(--text-gray); }
 .page-btn.active { background: var(--primary-green); color: white; border-color: var(--primary-green); }
 
-/* --- MODAL (POPUP) STYLES --- */
+/* --- MODAL STYLES --- */
 .modal {
     display: none; position: fixed; z-index: 1000; left: 0; top: 0;
     width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);
@@ -304,41 +269,26 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
 }
 .doc-preview { width: 100%; height: auto; border-radius: 8px; margin-top: 15px; border: 1px solid #e2e8f0; }
 
-/* Chat Styles for Disputes */
 .chat-box { background: #f8fafc; border-radius: 12px; height: 300px; overflow-y: auto; padding: 15px; border: 1px solid #e2e8f0; margin-bottom: 15px; }
 .msg { margin-bottom: 10px; padding: 10px; border-radius: 8px; font-size: 13px; max-width: 80%; }
 .msg.user { background: #e0f2fe; color: #0284c7; align-self: flex-start; }
 .msg.vendor { background: #fff; border: 1px solid #e2e8f0; margin-left: auto; }
 
-.stat-card {
-            text-decoration: none; /* Link ki underline hatane ke liye */
-            color: inherit;       /* Text color preserve karne ke liye */
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        .stat-card:hover {
-            transform: translateY(-5px); /* Hover par thoda upar uthega */
-        }
-
-/* --- ULTIMATE SCROLLBAR HIDER --- */
-
-/* 1. Sidebar aur Menu dono se scrollbar hatao */
+/* --- SCROLLBAR HIDER --- */
 .sidebar, .menu {
-    -ms-overflow-style: none !important;  /* IE/Edge ke liye */
-    scrollbar-width: none !important;  /* Firefox ke liye */
-    overflow-y: scroll !important; /* Scroll chalega par dikhega nahi */
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+    overflow-y: scroll !important;
 }
 
-/* 2. Chrome, Safari, Edge ke liye Zabardasti Hide */
 .sidebar::-webkit-scrollbar,
 .menu::-webkit-scrollbar {
-    display: none !important; /* Gayab */
+    display: none !important;
     width: 0 !important;
     height: 0 !important;
     background: transparent !important;
 }
 
-/* Safety: Agar fir bhi dikhe to track ko transparent kar do */
 .sidebar::-webkit-scrollbar-track,
 .menu::-webkit-scrollbar-track {
     background: transparent !important;
@@ -348,31 +298,31 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
 .menu::-webkit-scrollbar-thumb {
     background: transparent !important;
 }
-/* Status Badge Styling taake text nazar aaye */
+
+/* Status Badge Styling */
 .status-paid {
-    background-color: #dcfce7 !important; /* Light Green */
-    color: #166534 !important;           /* Dark Green Text */
+    background-color: #dcfce7 !important;
+    color: #166534 !important;
     padding: 5px 12px;
     border-radius: 20px;
     font-weight: 600;
 }
 
 .status-pending {
-    background-color: #fef9c3 !important; /* Light Yellow */
-    color: #854d0e !important;           /* Dark Brown Text */
+    background-color: #fef9c3 !important;
+    color: #854d0e !important;
     padding: 5px 12px;
     border-radius: 20px;
     font-weight: 600;
 }
 
-/* Card Interaction Fix */
 .finance-card {
     background: #ffffff !important;
     transition: all 0.3s ease;
 }
 
 .finance-card.active-card {
-    background: #0f172a !important; /* Sirf active wala black hoga */
+    background: #0f172a !important;
     color: #ffffff !important;
 }
 
@@ -380,12 +330,12 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
     background: rgba(255,255,255,0.1) !important;
     color: #4ade80 !important;
 }
-/* Status Badges visibility fix */
+
 .badge.status-paid {
     background-color: #dcfce7 !important;
     color: #166534 !important;
     padding: 6px 14px;
-    border-radius: 8px; /* Square type look */
+    border-radius: 8px;
     font-weight: 600;
     display: inline-block;
 }
@@ -399,34 +349,29 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
     display: inline-block;
 }
 
-/* All, Credited, Pending tabs ko ek jaisa square style dena */
 .filter-tabs span {
     padding: 8px 16px;
-    border-radius: 8px; /* Sub buttons square honge */
+    border-radius: 8px;
     background: #f1f5f9;
     color: #64748b;
     font-weight: 500;
     transition: 0.3s;
+    cursor: pointer;
+    display: inline-block;
 }
 
 .filter-tabs span.active {
-    background: #10b981 !important; /* Green background for active tab */
+    background: #10b981 !important;
     color: white !important;
-    border-bottom: none; /* Purani line hata di */
 }
-/*------------------------------------------------------------------------*/
-    /* COMMISION PAGE STYLES */
-    /* --- Commission / Finance Page Specific Styling --- */
-/*-------------------------------------------------------------------------*/
-/* 1. Grid Layout for Cards */
+
+/* --- COMMISSION PAGE STYLES --- */
 .finance-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 cards side-by-side */
+    grid-template-columns: repeat(3, 1fr);
     gap: 25px;
     margin-bottom: 30px;
 }
-
-/* --- Finance Cards Styling (Combined & Cleaned) --- */
 
 .finance-card {
     border-radius: 16px;
@@ -437,23 +382,21 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
     align-items: flex-start;
     gap: 15px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    background: #ffffff !important; /* Default background White */
+    background: #ffffff !important;
     border: 1px solid #e2e8f0;
-    transition: all 0.4s ease;
+    transition: all 0.2s ease;
     cursor: pointer;
     color: var(--text-dark);
 }
 
-/* Hover aur Active State: Jab click ho ya mouse upar aaye tab BLACK hoga */
 .finance-card:hover,
 .finance-card.active-card {
-    background: #0f172a !important; /* Dark Black/Blue background */
-    color: #ffffff !important;      /* Text white ho jayega */
-    transform: translateY(-8px);    /* Thoda upar uthega */
+    background: #0f172a !important;
+    color: #ffffff !important;
+    transform: translateY(-5px);
     border-color: #0f172a;
 }
 
-/* Icons ki default styling */
 .finance-card .fin-icon {
     width: 45px;
     height: 45px;
@@ -465,26 +408,22 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
     transition: 0.3s;
 }
 
-/* Icons Colors for White State */
 .blue-icon { background: #eff6ff; color: #2563eb; }
 .orange-icon { background: #fff7ed; color: #f59e0b; }
-/* Wallet icon (Green) default for first card */
-.finance-card .fa-wallet { background: #dcfce7; color: #10b981; padding: 12px; border-radius: 10px;}
+.finance-card .fa-wallet { background: #dcfce7; color: #10b981; padding: 12px; border-radius: 10px; }
 
-/* Hover/Active par icon ka look badalna */
 .finance-card:hover .fin-icon,
 .finance-card.active-card .fin-icon {
     background: rgba(255, 255, 255, 0.1) !important;
-    color: #4ade80 !important; /* Green icon on dark bg */
+    color: #4ade80 !important;
 }
 
-/* Trend aur small text handling */
 .finance-card:hover small,
 .finance-card:hover .trend,
 .finance-card.active-card small {
     color: rgba(255, 255, 255, 0.8) !important;
 }
-/* 3. Transaction Table Tweaks */
+
 .mt-large { margin-top: 30px; }
 
 .finance-table th {
@@ -495,7 +434,7 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
 }
 
 .mono-font {
-    font-family: 'Courier New', monospace; /* Receipt style font for IDs */
+    font-family: 'Courier New', monospace;
     font-weight: 600;
     color: #64748b;
 }
@@ -513,7 +452,7 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
 
 .amount-highlight {
     font-weight: 700;
-    color: #166534; /* Dark Green for money in */
+    color: #166534;
 }
 
 .amount-pending {
@@ -521,25 +460,6 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
     font-style: italic;
 }
 
-/* Filter Tabs Styling */
-.filter-tabs span {
-    padding: 6px 15px;
-    border-radius: 6px;
-    background: #f1f5f9;
-    color: #64748b;
-    cursor: pointer;
-    font-size: 13px;
-    transition: 0.2s;
-    display: inline-block;
-}
-
-.filter-tabs span.active {
-    background: #10b981 !important;
-    color: white !important;
-    font-weight: 600;
-}
-
-/* Badge colors taake text chhupay nahi */
 .badge.green {
     background: #dcfce7 !important;
     color: #15803d !important;
@@ -554,58 +474,25 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
     border-radius: 4px;
 }
 
-/* Finance Card Hover Fast and Smooth */
-.finance-card {
-    transition: transform 0.2s, background 0.2s !important;
-}
-
-.finance-card:hover, .finance-card.active-card {
-    background: #0f172a !important;
-    color: white !important;
-    transform: translateY(-5px);
-}
-/* --- Sidebar Dropdown Styling --- */
-
-.menu-dropdown {
-    width: 100%;
-}
-
-/* Toggle Button tweaks */
-.dropdown-toggle {
-    justify-content: space-between; /* Arrow ko right side bhejne ke liye */
-    cursor: pointer;
-}
-
-.arrow-icon {
-    font-size: 12px;
-    transition: transform 0.3s ease;
-}
-
-/* Arrow Rotate Class (JS se add hogi) */
-.arrow-icon.rotate {
-    transform: rotate(180deg);
-}
-
-/* Submenu Container */
+/* --- SIDEBAR DROPDOWN --- */
+.menu-dropdown { width: 100%; }
+.dropdown-toggle { justify-content: space-between; cursor: pointer; }
+.arrow-icon { font-size: 12px; transition: transform 0.3s ease; }
+.arrow-icon.rotate { transform: rotate(180deg); }
 .submenu {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
-    background: rgba(0, 0, 0, 0.2); /* Thoda dark background parent se alag dikhane ke liye */
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     margin-top: 5px;
 }
-
-.submenu.open {
-    max-height: 200px; /* Itna height kaafi hai content ke liye */
-}
-
-/* Submenu Items */
+.submenu.open { max-height: 200px; }
 .submenu-item {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 10px 15px 10px 45px; /* Left padding zyada taake indent lage */
+    padding: 10px 15px 10px 45px;
     color: #94a3b8;
     text-decoration: none;
     font-size: 13px;
@@ -613,20 +500,13 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
     border-radius: 6px;
     margin-bottom: 2px;
 }
+.submenu-item:hover { color: #fff; background: rgba(255, 255, 255, 0.05); }
+.submenu-item i { font-size: 12px; width: 15px; }
 
-.submenu-item:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.submenu-item i {
-    font-size: 12px;
-    width: 15px; /* Icons ko align rakhne ke liye */
-}
-/* Export Report Button Final Color Fix */
+/* Export Button */
 #exportReportBtn.btn-primary-icon {
-    background-color: #2563eb !important; /* Solid Blue Background */
-    color: #ffffff !important;           /* White Text */
+    background-color: #2563eb !important;
+    color: #ffffff !important;
     border: none !important;
     padding: 10px 22px !important;
     border-radius: 8px !important;
@@ -637,211 +517,47 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
     cursor: pointer !important;
     transition: all 0.3s ease !important;
     box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25) !important;
-    opacity: 1 !important;               /* Blur/Transparency khatam karne ke liye */
+    opacity: 1 !important;
     visibility: visible !important;
 }
 
-/* Hover effect: Jab mouse button par jaye */
 #exportReportBtn.btn-primary-icon:hover {
-    background-color: #1d4ed8 !important; /* Thoda dark blue */
+    background-color: #1d4ed8 !important;
     transform: translateY(-2px) !important;
     box-shadow: 0 6px 15px rgba(37, 99, 235, 0.35) !important;
 }
 
-/* Icon ka color white karne ke liye */
-#exportReportBtn.btn-primary-icon i {
-    color: #ffffff !important;
-    font-size: 14px !important;
-}
+#exportReportBtn.btn-primary-icon i { color: #ffffff !important; font-size: 14px !important; }
 
-/* User management */
-/*--------------------------------------
-/* Badge Colors Fix */
+/* User Management */
 .blue-badge { background: #e0f2fe !important; color: #0369a1 !important; padding: 4px 10px; border-radius: 6px; font-weight: 600; display: inline-block; }
 .yellow-badge { background: #fef9c3 !important; color: #854d0e !important; padding: 4px 10px; border-radius: 6px; font-weight: 600; display: inline-block; }
 
-/* Action Buttons Styling */
-.btn-xs { padding: 6px 12px; border-radius: 6px; cursor: pointer; transition: 0.2s; border: 1px solid #e2e8f0; background: white; }
-.btn-xs:hover { background: #f8fafc; border-color: #cbd5e1; }
-
-/* Info Popup Styles */
 .info-modal {
     display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px);
+    background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(5px);
     z-index: 10000; justify-content: center; align-items: center;
 }
 .info-modal-content {
-    background: white; width: 400px; padding: 30px; border-radius: 16px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); position: relative;
+    background: #ffffff; width: 380px; padding: 30px; border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); position: relative;
 }
-.info-modal-header { text-align: center; margin-bottom: 20px; }
+.info-modal-header { text-align: center; margin-bottom: 25px; }
 .info-avatar {
-    width: 70px; height: 70px; background: #10b981; color: white;
+    width: 70px; height: 70px; background: #10b981; color: #fff;
     border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 24px; font-weight: bold; margin: 0 auto 10px;
+    font-size: 26px; font-weight: bold; margin: 0 auto 15px;
 }
-.info-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f1f5f9; }
-.info-row label { color: #64748b; font-size: 13px; }
+.info-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f1f5f9; }
+.info-row label { color: #64748b; font-size: 14px; }
 .info-row span { font-weight: 600; color: #1e293b; }
-.close-info { position: absolute; top: 15px; right: 15px; cursor: pointer; color: #94a3b8; }
-/* --- User Management Popup Styles --- */
-.info-modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(15, 23, 42, 0.7);
-    backdrop-filter: blur(5px);
-    z-index: 10000;
-    justify-content: center;
-    align-items: center;
-}
+.close-info { position: absolute; top: 20px; right: 20px; cursor: pointer; color: #94a3b8; font-size: 18px; }
 
-.info-modal-content {
-    background: #ffffff;
-    width: 380px;
-    padding: 30px;
-    border-radius: 20px;
-    position: relative;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
+.full-width-btn { width: 100%; margin-top: 25px; justify-content: center; }
 
-.close-info {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-    color: #94a3b8;
-    font-size: 18px;
-}
-
-.info-modal-header {
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.info-avatar {
-    background: #10b981;
-    color: #fff;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 15px;
-    font-size: 26px;
-    font-weight: bold;
-}
-
-.info-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 0;
-    border-bottom: 1px solid #f1f5f9;
-}
-
-.info-row label {
-    color: #64748b;
-    font-size: 14px;
-}
-
-.info-row span {
-    font-weight: 600;
-    color: #1e293b;
-}
-
-.full-width-btn {
-    width: 100%;
-    margin-top: 25px;
-    justify-content: center;
-}
-/* --- User Management Popup Styles --- */
-.info-modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(15, 23, 42, 0.7);
-    backdrop-filter: blur(5px);
-    z-index: 10000;
-    justify-content: center;
-    align-items: center;
-}
-
-.info-modal-content {
-    background: #ffffff;
-    width: 380px;
-    padding: 30px;
-    border-radius: 20px;
-    position: relative;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
-
-.info-avatar {
-    background: #10b981;
-    color: #fff;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 15px;
-    font-size: 26px;
-    font-weight: bold;
-}
-/* 1. Button ke liye (Green Background) */
-.modal-theme-success {
-    background-color: #10b981 !important;
-    color: white !important;
-    border: none !important;
-}
-
-/* 2. Icon ke liye (Green Text) */
-.modal-text-success i {
-    color: #10b981 !important;
-}
-
-/* 3. Base style taake button gayab na ho */
-.confirm-btn-base {
-    flex: 1;
-    padding: 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.confirm-btn-base:hover {
-    opacity: 0.9;
-}
-
-/* Send Message Button Styling */
-.btn-send-message {
-    width: 100%;
-    margin-top: 25px;
-    background-color: #2563eb; /* Blue Color */
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-/* =========================================
-   POPUP MODAL THEMES (FIX)
-   ========================================= */
-
-/* Jab popup par 'modal-theme-success' class lagi ho (Verify ke liye) */
 .modal-theme-success #confirmActionBtn,
 .modal-theme-success .confirm-btn,
-.modal-theme-success button[id*="onfirm"] { /* Safety selector */
+.modal-theme-success button[id*="onfirm"] {
     background-color: #2dce89 !important;
     color: white !important;
     border: none !important;
@@ -850,13 +566,43 @@ button { cursor: pointer; font-family: 'Poppins', sans-serif; }
 
 .modal-theme-success #confirmActionBtn:hover,
 .modal-theme-success .confirm-btn:hover {
-    background-color: #26af74 !important; /* Darker Green on Hover */
+    background-color: #26af74 !important;
     transform: translateY(-1px);
 }
 
-/* Cancel Button ko bhi thoda saaf dikhane ke liye (Optional) */
 .modal-theme-success .cancel-btn {
     color: #8898aa;
     background: #f6f9fc;
     border: none;
+}
+
+.modal-text-success i { color: #10b981 !important; }
+
+.confirm-btn-base {
+    flex: 1; padding: 12px; border-radius: 8px; cursor: pointer;
+    font-weight: bold; transition: 0.3s;
+}
+.confirm-btn-base:hover { opacity: 0.9; }
+
+.btn-send-message {
+    width: 100%; margin-top: 25px; background-color: #2563eb;
+    color: white; border: none; padding: 12px; border-radius: 8px;
+    font-weight: 600; cursor: pointer; display: flex;
+    align-items: center; justify-content: center; gap: 10px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1200px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .middle-section { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+    .sidebar { width: 70px; padding: 15px 10px; }
+    .brand-name, .menu-item span, .badge, .admin-info, .logout-btn { display: none; }
+    .menu-item { justify-content: center; padding: 15px; }
+    .main-content { margin-left: 70px; width: calc(100% - 70px); padding: 20px; }
+    .stats-row { grid-template-columns: 1fr; }
+    .top-bar { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .actions { width: 100%; justify-content: space-between; }
+    .search-glass { flex-grow: 1; width: auto; }
 }

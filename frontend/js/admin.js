@@ -1,13 +1,12 @@
 // admin.js
 
-// Global variables top par declare karein
 let currentRow = null;
 let activePriceRow = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log("ISES Admin Dashboard Loaded");
 
-    // --- 1. MODAL HTML INJECTION (Taake har page par popup chale) ---
+    // --- 1. MODAL HTML INJECTION ---
     if (!document.getElementById('actionModal')) {
         const modalHTML = `
             <div id="actionModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 9999; justify-content: center; align-items: center;">
@@ -23,106 +22,98 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>`;
         document.body.insertAdjacentHTML('beforeend', modalHTML);
     }
+
     // --- USER MANAGEMENT LOGIC ---
-document.addEventListener('click', (e) => {
-    // 1. Open Details/Profile Popup
-    if (e.target.innerText === 'Details' || e.target.innerText === 'Profile') {
-        const row = e.target.closest('tr');
-        if (row) {
-            const name = row.cells[1].innerText;
+    document.addEventListener('click', (e) => {
 
-            document.getElementById('infoName').innerText = name;
-            document.getElementById('infoAvatar').innerText = name.charAt(0);
-            document.getElementById('infoRole').innerText = row.cells[2].innerText;
-            document.getElementById('detID').innerText = row.cells[0].innerText;
-            document.getElementById('detCity').innerText = row.cells[3].innerText;
-            document.getElementById('detStatus').innerText = row.cells[4].innerText;
+        if (e.target.innerText === 'Details' || e.target.innerText === 'Profile') {
+            const row = e.target.closest('tr');
+            if (row) {
+                const name = row.cells[1].innerText;
 
-            document.getElementById('infoModal').style.display = 'flex';
+                document.getElementById('infoName').innerText = name;
+                document.getElementById('infoAvatar').innerText = name.charAt(0);
+                document.getElementById('infoRole').innerText = row.cells[2].innerText;
+                document.getElementById('detID').innerText = row.cells[0].innerText;
+                document.getElementById('detCity').innerText = row.cells[3].innerText;
+                document.getElementById('detStatus').innerText = row.cells[4].innerText;
+
+                document.getElementById('infoModal').style.display = 'flex';
+            }
         }
-    }
 
-    // 2. Close Popup logic
-    if (e.target.id === 'closeInfoModal' || e.target.id === 'infoModal') {
-        document.getElementById('infoModal').style.display = 'none';
-    }
+        if (e.target.id === 'closeInfoModal' || e.target.id === 'infoModal') {
+            document.getElementById('infoModal').style.display = 'none';
+        }
 
-   // 3. Verify Button (No inline CSS anymore)
-   // 3. Verify Button (Color Fix Added)
-    if (e.target.innerText === 'Verify') {
-        const row = e.target.closest('tr');
-        if (row && typeof openActionPopup === 'function') {
+        if (e.target.innerText === 'Verify') {
+            const row = e.target.closest('tr');
+            if (row && typeof openActionPopup === 'function') {
 
-            // Popup kholne ka function
-            openActionPopup(
-                'Verify User',
-                `Confirm verification for <b>${row.cells[1].innerText}</b>?`,
-                'modal-theme-success',
-                'fa-user-check'
-            );
+                openActionPopup(
+                    'Verify User',
+                    `Confirm verification for <b>${row.cells[1].innerText}</b>?`,
+                    'modal-theme-success',
+                    'fa-user-check'
+                );
 
-            // === [FIX START] ===
-            // Thoda sa wait karke button par zabardasti Green Color lagana
-            setTimeout(() => {
-                // Koshish 1: ID ke zariye dhoondna (Standard way)
-                let btn = document.getElementById('confirmActionBtn');
+                setTimeout(() => {
+                    let btn = document.getElementById('confirmActionBtn');
 
-                // Koshish 2: Agar ID nahi mili, to Text se dhoondna
-                if (!btn) {
-                    const allBtns = document.querySelectorAll('button');
-                    for (let b of allBtns) {
-                        if (b.innerText.trim() === 'Confirm' && b.offsetParent !== null) { // Jo button visible ho
-                            btn = b;
-                            break;
+                    if (!btn) {
+                        const allBtns = document.querySelectorAll('button');
+                        for (let b of allBtns) {
+                            if (b.innerText.trim() === 'Confirm' && b.offsetParent !== null) {
+                                btn = b;
+                                break;
+                            }
                         }
                     }
-                }
 
-                // Agar button mil gaya to Green kar do
-                if (btn) {
-                    btn.style.backgroundColor = '#2dce89';
-                    btn.style.color = '#ffffff';
-                    btn.style.border = 'none';
-                    btn.style.boxShadow = '0 4px 6px rgba(45, 206, 137, 0.4)';
-                }
-            }, 50); // 50ms ka delay taaki popup load ho chuka ho
-            // === [FIX END] ===
+                    if (btn) {
+                        btn.style.backgroundColor = '#2dce89';
+                        btn.style.color = '#ffffff';
+                        btn.style.border = 'none';
+                        btn.style.boxShadow = '0 4px 6px rgba(45, 206, 137, 0.4)';
+                    }
+                }, 50);
+            }
         }
-    }
-});
+    });
+
     // --- 2. SIDEBAR LOGIC ---
     const menuItems = document.querySelectorAll('.menu-item');
     menuItems.forEach(item => {
-        item.addEventListener('click', function() {
+        item.addEventListener('click', function () {
             menuItems.forEach(i => i.classList.remove('active'));
             this.classList.add('active');
         });
     });
 
-    // --- 3. VENDOR APPROVAL LOGIC (Vendors Page) ---
+    // --- 3. VENDOR APPROVAL LOGIC ---
     document.querySelectorAll('.btn-icon-sm.success').forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             const vendorName = this.closest('tr').querySelector('h5').innerText;
-            currentRow = this.closest('tr'); // Row save kar lo delete karne ke liye
+            currentRow = this.closest('tr');
             openActionPopup('Approve Vendor', `Are you sure you want to <b>approve</b> <b>${vendorName}</b>?`, '#10b981', 'fa-circle-check');
         });
     });
 
     document.querySelectorAll('.btn-icon-sm.danger').forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             const vendorName = this.closest('tr').querySelector('h5').innerText;
             currentRow = this.closest('tr');
             openActionPopup('Reject Vendor', `Are you sure you want to <b>reject</b> <b>${vendorName}</b>? This action cannot be undone.`, '#ef4444', 'fa-circle-xmark');
         });
     });
 
-    // --- 4. DOCUMENT REVIEW LOGIC (Docs Page) ---
+    // --- 4. DOCUMENT REVIEW LOGIC ---
     const verifyDocBtn = document.querySelector('.btn-green');
     const rejectDocBtn = document.querySelector('.btn-danger');
 
-    if(verifyDocBtn) {
+    if (verifyDocBtn) {
         verifyDocBtn.onclick = () => {
-            if(currentRow) {
+            if (currentRow) {
                 alert("Document Verified Successfully! ✅");
                 currentRow.remove();
                 closeModal();
@@ -130,11 +121,11 @@ document.addEventListener('click', (e) => {
         };
     }
 
-    if(rejectDocBtn) {
+    if (rejectDocBtn) {
         rejectDocBtn.onclick = () => {
-            if(currentRow) {
+            if (currentRow) {
                 const reason = prompt("Enter reason for rejection:");
-                if(reason) {
+                if (reason) {
                     alert("Document Rejected! ❌ Reason: " + reason);
                     currentRow.remove();
                     closeModal();
@@ -143,7 +134,7 @@ document.addEventListener('click', (e) => {
         };
     }
 
-    // --- 5. INVENTORY LOGIC (Inventory Page) ---
+    // --- 5. INVENTORY LOGIC ---
     const glassTable = document.querySelector('.glass-table');
     if (glassTable) {
         glassTable.addEventListener('click', (e) => {
@@ -169,13 +160,12 @@ document.addEventListener('click', (e) => {
         };
     }
 
-    // Add Product Logic
     const addProductBtn = document.querySelector('.top-bar .btn-sm');
     if (addProductBtn && addProductBtn.innerText.includes("Add Product")) {
         addProductBtn.onclick = () => document.getElementById('addProductModal').style.display = 'flex';
     }
 
-    // --- 6. DISPUTE RESOLUTION LOGIC (Disputes Page) ---
+    // --- 6. DISPUTE RESOLUTION LOGIC ---
     const resolveBtn = document.getElementById('resolveDisputeBtn');
     const refundBtn = document.getElementById('refundUserBtn');
     const callBtn = document.getElementById('callVendorBtn');
@@ -195,7 +185,6 @@ document.addEventListener('click', (e) => {
 // GLOBAL HELPER FUNCTIONS
 // ==========================================
 
-// Ye function bahar hona chahiye taake har jagah se call ho sake
 function openActionPopup(title, msg, color, icon) {
     const actionModal = document.getElementById('actionModal');
     const modalTitle = document.getElementById('modalTitle');
@@ -209,15 +198,12 @@ function openActionPopup(title, msg, color, icon) {
         modalIcon.innerHTML = `<i class="fa-solid ${icon}" style="color: ${color}"></i>`;
         confirmBtn.style.backgroundColor = color;
 
-        // Modal dikhao
         actionModal.style.display = 'flex';
 
-        // Confirm button par action
         confirmBtn.onclick = () => {
             alert(title + " Processed Successfully! ✅");
             actionModal.style.display = 'none';
 
-            // Agar koi row delete karni ho (Vendors page ke liye)
             if (currentRow) {
                 currentRow.remove();
                 currentRow = null;
@@ -228,7 +214,6 @@ function openActionPopup(title, msg, color, icon) {
     }
 }
 
-// Sidebar dropdown logic
 function toggleDropdown(element) {
     const arrow = element.querySelector('.arrow-icon');
     if (arrow) arrow.classList.toggle('rotate');
@@ -237,10 +222,9 @@ function toggleDropdown(element) {
     if (submenu) submenu.classList.toggle('open');
 }
 
-// Document Modal logic (Docs Review page)
 function openModal(imageSrc, btnElement) {
     const modal = document.getElementById('docModal');
-    if(modal) {
+    if (modal) {
         modal.style.display = 'flex';
         if (btnElement) currentRow = btnElement.closest('tr');
         const preview = document.querySelector('.doc-preview');
@@ -250,81 +234,73 @@ function openModal(imageSrc, btnElement) {
 
 function closeModal() {
     const modal = document.getElementById('docModal');
-    if(modal) modal.style.display = 'none';
+    if (modal) modal.style.display = 'none';
 }
 
-// Click outside to close modals
-window.onclick = function(event) {
+window.onclick = function (event) {
     const actionModal = document.getElementById('actionModal');
     const docModal = document.getElementById('docModal');
     if (event.target == actionModal) actionModal.style.display = "none";
     if (event.target == docModal) docModal.style.display = "none";
 };
+
 // ==========================================
 // FINANCIAL & COMMISSION PAGE LOGIC
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Export Report - Real CSV Download Logic
-   //  (Real Download from Table) ---
-const exportBtn = document.getElementById('exportReportBtn');
-if (exportBtn) {
-    exportBtn.onclick = () => {
-        const original = exportBtn.innerHTML;
-        // Button par loading spinner dikhayein
-        exportBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Exporting...';
 
-        setTimeout(() => {
-            // 1. Table se live data collect karna
-            const table = document.querySelector(".finance-table");
-            if (!table) {
-                alert("Table nahi mili!");
+    const exportBtn = document.getElementById('exportReportBtn');
+    if (exportBtn) {
+        exportBtn.onclick = () => {
+            const original = exportBtn.innerHTML;
+            exportBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Exporting...';
+
+            setTimeout(() => {
+                const table = document.querySelector(".finance-table");
+                if (!table) {
+                    alert("Table not found!");
+                    exportBtn.innerHTML = original;
+                    return;
+                }
+
+                const rows = Array.from(table.querySelectorAll("tr"));
+                const csvContent = rows.map(row => {
+                    const cells = Array.from(row.querySelectorAll("th, td"));
+                    return cells.map(cell => `"${cell.innerText.replace(/\s+/g, ' ').trim()}"`).join(",");
+                }).join("\n");
+
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = "ISES_Financial_Report_Dec2025.csv";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                alert("Financial Report (CSV) is downloaded!✅");
                 exportBtn.innerHTML = original;
-                return;
-            }
-            const rows = Array.from(table.querySelectorAll("tr"));
+            }, 1200);
+        };
+    }
 
-            // 2. Data ko CSV string mein badalna
-            const csvContent = rows.map(row => {
-                const cells = Array.from(row.querySelectorAll("th, td"));
-                return cells.map(cell => {
-                    let data = cell.innerText.replace(/\s+/g, ' ').trim();
-                    return `"${data}"`;
-                }).join(",");
-            }).join("\n");
-
-            // 3. Browser mein download trigger karna
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement("a");
-            link.setAttribute("href", url);
-            link.setAttribute("download", "ISES_Financial_Report_Dec2025.csv");
-            document.body.appendChild(link);
-
-            link.click(); // File download trigger
-            document.body.removeChild(link);
-
-            // 4. Success feedback
-            alert("Financial Report (CSV) is downloaded!✅");
-            exportBtn.innerHTML = original;
-        }, 1200);
-    };
-}
-
-    // 2. Tabs Filtering Logic - Faster & Visible Text fix
     const filterTabs = document.querySelectorAll('.filter-tabs span');
     const tableRows = document.querySelectorAll('.finance-table tbody tr');
 
     filterTabs.forEach(tab => {
-        tab.onclick = function() {
+        tab.onclick = function () {
             filterTabs.forEach(t => t.classList.remove('active'));
             this.classList.add('active');
 
             const filter = this.getAttribute('data-filter');
             tableRows.forEach(row => {
-                // Badge ke text se filter pakadta hai
                 const status = row.querySelector('.badge').innerText.toLowerCase().trim();
-                if (filter === 'all' || (filter === 'paid' && status === 'paid') || (filter === 'pending' && status === 'pending')) {
+                if (
+                    filter === 'all' ||
+                    (filter === 'paid' && status === 'paid') ||
+                    (filter === 'pending' && status === 'pending')
+                ) {
                     row.style.display = 'table-row';
                 } else {
                     row.style.display = 'none';
@@ -333,15 +309,13 @@ if (exportBtn) {
         };
     });
 
-    // 3. Finance Cards Interaction - Fast Response
     const finCards = document.querySelectorAll('.finance-card');
     finCards.forEach(card => {
         card.addEventListener('mouseenter', () => card.style.transition = '0.2s');
-        card.onclick = function() {
+        card.onclick = function () {
             finCards.forEach(c => c.classList.remove('active-card'));
             this.classList.add('active-card');
 
-            // Sync with Table Filters
             const type = this.id;
             if (type === 'card-pending') {
                 document.querySelector('[data-filter="pending"]').click();

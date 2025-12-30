@@ -9,33 +9,6 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        .payment-progress-container {
-            background: white; padding: 25px; border-radius: 12px; box-shadow: var(--card-shadow); margin-bottom: 30px;
-        }
-        .progress-track {
-            display: flex; justify-content: space-between; position: relative; margin-top: 20px;
-        }
-        /* Line behind circles */
-        .progress-track::before {
-            content: ''; position: absolute; top: 15px; left: 0; width: 100%; height: 4px; background: #eee; z-index: 0;
-        }
-        .step-item {
-            position: relative; z-index: 1; text-align: center; width: 33%;
-        }
-        .step-circle {
-            width: 35px; height: 35px; background: #eee; border-radius: 50%; margin: 0 auto 10px;
-            display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;
-            transition: 0.3s; border: 3px solid white;
-        }
-        .step-item.completed .step-circle { background: var(--primary-color); }
-        .step-item.active .step-circle { background: #f1c40f; }
-
-        .step-label { font-size: 13px; color: #7f8c8d; font-weight: 600; }
-        .step-item.completed .step-label { color: var(--primary-color); }
-
-        .pay-btn-container { margin-top: 20px; text-align: right; }
-    </style>
 </head>
 <body>
 
@@ -85,7 +58,7 @@
         <a href="../market/analysis.html" class="menu-item">
             <i class="fa-solid fa-chart-line"></i> Market Analysis
         </a>
-
+                 <a href="profile.html" class="menu-item"><i class="fa-solid fa-user-gear"></i> Profile Settings</a>
         <a href="#" onclick="logout()" class="menu-item" style="margin-top: auto;">
             <i class="fa-solid fa-sign-out-alt"></i> Logout
         </a>

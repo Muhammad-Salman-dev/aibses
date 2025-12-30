@@ -23,10 +23,18 @@
         <a href="history.html" class="menu-item"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
 
         <div class="menu-dropdown">
-            <a href="#" class="menu-item" id="projectHubBtn">
-                <div class="menu-item-content"><i class="fa-solid fa-list-check"></i> <span>Project Hub</span></div>
-                <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
-            </a>
+        <a href="#" class="menu-item" onclick="toggleVendorMenu(event)">
+            <div class="menu-item-content"><i class="fa-solid fa-list-check"></i> <span>Project Hub</span></div>
+            <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+        </a>
+        <div class="submenu" id="vendorSubmenu">
+            <a href="quotes.html" class="submenu-item"><i class="fa-solid fa-file-invoice-dollar"></i> View Quotes</a>
+            <a href="quote-status.html" class="submenu-item"><i class="fa-solid fa-hourglass-half"></i> Quote Status</a>
+            <a href="payments.html" class="submenu-item"><i class="fa-solid fa-credit-card"></i> Payments</a>
+            <a href="installation.html" class="submenu-item"><i class="fa-solid fa-helmet-safety"></i> Installation</a>
+            <a href="rate-vendor.html" class="submenu-item"><i class="fa-solid fa-star"></i> Rate & Profile</a>
+        </div>
+    </div>
             <div class="submenu" id="vendorSubmenu">
                 <a href="quotes.html" class="submenu-item"><i class="fa-solid fa-file-invoice-dollar"></i> View Quotes</a>
                 <a href="quote-status.html" class="submenu-item"><i class="fa-solid fa-hourglass-half"></i> Quote Status</a>

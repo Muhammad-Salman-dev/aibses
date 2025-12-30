@@ -18,12 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     {
                         label: 'Cost with Grid (No Solar)',
                         data: [540000, 850000, 1300000, 2100000, 3200000],
-                        backgroundColor: '#e74c3c' // Red for Expense
+                        backgroundColor: '#e74c3c'
                     },
                     {
                         label: 'Cost with Solar',
                         data: [40000, 55000, 70000, 90000, 120000],
-                        backgroundColor: '#2ecc71' // Green for Savings
+                        backgroundColor: '#2ecc71'
                     }
                 ]
             },
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 labels: ['2023', '2024', '2025', '2026', '2027'],
                 datasets: [{
                     label: 'Grid Unit Price (PKR)',
-                    data: [45, 58, 65, 78, 90], // Rising trend
+                    data: [45, 58, 65, 78, 90],
                     borderColor: '#f39c12',
                     backgroundColor: 'rgba(243, 156, 18, 0.1)',
                     fill: true,

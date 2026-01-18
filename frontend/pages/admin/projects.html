@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISES Admin | Projects</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../css/admin.css">
 </head>
 <body>
-    <aside class="sidebar">
+
+   <aside class="sidebar">
         <div class="brand">
             <div class="brand-logo"><i class="fa-solid fa-bolt"></i></div>
             <div class="brand-name">ISES <span>Admin</span></div>
@@ -25,21 +27,11 @@
                 </div>
 
                 <div class="submenu">
-                    <a href="dashboard.html" class="submenu-item">
-                        <i class="fa-solid fa-chart-line"></i> Dashboard
-                    </a>
-                    <a href="users.html" class="submenu-item">
-                        <i class="fa-solid fa-users"></i> All Users
-                    </a>
-                    <a href="commission.html" class="submenu-item">
-                        <i class="fa-solid fa-file-invoice-dollar"></i> Commission
-                    </a>
-                    <a href="ai-review.html" class="submenu-item">
-                        <i class="fa-solid fa-robot"></i> AI Review
-                    </a>
-                    <a href="vendors.html" class="submenu-item">
-                        <i class="fa-solid fa-user-clock"></i> Pending Vendors
-                    </a>
+                    <a href="dashboard.html" class="submenu-item"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+                    <a href="users.html" class="submenu-item"><i class="fa-solid fa-users"></i> All Users</a>
+                    <a href="commission.html" class="submenu-item"><i class="fa-solid fa-file-invoice-dollar"></i> Commission</a>
+                    <a href="ai_models.html" class="submenu-item"><i class="fa-solid fa-robot"></i> AI Review</a>
+                    <a href="vendors.html" class="submenu-item"><i class="fa-solid fa-user-clock"></i> Pending Vendors</a>
                 </div>
             </div>
 
@@ -54,14 +46,16 @@
             <a href="disputes.html" class="menu-item"><i class="fa-solid fa-gavel"></i><span>Disputes</span></a>
             <a href="inventory.html" class="menu-item"><i class="fa-solid fa-shop"></i><span>Inventory</span></a>
         </nav>
-         <div class="admin-profile">
+
+        <div class="admin-profile">
             <div class="avatar-initials bg-green">SA</div>
             <div class="admin-info">
                 <h4>System Admin</h4>
                 <p>Super User</p>
             </div>
-          <button class="logout-btn" onclick="window.location.href='../../index.html'">
+            <button class="logout-btn" onclick="window.location.href='../../index.html'">
                 <i class="fa-solid fa-power-off"></i>
+            </button>
         </div>
     </aside>
 
@@ -73,33 +67,76 @@
         <div class="section-card">
             <table class="glass-table">
                 <thead>
-                    <tr><th>Project ID</th><th>User</th><th>Stage</th><th>AI Status</th><th>Action</th></tr>
+                    <tr>
+                        <th>Project ID</th>
+                        <th>User</th>
+                        <th>Stage</th>
+                        <th>AI Status</th>
+                        <th>Action</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>#PRJ-105</td>
+                        <td><strong>#PRJ-105</strong></td>
                         <td>Sara Ahmed</td>
-                        <td><span class="status-badge warning">In Progress</span></td>
+                        <td><span class="badge yellow">In Progress</span></td>
                         <td><i class="fa-solid fa-check text-green"></i> Verified</td>
-                       <td>
-                      <button class="btn-xs" style="background-color: #2dce89; color:
-                       white; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer;">Track </button>
-                      </td>
+                        <td>
+                             <button class="btn-sm theme-bg" style="color:white; border:none;"
+                                onclick="openTrackModal('#PRJ-105', 'Sara Ahmed')">
+                                Track
+                             </button>
+                        </td>
                     </tr>
                     <tr>
-                       <td>#PRJ-108</td>
-                       <td>Usman Zafar</td>
-                       <td><span class="status-badge success">Completed</span></td>
-                     <td>Pending</td>
-                    <td>
-                     <button class="btn-xs" style="background-color: #2dce89; color:
-                      white; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer;">Archive </button>
-    </td>
-</tr>
+                        <td><strong>#PRJ-108</strong></td>
+                        <td>Usman Zafar</td>
+                        <td><span class="badge green">Completed</span></td>
+                        <td>Pending</td>
+                        <td>
+                             <button class="btn-sm" style="background:#e2e8f0; color:#4a5568; border:none;"
+                                onclick="archiveProject(this, '#PRJ-108')">
+                                Archive
+                             </button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </main>
+
+    <div id="trackModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeTrackModal()">&times;</span>
+
+            <h2 style="color:#333; margin-bottom:5px;">Project Timeline</h2>
+            <p style="color:#666; margin-bottom:20px;">
+                Tracking: <strong id="trackProjID" style="color:#2dce89;"></strong> | Client: <span id="trackClient"></span>
+            </p>
+
+            <div class="timeline">
+                <div class="step completed">
+                    <div class="step-icon"><i class="fa-solid fa-file-contract"></i></div>
+                    <p>Docs</p>
+                </div>
+                <div class="step completed">
+                    <div class="step-icon"><i class="fa-solid fa-robot"></i></div>
+                    <p>AI Design</p>
+                </div>
+                <div class="step completed">
+                    <div class="step-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                    <p>Dispatch</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                    <p>Install</p>
+                </div>
+            </div>
+
+            <button onclick="closeTrackModal()" class="btn-sm theme-bg" style="margin-top:25px; color:white; border:none; width:100%;">Close Tracker</button>
+        </div>
+    </div>
+
     <script src="../../js/admin.js"></script>
 </body>
 </html>

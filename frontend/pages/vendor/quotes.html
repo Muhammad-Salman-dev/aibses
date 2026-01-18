@@ -5,9 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Quotations - ISES Partner</title>
 
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="../../css/vendor-dashboard.css">
+
+    <style>
+        /* Modal (Popup) Styles */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
+        .modal-overlay.active { display: flex; }
+        .modal-box { background: #fff; padding: 30px; border-radius: 12px; width: 400px; max-width: 90%; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 20px; cursor: pointer; border: none; background: none; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 500; font-size: 14px; }
+        .form-control { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; }
+        .btn-submit { background: #2c3e50; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; width: 100%; margin-top: 10px; }
+
+        /* Chat Widget Styles */
+        .chat-widget { position: fixed; bottom: 20px; right: 20px; width: 300px; background: #fff; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.15); display: none; flex-direction: column; overflow: hidden; z-index: 999; border: 1px solid #eee; }
+        .chat-header { background: #27ae60; color: #fff; padding: 12px; display: flex; justify-content: space-between; align-items: center; }
+        .chat-body { height: 200px; padding: 10px; overflow-y: auto; background: #f9f9f9; display: flex; flex-direction: column; gap: 10px; }
+        .chat-footer { padding: 10px; border-top: 1px solid #eee; display: flex; gap: 5px; }
+        .chat-input { flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 20px; outline: none; }
+        .msg { padding: 8px 12px; border-radius: 8px; font-size: 12px; max-width: 80%; }
+        .msg-in { background: #fff; border: 1px solid #eee; align-self: flex-start; }
+        .msg-out { background: #d4edda; color: #155724; align-self: flex-end; }
+
+        /* Toast Notification */
+        .toast-notification { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(100px); background: #333; color: white; padding: 12px 24px; border-radius: 30px; transition: 0.3s; z-index: 2000; opacity: 0; }
+        .toast-notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+    </style>
 </head>
 
 <body>
@@ -28,20 +54,9 @@
             <li><a href="#" class="menu-item active"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
             <li><a href="my-projects.html" class="menu-item"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
             <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
-           <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 20px;">
-
-            <li>
-                <a href="profile-setup.html" class="menu-item">
-                    <i class="fa-solid fa-shield-halved"></i> <span>Verification Center</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="profile.html" class="menu-item">
-                    <i class="fa-solid fa-building"></i> <span>Company Profile</span>
-                </a>
-            </li>
-
+            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 20px;">
+            <li><a href="profile-setup.html" class="menu-item"><i class="fa-solid fa-shield-halved"></i> <span>Verification Center</span></a></li>
+            <li><a href="profile.html" class="menu-item"><i class="fa-solid fa-building"></i> <span>Company Profile</span></a></li>
         </ul>
 
         <div class="logout-section">
@@ -75,7 +90,7 @@
                 <div class="mini-stat-card blue">
                     <div class="ms-info">
                         <h4>Total Sent</h4>
-                        <h2>18</h2>
+                        <h2 id="total-sent">18</h2>
                     </div>
                     <div class="ms-icon bg-blue-soft"><i class="fa-solid fa-paper-plane"></i></div>
                 </div>
@@ -83,7 +98,7 @@
                 <div class="mini-stat-card orange">
                     <div class="ms-info">
                         <h4>In Negotiation</h4>
-                        <h2>3</h2>
+                        <h2 id="total-nego">3</h2>
                     </div>
                     <div class="ms-icon bg-orange-soft"><i class="fa-solid fa-comments-dollar"></i></div>
                 </div>
@@ -91,7 +106,7 @@
                 <div class="mini-stat-card green">
                     <div class="ms-info">
                         <h4>Accepted</h4>
-                        <h2>5</h2>
+                        <h2 id="total-accepted">5</h2>
                     </div>
                     <div class="ms-icon bg-green-soft"><i class="fa-solid fa-check"></i></div>
                 </div>
@@ -100,18 +115,18 @@
             <div class="smart-container">
 
                 <div class="smart-tabs">
-                    <button class="tab-btn active">All Quotes</button>
-                    <button class="tab-btn">Needs Action <span class="badge-count">2</span></button>
-                    <button class="tab-btn">Accepted</button>
-                    <button class="tab-btn">Archived</button>
+                    <button class="tab-btn active" onclick="filterQuotes('all', this)">All Quotes</button>
+                    <button class="tab-btn" onclick="filterQuotes('negotiation', this)">Needs Action <span class="badge-count">2</span></button>
+                    <button class="tab-btn" onclick="filterQuotes('accepted', this)">Accepted</button>
+                    <button class="tab-btn" onclick="filterQuotes('sent', this)">Sent</button>
                 </div>
 
                 <div class="table-controls">
                     <div class="search-box-smart">
                         <i class="fa-solid fa-search"></i>
-                        <input type="text" placeholder="Search client or Quote ID...">
+                        <input type="text" id="searchInput" placeholder="Search client or Quote ID..." onkeyup="searchQuotes()">
                     </div>
-                    <a href="#" class="create-btn"><i class="fa-solid fa-plus"></i> Create New Quote</a>
+                    <a href="#" class="create-btn" onclick="openModal()"><i class="fa-solid fa-plus"></i> Create New Quote</a>
                 </div>
 
                 <div class="table-responsive">
@@ -125,9 +140,9 @@
                                 <th class="text-center">Quick Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="quotesTableBody">
 
-                            <tr class="highlight-row">
+                            <tr class="quote-row" data-status="negotiation">
                                 <td>
                                     <div class="client-box">
                                         <div class="client-avatar blue-avatar">AA</div>
@@ -154,17 +169,17 @@
                                 <td class="quote-amount">Rs. 850,000</td>
                                 <td>
                                     <div class="action-group">
-                                        <button class="btn-action btn-chat-active" title="Reply to Client">
+                                        <button class="btn-action btn-chat-active" title="Reply to Client" onclick="openChat('Ali Ahmed')">
                                             <i class="fa-solid fa-comment-dots"></i>
                                             <span class="notif-badge">1</span>
                                         </button>
-                                        <button class="btn-action" title="Edit/Revise Quote"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button class="btn-action" title="Edit/Revise Quote" onclick="showToast('Edit Mode Enabled')"><i class="fa-solid fa-pen-to-square"></i></button>
                                         <button class="btn-action" title="View Details"><i class="fa-solid fa-eye"></i></button>
                                     </div>
                                 </td>
                             </tr>
 
-                            <tr>
+                            <tr class="quote-row" data-status="sent">
                                 <td>
                                     <div class="client-box">
                                         <div class="client-avatar green-avatar">GR</div>
@@ -189,13 +204,13 @@
                                 <td class="quote-amount">Rs. 120,000</td>
                                 <td>
                                     <div class="action-group">
-                                        <button class="btn-action" title="Send Reminder"><i class="fa-regular fa-bell"></i></button>
+                                        <button class="btn-action" title="Send Reminder" onclick="showToast('Reminder Sent Successfully')"><i class="fa-regular fa-bell"></i></button>
                                         <button class="btn-action" title="View Details"><i class="fa-solid fa-eye"></i></button>
                                     </div>
                                 </td>
                             </tr>
 
-                            <tr>
+                            <tr class="quote-row" data-status="accepted">
                                 <td>
                                     <div class="client-box">
                                         <div class="client-avatar red-avatar">MS</div>
@@ -221,7 +236,7 @@
                                 <td>
                                     <div class="action-group">
                                         <button class="btn-action" title="Go to Project"><i class="fa-solid fa-briefcase"></i></button>
-                                        <button class="btn-action" title="Download Invoice"><i class="fa-solid fa-file-pdf"></i></button>
+                                        <button class="btn-action" title="Download Invoice" onclick="showToast('Downloading Invoice...')"><i class="fa-solid fa-file-pdf"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -230,10 +245,173 @@
                     </table>
                 </div>
             </div>
-
         </div>
     </main>
 
+    <div class="modal-overlay" id="createModal">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <h3 style="margin-top:0">Create New Quote</h3>
+            <form onsubmit="submitNewQuote(event)">
+                <div class="form-group">
+                    <label>Client Name</label>
+                    <input type="text" id="newClientName" class="form-control" placeholder="Enter name" required>
+                </div>
+                <div class="form-group">
+                    <label>System Detail</label>
+                    <input type="text" id="newSystem" class="form-control" placeholder="e.g. 5kW System">
+                </div>
+                <div class="form-group">
+                    <label>Amount (Rs)</label>
+                    <input type="number" id="newAmount" class="form-control" placeholder="0.00" required>
+                </div>
+                <button type="submit" class="btn-submit">Send Quotation</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <span id="chatTitle">Chat</span>
+            <i class="fa-solid fa-xmark" style="cursor:pointer" onclick="closeChat()"></i>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="msg msg-in">Hello, can you give me a better price?</div>
+            <div class="msg msg-out">Let me check and get back to you.</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Type..." onkeypress="handleChat(event)">
+            <button style="border:none; background:none; color:#27ae60; cursor:pointer;" onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <div class="toast-notification" id="toast">Action Successful</div>
+
     <script src="../../js/vendor.js"></script>
+
+    <script>
+        // 1. SEARCH FUNCTIONALITY
+        function searchQuotes() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let rows = document.querySelectorAll('.quote-row');
+
+            rows.forEach(row => {
+                let text = row.innerText.toLowerCase();
+                if(text.includes(input)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+
+        // 2. TAB FILTERING
+        function filterQuotes(status, btn) {
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            // Add active to clicked button
+            btn.classList.add('active');
+
+            let rows = document.querySelectorAll('.quote-row');
+            rows.forEach(row => {
+                if(status === 'all' || row.getAttribute('data-status') === status) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+
+        // 3. MODAL LOGIC (Create Quote)
+        function openModal() {
+            document.getElementById('createModal').classList.add('active');
+        }
+        function closeModal() {
+            document.getElementById('createModal').classList.remove('active');
+        }
+
+        // 4. ADD NEW QUOTE TO TABLE (Dynamic)
+        function submitNewQuote(e) {
+            e.preventDefault();
+            let name = document.getElementById('newClientName').value;
+            let system = document.getElementById('newSystem').value;
+            let amount = document.getElementById('newAmount').value;
+            let id = '#QT-2024-' + Math.floor(Math.random() * 1000);
+
+            // Create HTML string for new row
+            let newRow = `
+                <tr class="quote-row" data-status="sent">
+                    <td>
+                        <div class="client-box">
+                            <div class="client-avatar blue-avatar">${name.substring(0,2).toUpperCase()}</div>
+                            <div class="client-info"><h5>${name}</h5><span>New Location</span></div>
+                        </div>
+                    </td>
+                    <td><div class="quote-id">${id}</div><div class="quote-desc">${system}</div></td>
+                    <td>
+                        <div class="status-pill sent"><span class="dot dot-blue"></span> Sent</div>
+                        <div class="last-activity"><span class="text-muted">Just Now</span></div>
+                    </td>
+                    <td class="quote-amount">Rs. ${parseInt(amount).toLocaleString()}</td>
+                    <td>
+                        <div class="action-group">
+                            <button class="btn-action" title="View"><i class="fa-solid fa-eye"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            `;
+
+            // Add to table top
+            document.getElementById('quotesTableBody').insertAdjacentHTML('afterbegin', newRow);
+
+            // Update Stat
+            let count = document.getElementById('total-sent');
+            count.innerText = parseInt(count.innerText) + 1;
+
+            closeModal();
+            showToast('Quote Created Successfully!');
+            e.target.reset();
+        }
+
+        // 5. CHAT FUNCTIONALITY
+        function openChat(name) {
+            document.getElementById('chatWidget').style.display = 'flex';
+            document.getElementById('chatTitle').innerText = 'Chat: ' + name;
+        }
+        function closeChat() {
+            document.getElementById('chatWidget').style.display = 'none';
+        }
+        function handleChat(e) {
+            if(e.key === 'Enter') sendMessage();
+        }
+        function sendMessage() {
+            let input = document.getElementById('chatInput');
+            let body = document.getElementById('chatBody');
+            if(input.value.trim() !== "") {
+                let msg = `<div class="msg msg-out">${input.value}</div>`;
+                body.insertAdjacentHTML('beforeend', msg);
+                input.value = "";
+                body.scrollTop = body.scrollHeight; // Auto scroll
+            }
+        }
+
+        // 6. TOAST NOTIFICATION
+        function showToast(msg) {
+            let toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Sidebar Toggle (Mobile)
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
+        document.getElementById('close-sidebar-btn').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.remove('active');
+        });
+    </script>
 </body>
 </html>

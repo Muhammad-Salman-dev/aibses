@@ -325,3 +325,111 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     });
 });
+
+// ==========================================
+// 7. AI DESIGN MODAL LOGIC (New Addition)
+// ==========================================
+
+
+const designModal = document.getElementById("designModal");
+const modalRef = document.getElementById("modalProjectRef");
+const modalScore = document.getElementById("modalScore");
+function openDesignModal(projectID, score) {
+    if (designModal) {
+        designModal.style.display = "flex";
+        if (modalRef) modalRef.innerText = projectID;
+        if (modalScore) modalScore.innerText = score;
+    } else {
+        console.error("Design Modal ID not found in HTML");
+    }
+}
+
+function closeDesignModal() {
+    if (designModal) {
+        designModal.style.display = "none";
+    }
+}
+document.addEventListener('DOMContentLoaded', () => {
+    const designBtns = document.querySelectorAll("button.theme-bg");
+
+    designBtns.forEach(btn => {
+        if (btn.innerText.trim() === "View Design") {
+            btn.removeAttribute("onclick");
+            btn.addEventListener("click", function() {
+                const row = this.closest("tr");
+                const prjID = row.querySelector("strong").innerText.split('\n')[0];
+                const scoreText = row.querySelector(".badge").innerText;
+                openDesignModal(prjID, scoreText);
+            });
+        }
+    });
+});
+window.addEventListener('click', function(event) {
+    if (event.target === designModal) {
+        designModal.style.display = "none";
+    }
+});
+
+// ==========================================
+// 8. PROJECT MONITORING LOGIC
+// ==========================================
+
+const trackModal = document.getElementById("trackModal");
+function openTrackModal(projID, clientName) {
+    if (trackModal) {
+        trackModal.style.display = "flex"; // Center mein khulega
+        document.getElementById("trackProjID").innerText = projID;
+        document.getElementById("trackClient").innerText = clientName;
+    }
+}
+function closeTrackModal() {
+    if (trackModal) {
+        trackModal.style.display = "none";
+    }
+}
+function archiveProject(btnElement, projID) {
+    currentRow = btnElement.closest('tr');
+    openActionPopup(
+        'Archive Project',
+        `Are you sure you want to archive <b>${projID}</b>?`,
+        '#f59e0b',
+        'fa-box-archive'
+    );
+}
+window.addEventListener('click', function(event) {
+    if (event.target === trackModal) {
+        trackModal.style.display = "none";
+    }
+});
+
+// ==========================================
+// 9. RESPONSIVE LOGIC (Final & Safe)
+// ==========================================
+
+function toggleMobileSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.querySelector('.sidebar-overlay');
+
+    // 1. Sidebar Toggle (Check if element exists)
+    if (sidebar) {
+        sidebar.classList.toggle('active');
+    }
+
+    // 2. Overlay Toggle (Check if element exists)
+    if (overlay) {
+        overlay.classList.toggle('active');
+    }
+}
+
+// Close sidebar when clicking the overlay (Bahir click karne par band ho)
+document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.querySelector('.sidebar-overlay');
+    const sidebar = document.querySelector('.sidebar');
+
+    if (overlay) {
+        overlay.addEventListener('click', () => {
+            if (sidebar) sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    }
+});

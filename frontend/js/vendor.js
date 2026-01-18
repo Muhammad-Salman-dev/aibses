@@ -144,3 +144,88 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
 });
+
+// ===============================================
+    // UPDATE: MANAGE MODAL & CENTER CHAT LOGIC
+    // ===============================================
+
+    // 1. Elements Select Karo
+    const backdrop = document.getElementById('modalBackdrop');
+    const manageModal = document.getElementById('manageProjectModal');
+    const chatWidget = document.getElementById('chatWidget');
+    let currentRow = null; // Jo row edit ho rahi hai usay store karega
+
+    // 2. Chat Open Karne Ki Logic (Overwriting old one)
+    window.openChat = function(userName) {
+        backdrop.classList.add('active'); // Black background
+        chatWidget.classList.add('active'); // Center popup
+        document.getElementById('chatUserName').innerText = "Chat with " + userName;
+    };
+
+    // 3. Sab Modals Close Karne Ki Logic
+    window.closeAllModals = function() {
+        backdrop.classList.remove('active');
+        chatWidget.classList.remove('active');
+        manageModal.classList.remove('active');
+    };
+
+    // 4. MANAGE BUTTONS PAR CLICK DETECT KARNA
+    // Sab 'Manage' buttons dhundo aur listener lagao
+    document.querySelectorAll('.btn-action-manage').forEach(btn => {
+        btn.addEventListener('click', function() {
+            currentRow = this.closest('tr'); // Jis button pe click hua uski puri row pakro
+
+            // Row se purana data nikalo
+            const name = currentRow.querySelector('.user-name').innerText;
+            const progressVal = currentRow.querySelector('.progress-info strong').innerText.replace('%','');
+
+            // Modal mein data bharo
+            document.getElementById('modalProjectTitle').innerText = `Manage: ${name}`;
+            document.getElementById('editProgress').value = parseInt(progressVal);
+
+            // Modal show karo
+            backdrop.classList.add('active');
+            manageModal.classList.add('active');
+        });
+    });
+
+    // 5. SAVE CHANGES BUTTON LOGIC
+    window.saveProjectChanges = function() {
+        if (!currentRow) return;
+
+        // Form se naya data lo
+        const newProgress = document.getElementById('editProgress').value;
+        const newStage = document.getElementById('editStage').value;
+        const newStatus = document.getElementById('editStatusBadge').value;
+
+        // --- Table Row Update Karo ---
+
+        // 1. Progress Bar Update
+        const progressBar = currentRow.querySelector('.progress-fill');
+        const progressText = currentRow.querySelector('.progress-info strong');
+        const stageText = currentRow.querySelector('.progress-info .text-muted');
+
+        progressBar.style.width = newProgress + '%';
+        progressText.innerText = newProgress + '%';
+        stageText.innerText = newStage;
+
+        // Color change karo progress ke hisaab se
+        progressBar.className = 'progress-fill'; // Reset classes
+        if(newProgress < 30) progressBar.classList.add('orange');
+        else if(newProgress < 100) progressBar.classList.add('green');
+        else progressBar.classList.add('blue');
+
+        // 2. Status Badge Update (3rd Column)
+        const badge = currentRow.querySelector('.badge');
+        badge.innerText = newStatus;
+
+        // Badge color logic
+        badge.className = 'badge';
+        if(newStatus === 'Completed') badge.classList.add('badge-green');
+        else if(newStatus === 'Pending') badge.classList.add('badge-red');
+        else badge.classList.add('badge-orange');
+
+        // Close Modal
+        closeAllModals();
+        alert("Project Updated Successfully!");
+    };

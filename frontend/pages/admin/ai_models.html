@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISES Admin | AI Models</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../css/admin.css">
 </head>
 <body>
+
    <aside class="sidebar">
         <div class="brand">
             <div class="brand-logo"><i class="fa-solid fa-bolt"></i></div>
@@ -14,17 +16,16 @@
         </div>
 
         <nav class="menu">
-            <div class="menu-dropdown">
-                <div class="menu-item dropdown-toggle" onclick="toggleDropdown(this)">
+            <div class="menu-dropdown active"> <div class="menu-item dropdown-toggle" onclick="toggleDropdown(this)">
                     <div style="display:flex; gap:14px; align-items:center;">
                         <i class="fa-solid fa-chart-pie"></i>
                         <span>Overview</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    <i class="fa-solid fa-chevron-down arrow-icon rotate"></i>
                 </div>
 
-                <div class="submenu">
-                        <a href="dashboard.html" class="submenu-item">
+                <div class="submenu open" style="display: block;">
+                    <a href="dashboard.html" class="submenu-item">
                         <i class="fa-solid fa-chart-line"></i> Dashboard
                     </a>
                     <a href="users.html" class="submenu-item">
@@ -41,57 +42,95 @@
                     </a>
                 </div>
             </div>
+
             <a href="vendors.html" class="menu-item"><i class="fa-solid fa-user-check"></i><span>New Signups</span></a>
             <a href="docs.html" class="menu-item"><i class="fa-solid fa-file-contract"></i><span>Review Docs</span></a>
             <a href="projects.html" class="menu-item"><i class="fa-solid fa-desktop"></i><span>Project Monitor</span></a>
             <a href="disputes.html" class="menu-item"><i class="fa-solid fa-gavel"></i><span>Disputes</span></a>
             <a href="inventory.html" class="menu-item"><i class="fa-solid fa-shop"></i><span>Inventory</span></a>
         </nav>
-         <div class="admin-profile">
+
+        <div class="admin-profile">
             <div class="avatar-initials bg-green">SA</div>
             <div class="admin-info">
                 <h4>System Admin</h4>
                 <p>Super User</p>
             </div>
-          <button class="logout-btn" onclick="window.location.href='../../index.html'">
+            <button class="logout-btn" onclick="window.location.href='../../index.html'">
                 <i class="fa-solid fa-power-off"></i>
+            </button>
         </div>
     </aside>
+
     <main class="main-content">
         <header class="top-bar">
+            <button class="mobile-toggle-btn" onclick="toggleMobileSidebar()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
             <h1>AI Design Validation Queue</h1>
         </header>
 
         <div class="section-card">
-            <h3>Pending AI Approvals (12)</h3>
+            <h3>Pending AI Approvals (03)</h3>
             <table class="glass-table">
-                <thead><tr><th>Project Ref</th><th>System Size</th><th>Roof Area</th><th>AI Accuracy Score</th><th>Admin Action</th></tr></thead>
+                <thead>
+                    <tr>
+                        <th>Project Ref</th>
+                        <th>System Size</th>
+                        <th>Roof Area</th>
+                        <th>AI Accuracy Score</th>
+                        <th>Admin Action</th>
+                    </tr>
+                </thead>
                 <tbody>
                     <tr>
                         <td><strong>#PRJ-105</strong><br><small>User: Bilal</small></td>
                         <td>10 kW</td>
                         <td>1200 sqft</td>
                         <td><span class="badge green">98% Match</span></td>
-                        <td><button class="btn-sm theme-bg" style="color:#fff;">View Design</button></td>
+                        <td><button class="btn-sm theme-bg" style="color:#fff;" onclick="openDesignModal('#PRJ-105', '98% Match')">View Design</button></td>
                     </tr>
                     <tr>
                         <td><strong>#PRJ-112</strong><br><small>User: Hamza</small></td>
                         <td>5 kW</td>
                         <td>800 sqft</td>
                         <td><span class="badge yellow">75% Match</span></td>
-                        <td><button class="btn-sm theme-bg" style="color:#fff;">View Design</button></td>
+                        <td><button class="btn-sm theme-bg" style="color:#fff;" onclick="openDesignModal('#PRJ-112', '75% Match')">View Design</button></td>
                     </tr>
                     <tr>
                         <td><strong>#PRJ-118</strong><br><small>User: Nida</small></td>
                         <td>15 kW</td>
                         <td>2500 sqft</td>
                         <td><span class="badge red">40% Error</span></td>
-                        <td><button class="btn-sm danger">Manual Review</button></td>
+                        <td><button class="btn-sm danger" onclick="alert('Redirecting to Manual Review...')">Manual Review</button></td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </main>
+
+    <div id="designModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeDesignModal()">&times;</span>
+            <h2 style="color:#333; margin-bottom:5px;">AI Rooftop Analysis</h2>
+            <p>Reviewing Project: <strong id="modalProjectRef"></strong></p>
+
+            <div class="ai-preview-box">
+                <i class="fa-solid fa-satellite-dish"></i>
+                <p>Generating Solar Heatmap...</p>
+                <small>AI Confidence Score: <span id="modalScore" style="color:#10b981;"></span></small>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-sm danger" onclick="closeDesignModal()">Reject Analysis</button>
+                <button class="btn-sm theme-bg" style="color:white;" onclick="closeDesignModal()">Approve Design</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar-overlay"></div>
+
     <script src="../../js/admin.js"></script>
+
 </body>
 </html>

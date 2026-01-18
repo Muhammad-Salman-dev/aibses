@@ -15,39 +15,39 @@
     <aside class="sidebar">
         <div class="brand">
             <div class="brand-logo">
-                <i class="fa-solid fa-bolt"></i>
+                <i class="fa-solid fa-leaf"></i>
             </div>
             <div class="brand-name">ISES <span>Admin</span></div>
         </div>
 
         <nav class="menu">
             <div class="menu-dropdown">
-    <div class="menu-item dropdown-toggle" onclick="toggleDropdown(this)">
-        <div style="display:flex; gap:14px; align-items:center;">
-            <i class="fa-solid fa-chart-pie"></i>
-            <span>Overview</span>
-        </div>
-        <i class="fa-solid fa-chevron-down arrow-icon"></i>
-    </div>
+                <div class="menu-item dropdown-toggle" onclick="toggleDropdown(this)">
+                    <div style="display:flex; gap:14px; align-items:center;">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Overview</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                </div>
 
-    <div class="submenu">
-        <a href="dashboard.html" class="submenu-item">
-             <i class="fa-solid fa-chart-line"></i> Dashboard
-        </a>
-        <a href="users.html" class="submenu-item">
-            <i class="fa-solid fa-users"></i> All Users
-        </a>
-        <a href="commission.html" class="submenu-item">
-            <i class="fa-solid fa-file-invoice-dollar"></i> Commission
-        </a>
-        <a href="ai_models.html" class="submenu-item">
-            <i class="fa-solid fa-robot"></i> AI Review
-        </a>
-        <a href="vendors.html" class="submenu-item">
-            <i class="fa-solid fa-user-clock"></i> Pending Vendors
-        </a>
-    </div>
-</div>
+                <div class="submenu">
+                    <a href="dashboard.html" class="submenu-item">
+                         <i class="fa-solid fa-chart-line"></i> Dashboard
+                    </a>
+                    <a href="users.html" class="submenu-item">
+                        <i class="fa-solid fa-users"></i> All Users
+                    </a>
+                    <a href="commission.html" class="submenu-item">
+                        <i class="fa-solid fa-file-invoice-dollar"></i> Commission
+                    </a>
+                    <a href="ai_models.html" class="submenu-item">
+                        <i class="fa-solid fa-robot"></i> AI Review
+                    </a>
+                    <a href="vendors.html" class="submenu-item">
+                        <i class="fa-solid fa-user-clock"></i> Pending Vendors
+                    </a>
+                </div>
+            </div>
 
             <div class="menu-label">Vendor Management</div>
             <a href="vendors.html" class="menu-item">
@@ -84,14 +84,19 @@
                 <h4>System Admin</h4>
                 <p>Super User</p>
             </div>
-          <button class="logout-btn" onclick="window.location.href='../../index.html'">
+            <button class="logout-btn" onclick="window.location.href='../../index.html'">
                 <i class="fa-solid fa-power-off"></i>
+            </button>
         </div>
     </aside>
 
     <main class="main-content">
         <header class="top-bar">
             <div class="greeting">
+
+                <button class="mobile-toggle-btn" onclick="toggleMobileSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
                 <h1>Dashboard Overview</h1>
                 <p>Monitor System Health, Vendors, and Projects.</p>
             </div>
@@ -113,7 +118,7 @@
                 <a href="users.html" class="stat-card theme-blue">
                     <div class="icon-box"><i class="fa-solid fa-users"></i></div>
                     <div class="stat-data">
-                        <h3>1,204</h3>
+                        <h3>03</h3>
                         <p>Total Users</p>
                     </div>
                 </a>
@@ -121,7 +126,7 @@
                 <a href="pending_vendors.html" class="stat-card theme-orange">
                     <div class="icon-box"><i class="fa-solid fa-user-clock"></i></div>
                     <div class="stat-data">
-                        <h3>03</h3>
+                        <h3>02</h3>
                         <p>Pending Vendors</p>
                     </div>
                 </a>
@@ -129,7 +134,7 @@
                 <a href="ai_models.html" class="stat-card theme-purple">
                     <div class="icon-box"><i class="fa-solid fa-robot"></i></div>
                     <div class="stat-data">
-                        <h3>12</h3>
+                        <h3>03</h3>
                         <p>AI Models Pending</p>
                     </div>
                 </a>
@@ -233,6 +238,8 @@
             </div>
         </div>
     </main>
+
+    <div class="sidebar-overlay"></div>
 
     <script src="../../js/admin.js"></script>
 </body>

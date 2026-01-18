@@ -6,7 +6,6 @@
     <title>My Projects - ISES Partner</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="stylesheet" href="../../css/vendor-dashboard.css">
 </head>
 <body>
@@ -28,18 +27,8 @@
             <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 20px;">
 
-            <li>
-                <a href="profile-setup.html" class="menu-item">
-                    <i class="fa-solid fa-shield-halved"></i> <span>Verification Center</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="profile.html" class="menu-item">
-                    <i class="fa-solid fa-building"></i> <span>Company Profile</span>
-                </a>
-            </li>
-
+            <li><a href="profile-setup.html" class="menu-item"><i class="fa-solid fa-shield-halved"></i> <span>Verification Center</span></a></li>
+            <li><a href="profile.html" class="menu-item"><i class="fa-solid fa-building"></i> <span>Company Profile</span></a></li>
         </ul>
 
         <div class="logout-section">
@@ -66,27 +55,17 @@
         </header>
 
         <div class="dashboard-container">
-
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-info">
-                        <span class="stat-title">Ongoing</span>
-                        <h2 class="stat-value">3</h2>
-                    </div>
+                    <div class="stat-info"><span class="stat-title">Ongoing</span><h2 class="stat-value">3</h2></div>
                     <div class="stat-icon icon-blue"><i class="fa-solid fa-spinner"></i></div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-info">
-                        <span class="stat-title">Completed</span>
-                        <h2 class="stat-value">12</h2>
-                    </div>
+                    <div class="stat-info"><span class="stat-title">Completed</span><h2 class="stat-value">12</h2></div>
                     <div class="stat-icon icon-green"><i class="fa-solid fa-check"></i></div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-info">
-                        <span class="stat-title">Pending Revenue</span>
-                        <h2 class="stat-value">Rs 1.2M</h2>
-                    </div>
+                    <div class="stat-info"><span class="stat-title">Pending Revenue</span><h2 class="stat-value">Rs 1.2M</h2></div>
                     <div class="stat-icon icon-purple"><i class="fa-solid fa-money-bill-wave"></i></div>
                 </div>
             </div>
@@ -123,12 +102,8 @@
                                 </td>
                                 <td>
                                     <div class="progress-wrapper">
-                                        <div class="progress-info">
-                                            <strong>65%</strong> <span class="text-muted">Installation</span>
-                                        </div>
-                                        <div class="progress-bg">
-                                            <div class="progress-fill green" style="width: 65%;"></div>
-                                        </div>
+                                        <div class="progress-info"><strong>65%</strong> <span class="text-muted">Installation</span></div>
+                                        <div class="progress-bg"><div class="progress-fill green" style="width: 65%;"></div></div>
                                     </div>
                                 </td>
                                 <td><span class="badge badge-orange">Work in Progress</span></td>
@@ -136,10 +111,8 @@
                                 <td><span class="badge badge-green"><i class="fa-solid fa-check"></i> Advance Paid</span></td>
                                 <td>
                                     <div class="action-buttons">
-                                        <button class="btn-action-chat" onclick="openChat('Ahmed Khan')" title="Chat">
-                                            <i class="fa-regular fa-comments"></i>
-                                        </button>
-                                        <button class="btn-action-manage">Manage</button>
+                                        <button class="btn-action-chat" onclick="openChat('Ahmed Khan')"><i class="fa-regular fa-comments"></i></button>
+                                        <button class="btn-action-manage" onclick="manageProject()">Manage</button>
                                     </div>
                                 </td>
                             </tr>
@@ -156,12 +129,8 @@
                                 </td>
                                 <td>
                                     <div class="progress-wrapper">
-                                        <div class="progress-info">
-                                            <strong>20%</strong> <span class="text-muted">Procurement</span>
-                                        </div>
-                                        <div class="progress-bg">
-                                            <div class="progress-fill orange" style="width: 20%;"></div>
-                                        </div>
+                                        <div class="progress-info"><strong>20%</strong> <span class="text-muted">Procurement</span></div>
+                                        <div class="progress-bg"><div class="progress-fill orange" style="width: 20%;"></div></div>
                                     </div>
                                 </td>
                                 <td><span class="badge badge-blue">Material Sourcing</span></td>
@@ -169,10 +138,8 @@
                                 <td><span class="badge badge-red"><i class="fa-regular fa-clock"></i> Pending</span></td>
                                 <td>
                                     <div class="action-buttons">
-                                        <button class="btn-action-chat" onclick="openChat('Mariya Zahid')" title="Chat">
-                                            <i class="fa-regular fa-comments"></i>
-                                        </button>
-                                        <button class="btn-action-manage">Manage</button>
+                                        <button class="btn-action-chat" onclick="openChat('Mariya Zahid')"><i class="fa-regular fa-comments"></i></button>
+                                        <button class="btn-action-manage" onclick="manageProject()">Manage</button>
                                     </div>
                                 </td>
                             </tr>
@@ -191,17 +158,11 @@
             </div>
             <i class="fa-solid fa-xmark close-chat" onclick="closeChat()"></i>
         </div>
-
         <div class="chat-body" id="chatBody">
             <div class="chat-date">Today</div>
-            <div class="message received">
-                Hello, I had a question about the invoice.
-            </div>
-            <div class="message sent">
-                Sure, please let me know.
-            </div>
+            <div class="message received">Hello, I had a question about the invoice.</div>
+            <div class="message sent">Sure, please let me know.</div>
         </div>
-
         <div class="chat-footer">
             <input type="text" placeholder="Type your message..." id="chatInput">
             <button onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
@@ -214,23 +175,21 @@
             document.querySelector('.main-content').classList.toggle('sidebar-active');
         }
 
-        const tabs = document.querySelectorAll('.tab-btn');
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-            });
-        });
-
-        function openChat(userName) {
-            document.getElementById('chatWidget').classList.add('active');
-            document.getElementById('chatUserName').innerText = "Chat with " + userName;
+        // --- MANAGE FUNCTION UPDATED (NO ALERT) ---
+        function manageProject() {
+            // Yeh ab seedha page ko redirect karega, koi popup nahi aayega
+            window.location.href = "project-details.html";
         }
 
+        // Chat Functions
+        function openChat(userName) {
+            const widget = document.getElementById('chatWidget');
+            widget.classList.add('active');
+            document.getElementById('chatUserName').innerText = "Chat with " + userName;
+        }
         function closeChat() {
             document.getElementById('chatWidget').classList.remove('active');
         }
-
         function sendMessage() {
             const input = document.getElementById('chatInput');
             const body = document.getElementById('chatBody');
@@ -243,6 +202,9 @@
                 body.scrollTop = body.scrollHeight;
             }
         }
+        document.getElementById('chatInput').addEventListener("keypress", function(event) {
+            if (event.key === "Enter") sendMessage();
+        });
     </script>
 </body>
 </html>

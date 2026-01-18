@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details - Ahmed Khan | ISES Partner</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/vendor-dashboard.css">
+
+    <style>
+        /* --- PAGE SPECIFIC CSS --- */
+
+        /* Layout Grid */
+        .details-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        /* Cards */
+        .info-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            border: 1px solid #eee;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .card-header h3 { font-size: 18px; color: #333; }
+
+        /* Client Profile Section */
+        .client-header { text-align: center; margin-bottom: 20px; }
+        .client-avatar {
+            width: 80px; height: 80px; background: #e3f2fd; color: #2196f3;
+            font-size: 28px; font-weight: bold; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;
+        }
+        .info-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; }
+        .info-label { color: #888; }
+        .info-val { font-weight: 600; color: #333; }
+
+        /* Timeline Stepper */
+        .timeline-container { position: relative; padding: 20px 0; }
+        .steps { display: flex; justify-content: space-between; position: relative; }
+        .steps::before {
+            content: ""; position: absolute; top: 15px; left: 0; right: 0;
+            height: 4px; background: #e0e0e0; z-index: 1;
+        }
+        .step-item { position: relative; z-index: 2; text-align: center; width: 20%; }
+        .step-circle {
+            width: 35px; height: 35px; background: #fff; border: 4px solid #e0e0e0;
+            border-radius: 50%; margin: 0 auto 10px; transition: 0.3s;
+        }
+        .step-item.completed .step-circle { border-color: #27ae60; background: #27ae60; }
+        .step-item.active .step-circle { border-color: #27ae60; background: #fff; }
+        .step-title { font-size: 12px; color: #888; font-weight: 600; }
+        .step-item.completed .step-title, .step-item.active .step-title { color: #333; }
+
+        /* Check List */
+        .task-item {
+            display: flex; align-items: center; padding: 12px;
+            border: 1px solid #eee; border-radius: 8px; margin-bottom: 10px;
+            transition: 0.2s;
+        }
+        .task-item:hover { background: #f9f9f9; }
+        .task-checkbox { margin-right: 15px; accent-color: #27ae60; width: 18px; height: 18px; }
+
+        /* Payment Table */
+        .payment-table { width: 100%; border-collapse: collapse; }
+        .payment-table th { text-align: left; color: #888; font-size: 13px; padding: 10px; border-bottom: 1px solid #eee; }
+        .payment-table td { padding: 12px 10px; font-size: 14px; color: #333; border-bottom: 1px solid #f9f9f9; }
+
+        /* Buttons */
+        .btn-back {
+            background: none; border: none; color: #666; font-size: 16px;
+            cursor: pointer; display: flex; align-items: center; gap: 8px; margin-bottom: 20px;
+        }
+        .btn-back:hover { color: #27ae60; }
+
+        .btn-primary {
+            background: #27ae60; color: white; border: none; padding: 10px 20px;
+            border-radius: 6px; cursor: pointer; font-size: 14px;
+        }
+
+        /* Status Badges */
+        .status-paid { background: #d4edda; color: #155724; padding: 4px 10px; border-radius: 20px; font-size: 12px; }
+        .status-pending { background: #fff3cd; color: #856404; padding: 4px 10px; border-radius: 20px; font-size: 12px; }
+
+        @media (max-width: 900px) {
+            .details-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="brand">
+            <i class="fa-solid fa-leaf brand-icon"></i>
+            <div class="brand-text"><h2>ISES</h2><span>PARTNER</span></div>
+        </div>
+        <ul class="menu-list">
+            <li><a href="dashboard.html" class="menu-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
+            <li><a href="leads.html" class="menu-item"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
+            <li><a href="#" class="menu-item active"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
+            <li><a href="earnings.html" class="menu-item"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
+            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 20px;">
+            <li><a href="../../index.html" class="menu-item logout-btn"><i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span></a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <header class="top-header">
+            <div class="header-left">
+                <button class="menu-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+                <div class="page-title">
+                    <h1>Project Details</h1>
+                    <p>Manage installation progress and payments</p>
+                </div>
+            </div>
+            <div class="user-profile">
+                <span class="name">Solar Tech</span>
+                <div class="user-img" style="background-image: url('https://www.w3schools.com/howto/img_avatar.png');"></div>
+            </div>
+        </header>
+
+        <div class="dashboard-container">
+
+            <button class="btn-back" onclick="window.location.href='dashboard.html'">
+                <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+            </button>
+
+            <div class="details-grid">
+
+                <div class="left-col">
+                    <div class="info-card">
+                        <div class="client-header">
+                            <div class="client-avatar">AK</div>
+                            <h3>Ahmed Khan</h3>
+                            <p class="text-muted">ID: #PRJ-2024-089</p>
+                        </div>
+                        <hr style="border:0; border-top:1px solid #eee; margin: 15px 0;">
+
+                        <div class="info-row">
+                            <span class="info-label">System Size</span>
+                            <span class="info-val">10kW Hybrid</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Location</span>
+                            <span class="info-val">DHA Phase 6, Lahore</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Phone</span>
+                            <span class="info-val">+92 300 1234567</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Total Cost</span>
+                            <span class="info-val" style="color: #27ae60;">Rs 1,200,000</span>
+                        </div>
+
+                        <div style="margin-top: 20px;">
+                            <button class="btn-primary" style="width: 100%; background: #2196f3;">
+                                <i class="fa-solid fa-phone"></i> Call Client
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-header">
+                            <h3>Documents</h3>
+                            <i class="fa-solid fa-file-pdf" style="color: #e74c3c;"></i>
+                        </div>
+                        <div class="task-item" style="cursor: pointer;">
+                            <i class="fa-solid fa-download" style="margin-right: 10px; color:#888;"></i>
+                            <span>Download Contract</span>
+                        </div>
+                        <div class="task-item" style="cursor: pointer;">
+                            <i class="fa-solid fa-upload" style="margin-right: 10px; color:#888;"></i>
+                            <span>Upload Invoice</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right-col">
+
+                    <div class="info-card">
+                        <div class="card-header">
+                            <h3>Installation Progress</h3>
+                            <button class="btn-primary" onclick="alert('Status Updated!')">Update Status</button>
+                        </div>
+
+                        <div class="timeline-container">
+                            <div class="steps">
+                                <div class="step-item completed">
+                                    <div class="step-circle"></div>
+                                    <div class="step-title">Survey</div>
+                                </div>
+                                <div class="step-item completed">
+                                    <div class="step-circle"></div>
+                                    <div class="step-title">Procurement</div>
+                                </div>
+                                <div class="step-item active">
+                                    <div class="step-circle"></div>
+                                    <div class="step-title">Installation</div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-circle"></div>
+                                    <div class="step-title">Testing</div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-circle"></div>
+                                    <div class="step-title">Done</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 style="margin: 20px 0 10px;">Current Tasks (Installation Phase)</h4>
+                        <div class="task-list">
+                            <label class="task-item">
+                                <input type="checkbox" checked class="task-checkbox">
+                                <span>Structure Mounting Completed</span>
+                            </label>
+                            <label class="task-item">
+                                <input type="checkbox" checked class="task-checkbox">
+                                <span>Panels Lifted to Roof</span>
+                            </label>
+                            <label class="task-item">
+                                <input type="checkbox" class="task-checkbox">
+                                <span>Inverter Wiring & Connection</span>
+                            </label>
+                            <label class="task-item">
+                                <input type="checkbox" class="task-checkbox">
+                                <span>Earthing Pit Preparation</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-header">
+                            <h3>Payment Milestones</h3>
+                            <span class="status-pending" style="font-size: 14px;">Rs 400,000 Remaining</span>
+                        </div>
+                        <table class="payment-table">
+                            <thead>
+                                <tr>
+                                    <th>Milestone</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Advance Booking (30%)</td>
+                                    <td>10 Jan 2024</td>
+                                    <td>Rs 360,000</td>
+                                    <td><span class="status-paid">Paid</span></td>
+                                    <td><i class="fa-solid fa-eye" style="color:#aaa;"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Material Delivery (40%)</td>
+                                    <td>25 Jan 2024</td>
+                                    <td>Rs 480,000</td>
+                                    <td><span class="status-paid">Paid</span></td>
+                                    <td><i class="fa-solid fa-eye" style="color:#aaa;"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Commissioning (30%)</td>
+                                    <td>--</td>
+                                    <td>Rs 360,000</td>
+                                    <td><span class="status-pending">Pending</span></td>
+                                    <td><button style="border:1px solid #ddd; background:#fff; padding:2px 8px; border-radius:4px; cursor:pointer;">Request</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.querySelector('.main-content').classList.toggle('sidebar-active');
+        }
+    </script>
+</body>
+</html>

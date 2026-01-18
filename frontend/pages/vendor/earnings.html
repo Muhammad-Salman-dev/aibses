@@ -7,47 +7,89 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="stylesheet" href="../../css/vendor-dashboard.css">
+
+    <style>
+        /* --- NEW MODAL & TOAST CSS --- */
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 1000;
+            display: none; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active { display: flex; opacity: 1; }
+
+        /* Modal Box */
+        .modal-box {
+            background: #fff; width: 400px; padding: 25px; border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); transform: translateY(20px);
+            transition: transform 0.3s ease; position: relative;
+        }
+        .modal-overlay.active .modal-box { transform: translateY(0); }
+
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .modal-header h3 { margin: 0; font-size: 18px; color: #333; }
+        .close-modal { cursor: pointer; font-size: 20px; color: #888; background: none; border: none; }
+
+        /* Form Inputs */
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 13px; color: #666; margin-bottom: 5px; }
+        .form-group input, .form-group select {
+            width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px;
+        }
+        .form-group input:focus { border-color: #27ae60; outline: none; }
+
+        /* Buttons */
+        .btn-submit { width: 100%; background: #27ae60; color: #fff; padding: 12px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
+        .btn-submit:hover { background: #219150; }
+
+        /* Toast Notification */
+        .toast-container {
+            position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+        }
+        .toast {
+            background: #333; color: #fff; padding: 12px 20px; border-radius: 8px;
+            margin-top: 10px; display: flex; align-items: center; gap: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); animation: slideIn 0.3s ease forwards;
+        }
+        .toast.success { background: #27ae60; }
+        .toast.error { background: #e74c3c; }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Responsive Fix for Modal */
+        @media (max-width: 500px) {
+            .modal-box { width: 90%; margin: 0 20px; }
+        }
+    </style>
 </head>
 <body>
 
     <nav class="sidebar" id="sidebar">
         <div class="brand">
             <i class="fa-solid fa-leaf brand-icon"></i>
-            <div class="brand-text">
-                <h2>ISES</h2>
-                <span>PARTNER</span>
-            </div>
+            <div class="brand-text"><h2>ISES</h2><span>PARTNER</span></div>
         </div>
-
         <ul class="menu-list">
             <li><a href="dashboard.html" class="menu-item"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a></li>
             <li><a href="leads.html" class="menu-item"><i class="fa-solid fa-list-ul"></i> <span>New Leads</span></a></li>
             <li><a href="quotes.html" class="menu-item"><i class="fa-solid fa-file-invoice"></i> <span>My Quotations</span></a></li>
             <li><a href="my-projects.html" class="menu-item"><i class="fa-solid fa-briefcase"></i> <span>Active Projects</span></a></li>
-
             <li><a href="earnings.html" class="menu-item active"><i class="fa-solid fa-money-bill-wave"></i> <span>Earnings</span></a></li>
-
             <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 20px;">
-
-            <li>
-                <a href="profile-setup.html" class="menu-item">
-                    <i class="fa-solid fa-shield-halved"></i> <span>Verification Center</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="profile.html" class="menu-item">
-                    <i class="fa-solid fa-building"></i> <span>Company Profile</span>
-                </a>
-            </li>
+            <li><a href="profile-setup.html" class="menu-item"><i class="fa-solid fa-shield-halved"></i> <span>Verification Center</span></a></li>
+            <li><a href="profile.html" class="menu-item"><i class="fa-solid fa-building"></i> <span>Company Profile</span></a></li>
         </ul>
-
         <div class="logout-section">
             <a href="../../index.html" class="menu-item logout-btn"><i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span></a>
         </div>
     </nav>
+
     <main class="main-content">
         <header class="top-header">
             <div class="header-toggle">
@@ -57,24 +99,21 @@
                     <span>Manage your revenue and payouts</span>
                 </div>
             </div>
-            <div class="header-actions">
-                <div class="user-profile">
-                    <span class="name">Solar Tech</span>
-                    <img src="https://ui-avatars.com/api/?name=Solar+Tech&background=0D8ABC&color=fff" alt="User" class="user-avatar">
-                </div>
+            <div class="user-profile">
+                <span class="name">Solar Tech</span>
+                <div class="user-img" style="background-image: url('https://www.w3schools.com/howto/img_avatar.png'); width:40px; height:40px; border-radius:50%; background-size:cover;"></div>
             </div>
         </header>
 
         <div class="dashboard-container">
 
             <div class="earnings-grid">
-
                 <div class="wallet-card">
                     <div class="wallet-header">
                         <span>Available Balance</span>
                         <i class="fa-brands fa-cc-visa"></i>
                     </div>
-                    <div class="wallet-balance">
+                    <div class="wallet-balance" id="displayBalance">
                         Rs 950,000
                     </div>
                     <div class="wallet-footer">
@@ -82,7 +121,7 @@
                             <span>Pending Clearance</span>
                             <strong>Rs 450,000</strong>
                         </div>
-                        <button class="btn-withdraw">
+                        <button class="btn-withdraw" onclick="openModal('withdrawModal')">
                             Withdraw Funds <i class="fa-solid fa-arrow-right"></i>
                         </button>
                     </div>
@@ -110,11 +149,11 @@
                     <div class="bank-card">
                         <div class="bank-icon"><i class="fa-solid fa-building-columns"></i></div>
                         <div class="bank-details">
-                            <span class="bank-name">Meezan Bank Ltd</span>
-                            <span class="bank-account">PK32 MEZN **** **** 9012</span>
+                            <span class="bank-name" id="bankNameTxt">Meezan Bank Ltd</span>
+                            <span class="bank-account" id="bankAccTxt">PK32 MEZN **** **** 9012</span>
                             <span class="bank-status verified"><i class="fa-solid fa-check-circle"></i> Verified</span>
                         </div>
-                        <button class="btn-edit-bank"><i class="fa-solid fa-pen"></i></button>
+                        <button class="btn-edit-bank" onclick="openModal('bankModal')"><i class="fa-solid fa-pen"></i></button>
                     </div>
                 </div>
             </div>
@@ -127,12 +166,12 @@
                             <i class="fa-regular fa-calendar"></i>
                             <span>Last 30 Days</span>
                         </div>
-                        <button class="btn-outline"><i class="fa-solid fa-download"></i> CSV</button>
+                        <button class="btn-outline" onclick="showToast('Downloading CSV Report...', 'success')"><i class="fa-solid fa-download"></i> CSV</button>
                     </div>
                 </div>
 
                 <div class="table-responsive">
-                    <table class="finance-table">
+                    <table class="finance-table" id="txnTable">
                         <thead>
                             <tr>
                                 <th>Transaction</th>
@@ -148,27 +187,20 @@
                                 <td>
                                     <div class="txn-info">
                                         <div class="txn-icon in"><i class="fa-solid fa-arrow-down"></i></div>
-                                        <div>
-                                            <span class="txn-title">Project Payment</span>
-                                            <span class="txn-id">#TXN-4592 - Khan Residence</span>
-                                        </div>
+                                        <div><span class="txn-title">Project Payment</span><span class="txn-id">#TXN-4592 - Khan Residence</span></div>
                                     </div>
                                 </td>
                                 <td>Nov 28, 2025</td>
                                 <td>Solar Install Final</td>
                                 <td class="amount-plus">+ Rs 800,000</td>
                                 <td><span class="badge badge-success">Completed</span></td>
-                                <td><button class="action-btn"><i class="fa-solid fa-file-pdf"></i></button></td>
+                                <td><button class="action-btn" onclick="showToast('Opening Receipt...', 'normal')"><i class="fa-solid fa-file-pdf"></i></button></td>
                             </tr>
-
                             <tr>
                                 <td>
                                     <div class="txn-info">
                                         <div class="txn-icon pending"><i class="fa-solid fa-clock"></i></div>
-                                        <div>
-                                            <span class="txn-title">Milestone Payment</span>
-                                            <span class="txn-id">#TXN-4593 - Zahid Commercial</span>
-                                        </div>
+                                        <div><span class="txn-title">Milestone Payment</span><span class="txn-id">#TXN-4593 - Zahid Commercial</span></div>
                                     </div>
                                 </td>
                                 <td>Dec 05, 2025</td>
@@ -177,15 +209,11 @@
                                 <td><span class="badge badge-warning">Pending</span></td>
                                 <td><button class="action-btn"><i class="fa-solid fa-eye"></i></button></td>
                             </tr>
-
                             <tr>
                                 <td>
                                     <div class="txn-info">
                                         <div class="txn-icon out"><i class="fa-solid fa-arrow-up"></i></div>
-                                        <div>
-                                            <span class="txn-title">Withdrawal</span>
-                                            <span class="txn-id">#WDR-0012</span>
-                                        </div>
+                                        <div><span class="txn-title">Withdrawal</span><span class="txn-id">#WDR-0012</span></div>
                                     </div>
                                 </td>
                                 <td>Nov 15, 2025</td>
@@ -198,23 +226,159 @@
                     </table>
                 </div>
             </div>
-
         </div>
     </main>
 
+    <div class="modal-overlay" id="withdrawModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Withdraw Funds</h3>
+                <button class="close-modal" onclick="closeModal('withdrawModal')">&times;</button>
+            </div>
+            <div class="form-group">
+                <label>Select Bank</label>
+                <select id="withdrawBank">
+                    <option value="Meezan Bank">Meezan Bank (****9012)</option>
+                    <option value="JazzCash">JazzCash</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Amount (PKR)</label>
+                <input type="number" id="withdrawAmount" placeholder="Enter amount (e.g., 50000)">
+                <small style="color: #888; display:block; margin-top:5px;">Available: Rs 950,000</small>
+            </div>
+            <button class="btn-submit" onclick="submitWithdraw()">Confirm Withdrawal</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="bankModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Update Bank Details</h3>
+                <button class="close-modal" onclick="closeModal('bankModal')">&times;</button>
+            </div>
+            <div class="form-group">
+                <label>Bank Name</label>
+                <input type="text" id="editBankName" value="Meezan Bank Ltd">
+            </div>
+            <div class="form-group">
+                <label>Account / IBAN Number</label>
+                <input type="text" id="editBankAcc" value="PK32 MEZN **** **** 9012">
+            </div>
+            <button class="btn-submit" onclick="saveBankDetails()">Save Changes</button>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
     <script>
-        // Sidebar Toggle Logic (Sirf Mobile ke liye, Desktop pe asar nahi karega)
+        // --- SIDEBAR LOGIC ---
         document.getElementById('openSidebar').addEventListener('click', () => {
             document.getElementById('sidebar').classList.toggle('active');
         });
 
-        // Agar tumhara sidebar "Cross" button ke bina hai, toh mobile par band karne ke liye
-        // humein content area pe click karwana padega (Optional UX improvement)
         document.querySelector('.main-content').addEventListener('click', () => {
             if(window.innerWidth < 992) {
                 document.getElementById('sidebar').classList.remove('active');
             }
         });
+
+        // --- MODAL FUNCTIONS ---
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // Close modal when clicking outside box
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+            }
+        }
+
+        // --- WITHDRAW LOGIC ---
+        let currentBalance = 950000;
+
+        function submitWithdraw() {
+            const amountInput = document.getElementById('withdrawAmount');
+            const amount = parseInt(amountInput.value);
+            const bank = document.getElementById('withdrawBank').value;
+
+            if (!amount || amount <= 0) {
+                showToast("Please enter a valid amount!", "error");
+                return;
+            }
+
+            if (amount > currentBalance) {
+                showToast("Insufficient Balance!", "error");
+                return;
+            }
+
+            // 1. Update Balance UI
+            currentBalance -= amount;
+            document.getElementById('displayBalance').innerText = "Rs " + currentBalance.toLocaleString();
+
+            // 2. Add Row to Table (Simulation)
+            const table = document.getElementById('txnTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow(0); // Add to top
+
+            // Current Date
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+            newRow.innerHTML = `
+                <td>
+                    <div class="txn-info">
+                        <div class="txn-icon out"><i class="fa-solid fa-arrow-up"></i></div>
+                        <div><span class="txn-title">Withdrawal Request</span><span class="txn-id">#PENDING-ID</span></div>
+                    </div>
+                </td>
+                <td>${dateStr}</td>
+                <td>${bank}</td>
+                <td class="amount-minus">- Rs ${amount.toLocaleString()}</td>
+                <td><span class="badge badge-warning">Processing</span></td>
+                <td><button class="action-btn"><i class="fa-regular fa-clock"></i></button></td>
+            `;
+
+            // 3. Reset & Close
+            amountInput.value = "";
+            closeModal('withdrawModal');
+            showToast("Withdrawal request submitted!", "success");
+        }
+
+        // --- EDIT BANK LOGIC ---
+        function saveBankDetails() {
+            const name = document.getElementById('editBankName').value;
+            const acc = document.getElementById('editBankAcc').value;
+
+            if(name && acc) {
+                document.getElementById('bankNameTxt').innerText = name;
+                document.getElementById('bankAccTxt').innerText = acc;
+                closeModal('bankModal');
+                showToast("Bank details updated successfully", "success");
+            } else {
+                showToast("Please fill all fields", "error");
+            }
+        }
+
+        // --- TOAST NOTIFICATION SYSTEM ---
+        function showToast(message, type) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type === 'error' ? 'error' : 'success'}`;
+            toast.innerHTML = type === 'success' ? `<i class="fa-solid fa-check-circle"></i> ${message}` : `<i class="fa-solid fa-circle-exclamation"></i> ${message}`;
+
+            container.appendChild(toast);
+
+            // Remove after 3 seconds
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
     </script>
 </body>
 </html>

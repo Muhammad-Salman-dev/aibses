@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile - ISES</title>
-
     <link rel="stylesheet" href="../../css/dashboard.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -18,23 +16,24 @@
             <i class="fa-solid fa-leaf"></i> ISES
             <i class="fa-solid fa-times mobile-close-btn" id="closeSidebarBtn"></i>
         </div>
-        <a href="dashboard.html" class="menu-item"><i class="fa-solid fa-house"></i> Dashboard</a>
-        <a href="new-request.html" class="menu-item"><i class="fa-solid fa-plus-circle"></i> New Request</a>
-        <a href="history.html" class="menu-item"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+
+        <a href="dashboard.html" class="menu-item">
+            <i class="fa-solid fa-house"></i> Dashboard
+        </a>
+        <a href="new-request.html" class="menu-item">
+            <i class="fa-solid fa-plus-circle"></i> New Request
+        </a>
+        <a href="history.html" class="menu-item">
+            <i class="fa-solid fa-clock-rotate-left"></i> History
+        </a>
 
         <div class="menu-dropdown">
-        <a href="#" class="menu-item" onclick="toggleVendorMenu(event)">
-            <div class="menu-item-content"><i class="fa-solid fa-list-check"></i> <span>Project Hub</span></div>
-            <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
-        </a>
-        <div class="submenu" id="vendorSubmenu">
-            <a href="quotes.html" class="submenu-item"><i class="fa-solid fa-file-invoice-dollar"></i> View Quotes</a>
-            <a href="quote-status.html" class="submenu-item"><i class="fa-solid fa-hourglass-half"></i> Quote Status</a>
-            <a href="payments.html" class="submenu-item"><i class="fa-solid fa-credit-card"></i> Payments</a>
-            <a href="installation.html" class="submenu-item"><i class="fa-solid fa-helmet-safety"></i> Installation</a>
-            <a href="rate-vendor.html" class="submenu-item"><i class="fa-solid fa-star"></i> Rate & Profile</a>
-        </div>
-    </div>
+            <a href="#" class="menu-item" onclick="toggleVendorMenu(event)">
+                <div class="menu-item-content">
+                    <i class="fa-solid fa-list-check"></i> <span>Project Hub</span>
+                </div>
+                <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+            </a>
             <div class="submenu" id="vendorSubmenu">
                 <a href="quotes.html" class="submenu-item"><i class="fa-solid fa-file-invoice-dollar"></i> View Quotes</a>
                 <a href="quote-status.html" class="submenu-item"><i class="fa-solid fa-hourglass-half"></i> Quote Status</a>
@@ -44,20 +43,25 @@
             </div>
         </div>
 
-        <a href="../market/analysis.html" class="menu-item"><i class="fa-solid fa-chart-line"></i> Market Analysis</a>
+        <a href="../market/analysis.html" class="menu-item">
+            <i class="fa-solid fa-chart-line"></i> Market Analysis
+        </a>
 
-        <a href="#" class="menu-item active"><i class="fa-solid fa-user-gear"></i> Profile Settings</a>
+        <a href="#" class="menu-item active">
+            <i class="fa-solid fa-user-gear"></i> Profile Settings
+        </a>
 
-         <a href="#" onclick="logout()" class="menu-item" style="margin-top: auto;">
-        <i class="fa-solid fa-sign-out-alt"></i> Logout
-    </a>
+        <a href="#" onclick="logout()" class="menu-item" style="margin-top: auto;">
+            <i class="fa-solid fa-sign-out-alt"></i> Logout
+        </a>
     </nav>
 
     <main class="main-content">
-
         <div class="header">
             <div style="display: flex; align-items: center; gap: 15px;">
-                <button class="menu-toggle" id="menuToggleBtn"><i class="fa-solid fa-bars"></i></button>
+                <button class="menu-toggle" id="menuToggleBtn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
                 <div>
                     <h1>Account Settings</h1>
                     <p style="color: #7f8c8d;">Manage your personal information and security.</p>
@@ -71,7 +75,6 @@
 
         <div class="profile-container">
             <form id="profileForm">
-
                 <div class="avatar-section">
                     <div class="avatar-wrapper">
                         <img src="https://www.w3schools.com/howto/img_avatar.png" id="profilePreview" alt="Profile">
@@ -95,7 +98,7 @@
                     </div>
                     <div class="form-group full-width">
                         <label>Email Address</label>
-                        <input type="email" class="form-input input-readonly" value="user@ises.com" readonly title="You cannot change email">
+                        <input type="email" class="form-input input-readonly" value="user@ises.com" readonly>
                     </div>
                     <div class="form-group full-width">
                         <label>Residential Address</label>
@@ -119,13 +122,10 @@
                     <button type="button" class="btn btn-cancel" id="cancelProfileBtn">Cancel</button>
                     <button type="submit" class="btn btn-submit" id="saveProfileBtn">Save Changes</button>
                 </div>
-
             </form>
         </div>
-
     </main>
 
     <script src="../../js/userDashboard.js"></script>
-
 </body>
 </html>

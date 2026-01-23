@@ -204,3 +204,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// ============================
+// GLOBAL SIDEBAR HANDLER
+// WORKS ON ALL PAGES (INCLUDING PROFILE)
+// ============================
+document.addEventListener('DOMContentLoaded', () => {
+
+    const sidebar = document.querySelector('.sidebar');
+    const menuBtn = document.getElementById('menuToggleBtn');
+    const closeBtn = document.getElementById('closeSidebarBtn');
+    const overlay = document.getElementById('overlay');
+
+    function toggleSidebar() {
+        if (!sidebar) return;
+
+        sidebar.classList.toggle('active');
+
+        if (overlay) {
+            overlay.classList.toggle('active');
+        }
+    }
+
+    if (menuBtn) {
+        menuBtn.addEventListener('click', toggleSidebar);
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', toggleSidebar);
+    }
+
+    if (overlay) {
+        overlay.addEventListener('click', toggleSidebar);
+    }
+
+});

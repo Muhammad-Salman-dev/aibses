@@ -82,10 +82,16 @@
                     <i class="fa-solid fa-location-dot section-icon"></i> Property Details
                 </div>
                 <div class="input-grid">
-                    <div class="form-group">
-                        <label>Location / Address</label>
-                        <input type="text" class="form-input" placeholder="e.g. House 12, DHA Phase 6, Lahore">
-                    </div>
+                   <div class="form-group">
+    <label>Location / Address</label>
+    <div style="display: flex; gap: 10px;">
+        <input type="text" id="locationInput" class="form-input" placeholder="e.g. Enter your address" style="flex: 1;">
+
+        <button type="button" id="getLocationBtn" class="action-btn" style="padding: 0 15px; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Get Current Location">
+            <i class="fa-solid fa-location-crosshairs"></i>
+        </button>
+    </div>
+</div>
                     <div class="form-group">
                         <label>House Facing Direction</label>
                         <select class="form-select">
@@ -115,23 +121,121 @@
                 </div>
             </div>
 
-            <div class="form-section">
+          <div class="form-section">
                 <div class="section-title">
-                    <i class="fa-solid fa-bolt section-icon"></i> Energy Consumption
+                    <i class="fa-solid fa-calculator section-icon"></i> Select Appliances
                 </div>
-                <div class="input-grid">
-                    <div class="form-group">
-                        <label>Average Monthly Units (kWh)</label>
-                        <input type="number" class="form-input" placeholder="e.g. 450">
-                    </div>
-                    <div class="form-group">
-                        <label>Upload Electricity Bill</label>
-                        <div class="upload-box">
-                            <input type="file" accept="image/*,.pdf">
-                            <i class="fa-solid fa-file-invoice"></i>
-                            <p><strong>Click to Upload Bill</strong><br>or drag and drop here</p>
+
+                <p style="margin-bottom: 15px; color: #666;">Add quantity for items you want to run on Solar:</p>
+
+                <div class="appliance-grid-modern">
+
+                    <div class="appliance-item" id="item-ac">
+                        <div class="icon-box"><i class="fa-solid fa-snowflake"></i></div>
+                        <div class="details">
+                            <h4>AC Inverter</h4>
+                            <p>1.5 Ton</p>
+                        </div>
+                        <div class="stepper">
+                            <button type="button" onclick="updateCount(this, -1)">-</button>
+                            <input type="number" value="0" readonly>
+                            <button type="button" onclick="updateCount(this, 1)">+</button>
                         </div>
                     </div>
+
+                    <div class="appliance-item">
+                        <div class="icon-box warning"><i class="fa-regular fa-snowflake"></i></div>
+                        <div class="details">
+                            <h4>Old AC</h4>
+                            <p>Non-Inverter</p>
+                        </div>
+                        <div class="stepper">
+                            <button type="button" onclick="updateCount(this, -1)">-</button>
+                            <input type="number" value="0" readonly>
+                            <button type="button" onclick="updateCount(this, 1)">+</button>
+                        </div>
+                    </div>
+
+                    <div class="appliance-item">
+                        <div class="icon-box"><i class="fa-solid fa-fan"></i></div>
+                        <div class="details">
+                            <h4>Ceiling Fan</h4>
+                            <p>Standard 220V</p>
+                        </div>
+                        <div class="stepper">
+                            <button type="button" onclick="updateCount(this, -1)">-</button>
+                            <input type="number" value="0" readonly>
+                            <button type="button" onclick="updateCount(this, 1)">+</button>
+                        </div>
+                    </div>
+
+
+
+                    <div class="appliance-item">
+                        <div class="icon-box"><i class="fa-solid fa-lightbulb"></i></div>
+                        <div class="details">
+                            <h4>LED Lights</h4>
+                            <p>Saver / Tube</p>
+                        </div>
+                        <div class="stepper">
+                            <button type="button" onclick="updateCount(this, -1)">-</button>
+                            <input type="number" value="0" readonly>
+                            <button type="button" onclick="updateCount(this, 1)">+</button>
+                        </div>
+                    </div>
+
+                    <div class="appliance-item">
+                        <div class="icon-box"><i class="fa-solid fa-box-archive"></i></div>
+                        <div class="details">
+                            <h4>Refrigerator</h4>
+                            <p>Medium/Large</p>
+                        </div>
+                        <div class="stepper">
+                            <button type="button" onclick="updateCount(this, -1)">-</button>
+                            <input type="number" value="0" readonly>
+                            <button type="button" onclick="updateCount(this, 1)">+</button>
+                        </div>
+                    </div>
+
+                    <div class="appliance-item">
+                        <div class="icon-box"><i class="fa-solid fa-water"></i></div>
+                        <div class="details">
+                            <h4>Water Motor</h4>
+                            <p>1 HP Pump</p>
+                        </div>
+                        <div class="stepper">
+                            <button type="button" onclick="updateCount(this, -1)">-</button>
+                            <input type="number" value="0" readonly>
+                            <button type="button" onclick="updateCount(this, 1)">+</button>
+                        </div>
+                    </div>
+
+                    <div class="appliance-item">
+                        <div class="icon-box"><i class="fa-solid fa-shirt"></i></div>
+                        <div class="details">
+                            <h4>Iron (Istri)</h4>
+                            <p>Heavy Load</p>
+                        </div>
+                        <div class="stepper">
+                            <button type="button" onclick="updateCount(this, -1)">-</button>
+                            <input type="number" value="0" readonly>
+                            <button type="button" onclick="updateCount(this, 1)">+</button>
+                        </div>
+                    </div>
+
+                    <div class="appliance-item">
+                        <div class="icon-box"><i class="fa-solid fa-tv"></i></div>
+                        <div class="details">
+                            <h4>TV / LED</h4>
+                            <p>Entertainment</p>
+                        </div>
+                        <div class="stepper">
+                            <button type="button" onclick="updateCount(this, -1)">-</button>
+                            <input type="number" value="0" readonly>
+                            <button type="button" onclick="updateCount(this, 1)">+</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 

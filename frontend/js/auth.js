@@ -1,106 +1,165 @@
-document.addEventListener('DOMContentLoaded', () => {
-
-    // ============================
-    // 1. LOGIN LOGIC (UPDATED: Auto-Detect Role via Email)
-    // ============================
-    const loginForm = document.getElementById('loginForm');
-
-    if (loginForm) {
-        loginForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value;
-
-            const defaultPass = "123456";
-
-            // --- VALIDATION LOGIC ---
-
-            if (!email || !password) {
-                alert("Please fill all fields!");
-                return;
-            }
-
-            if (password !== defaultPass) {
-                alert("Wrong Password! (Hint: Try '123456' for prototype)");
-                return;
-            }
-
-            if (email === 'admin@ises.com') {
-                console.log("Login Success: Admin");
-                window.location.href = '../admin/dashboard.html';
-            }
-            else if (email === 'vendor@ises.com') {
-                console.log("Login Success: Vendor");
-                window.location.href = '../vendor/dashboard.html';
-            }
-            else {
-                console.log("Login Success: User");
-                window.location.href = '../user/dashboard.html';
-            }
-        });
-    }
-
-    // ============================
-    // 2. SIGNUP LOGIC
-    // ============================
-    const signupForm = document.getElementById('signupForm');
-    const roleSelect = document.getElementById('signupRole');
+/**
+ * Toggles between User and Vendor signup fields based on selection
+ */
+function toggleSignupFields() {
+    const role = document.getElementById('signupRole').value;
     const userFields = document.getElementById('userFields');
     const vendorFields = document.getElementById('vendorFields');
 
-    // A. Dynamic Fields Handler
-    if (roleSelect) {
-        roleSelect.addEventListener('change', function () {
-            if (this.value === 'vendor') {
-                userFields.classList.add('hidden');
-                vendorFields.classList.remove('hidden');
-
-                document.getElementById('fullNameInput').removeAttribute('required');
-                document.getElementById('companyInput').setAttribute('required', 'true');
-            } else {
-                userFields.classList.remove('hidden');
-                vendorFields.classList.add('hidden');
-
-                document.getElementById('fullNameInput').setAttribute('required', 'true');
-                document.getElementById('companyInput').removeAttribute('required');
-            }
-        });
+    if (role === 'vendor') {
+        userFields.style.display = 'none';
+        vendorFields.style.display = 'block';
+    } else {
+        userFields.style.display = 'block';
+        vendorFields.style.display = 'none';
     }
+}
 
-    // B. Form Submission Logic
+/**
+ * Handle the response from Google Identity Services
+ */
+async function handleCredentialResponse(response) {
+    try {
+        // FIX: URL ko backend ke mutabiq '/api/auth/google' kar diya hai
+        const res = await fetch('http://localhost:8080/api/auth/google', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token: response.credential })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+            localStorage.setItem('token', data.accessToken);
+            localStorage.setItem('user', JSON.stringify(data));
+
+            console.log("Google Login Successful!");
+            window.location.href = '../user/dashboard.html';
+        } else {
+            alert("Login Failed: " + (data.message || "Unknown Error"));
+        }
+    } catch (error) {
+        console.error("Auth Error:", error);
+        alert("Server connection failed!");
+    }
+}
+/**
+ * Initialize Google One Tap/Button
+ */
+function initGoogleAuth() {
+    if (typeof google !== 'undefined') {
+        google.accounts.id.initialize({
+            client_id: "749408941967-nta3ofbshftjqmd6h4knetc6798c5d46.apps.googleusercontent.com",
+            callback: handleCredentialResponse,
+            use_fedcm_for_prompt: false
+        });
+        const googleBtn = document.getElementById('googleBtn');
+        if (googleBtn) {
+            google.accounts.id.renderButton(googleBtn, { theme: "outline", size: "large" });
+        }
+    } else {
+        setTimeout(initGoogleAuth, 500);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initGoogleAuth();
+
+    // --- Signup Form Handler ---
+    const signupForm = document.getElementById('signupForm');
     if (signupForm) {
-        signupForm.addEventListener('submit', function (e) {
+        signupForm.addEventListener('submit', async function (e) {
             e.preventDefault();
 
-            const role = roleSelect.value;
-            const email = document.querySelector('input[type="email"]').value;
+            const role = document.getElementById('signupRole').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const phone = document.getElementById('phone').value;
 
-            let name;
+            let finalName = "";
+            let finalNtn = "";
+
             if (role === 'user') {
-                name = document.getElementById('fullNameInput').value;
+                finalName = document.getElementById('fullName').value;
+                if(!finalName) return alert("Full Name is required");
             } else {
-                name = document.getElementById('companyInput').value;
+                finalName = document.getElementById('companyName').value;
+                finalNtn = document.getElementById('ntn').value;
+                if(!finalName) return alert("Company Name is required");
             }
 
-            if (name && email) {
-                alert(`Account Created for ${role.toUpperCase()}: ${name}! \nPlease Login with your email.`);
-                window.location.href = 'login.html';
-            } else {
-                alert("Please fill all visible details.");
+            const userData = {
+                fullName: finalName,
+                email: email,
+                password: password,
+                phone: phone,
+                roleId: role === 'user' ? 1 : 2,
+                ntn: finalNtn
+            };
+
+            try {
+                const response = await fetch('http://localhost:8080/api/auth/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(userData)
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    alert("Account Created Successfully!");
+                    // Corrected Path: Moving from auth to user folder
+                    window.location.href = '../user/dashboard.html';
+                } else {
+                    alert(data.message);
+                }
+            } catch (error) {
+                alert("Server Error. Please try again later.");
             }
         });
     }
 
-    // ============================
-    // 3. SOCIAL LOGIN LOGIC
-    // ============================
-    const socialBtns = document.querySelectorAll('.btn-social');
-    if (socialBtns) {
-        socialBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                alert("Social Login is currently in development mode.");
-            });
+    // --- Login Form Handler ---
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                const response = await fetch('http://localhost:8080/api/auth/signin', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    localStorage.setItem('token', data.accessToken);
+                    localStorage.setItem('user', JSON.stringify(data));
+                    // Corrected Path: Navigating to the user folder dashboard
+                    window.location.href = '../user/dashboard.html';
+                } else {
+                    alert(data.message);
+                }
+            } catch (error) {
+                alert("Login failed. Verify your connection.");
+            }
+        });
+    }
+
+    // --- Social Button Listeners ---
+    const googleBtnElement = document.getElementById('googleBtn');
+    if (googleBtnElement) {
+        googleBtnElement.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (typeof google !== 'undefined' && google.accounts.id) {
+                google.accounts.id.prompt((notification) => {
+                    if (notification.isNotDisplayed()) {
+                        google.accounts.id.renderButton(googleBtnElement, { size: 'large' });
+                    }
+                });
+            } else {
+                alert("Please wait a moment for Google to load.");
+            }
         });
     }
 });

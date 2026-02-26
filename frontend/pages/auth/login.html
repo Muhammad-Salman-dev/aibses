@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - ISES</title>
-
     <link rel="stylesheet" href="../../css/auth.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 
@@ -20,23 +20,33 @@
         <p class="auth-desc">Please login to access your dashboard</p>
 
         <form id="loginForm">
-    
             <div class="form-group">
                 <label><i class="fa-solid fa-envelope"></i> Email Address</label>
-                <input type="email" id="email" class="form-input" placeholder="name@example.com" required>
+                <input type="email" id="loginEmail" class="form-input" placeholder="name@example.com" required>
             </div>
 
             <div class="form-group">
                 <label><i class="fa-solid fa-lock"></i> Password</label>
-                <input type="password" id="password" class="form-input" placeholder="Enter password" required>
+                <input type="password" id="loginPassword" class="form-input" placeholder="Enter password" required>
             </div>
 
             <button type="submit" class="btn-auth">Login Securely <i class="fa-solid fa-arrow-right"></i></button>
         </form>
+        <div class="divider">
+            <span>OR CONTINUE WITH</span>
+        </div>
+
+        <div class="social-buttons">
+            <button type="button" class="btn-social google" id="googleBtn">
+                <i class="fa-brands fa-google"></i> Google
+            </button>
+            <button type="button" class="btn-social apple" id="appleBtn">
+                <i class="fa-brands fa-apple"></i> Apple ID
+            </button>
+        </div>
 
         <div class="footer-links">
             <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
-            <p style="margin-top: 5px;"><a href="#" style="color: #95a5a6; font-size: 13px;">Forgot Password?</a></p>
         </div>
     </div>
 
